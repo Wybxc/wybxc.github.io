@@ -1,0 +1,71 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Microsoft YaHei" ,san-serif;
+}
+
+blockquote {
+  border-left: solid 0.25em #B0B0F0;
+  /*引用内容左边的横条*/
+  margin: 1em;
+  padding-left: 0.5em;
+  /*边距以区别引用与其他内容*/
+  color: #404040;
+}
+
+blockquote blockquote {
+  margin-left: 0;
+  /*优化引用嵌套的排版*/
+}
+
+em {
+  color: #404080;
+  font-family: "Times New Roman", FangSong, serif;
+}
+
+strong {
+  color: #501050;
+}
+
+img + em {
+  font-size: 50%;
+  display: block;
+  text-align: center;
+  color: #808080;
+  /*图片注释*/
+}
+
+/*公式*/
+.tex {
+  margin: -0.5em 0.2em 0.5em; 
+  position: relative;         
+  top: 0.7em;
+  /*
+    1.添加边距
+    2.解决莫名下移的问题
+    3.用js手动处理带中文的公式莫名上移的问题(见totex.js)
+  */
+}
+/*end-公式*/
+
+/*利用<img>的"alt"属性, 标记图片格式*/
+img[alt^="e:"] {
+  max-width: 3em;
+  display: inline;
+  margin: -1.25em 0; /*我也不知道为什么这样写效果好*/
+  /*行内表情符号*/
+}
+
+img[alt^="s:"] {
+  max-width: 128px;
+  /*小号图片"*/
+}
+
+img[alt^="m:"] {
+  max-width: 256px;
+  /*中号图片*/
+}
+
+img[alt^="l:"] {
+  max-width: 85%;
+  /*大号图片*/
+}
+/*</img>*/

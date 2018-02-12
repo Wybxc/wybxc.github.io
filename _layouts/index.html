@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>{{ page.title }}</title>
+
+    {% include links.html %}
+
+    {% include scripts.html %}
+
+  </head>
+  <body>
+  
+    {% include slidebar.html %}
+    
+    <div id="main">
+      <h1>{{ page.title }}</h1>
+      
+{{ content }}
+
+      </p>
+    </div>
+  </body>
+</html>

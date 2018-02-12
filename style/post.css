@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  /*清除所有对象的外边距, 以避免不必要的空白*/
+}
+
+h1 + ul, h1 + ol,
+h2 + ul, h2 + ol,
+h3 + ul, h3 + ol,
+h4 + ul, h4 + ol,
+h5 + ul, h5 + ol,
+h6 + ul, h6 + ol {
+  margin-top: 1em;
+  /*解决列表跟在标题之后的问题*/
+  /*顺便吐槽一下这个鬼畜的选择器*/
+}
+
+p, li {
+  margin: 1em 0;
+}
+
+hr {
+  margin: 1em 0;
+}
+
+div.footer {
+  width: 100%;
+  height: 5%;
+  position: fixed;
+  bottom: 0;
+  /*手动页脚*/
+}
+
+/*slidebar-begin*/
+#slidebar > ul, #slidebar > ol {
+  margin-left: -10%;
+  /*侧栏中的列表总是有神奇的缩进*/
+}
+
+#slidebar a {
+  color: #A0A0FF;
+}
+
+#slidebar {
+  float: left;
+  position: fixed;
+  /*设置为左边固定*/
+  background-color: #443388;
+  background: -webkit-linear-gradient(right top, #6418D7, #443388); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(bottom left, #6418D7, #443388); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(bottom left, #6418D7, #443388); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to bottom left, #6418D7, #443388); /* 标准的语法 */
+  color: #FFFFFF;
+  /*渐变背景*/
+  width: 15%;
+  padding: 10px 3% 100% 2%;
+  /*限制宽度*/
+  height: 100%;
+  overflow: auto;
+  /*滚动条(仅当高度不足时)*/
+}
+
+#main {
+  margin-left: 20%;
+  /*为边栏留出空间*/
+  padding: 10px 0 0 20px;
+  /*补充消失的空白*/
+  font-family: "Times New Roman", "Microsoft YaHei", serif;
+}
+/*slidebar-end*/
+
+p.small {
+  font-size: 0.5em;
+}
+
+p.small-gray {
+  font-size: 0.5em;
+  color: gray;
+}
+
+p.left {
+  float: left;
+}
+
+p.right {
+  float: right;
+}

@@ -1,0 +1,32 @@
+---
+layout: index
+title: 文章-目录
+tags: [目录]
+---
+
+<style type="text/css">
+.omit {
+  text-decoration: none;
+  color: #303030;
+}
+</style>
+
+{% for post in site.posts %}
+  {% if post.tags contains "文章" %}
+    <hr/>
+    <h2>
+      <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
+    </h2>
+    <p>
+      <a href="{{ post.url | absolute_url }}" class="omit">{{ post.excerpt | remove: "<p>" | remove: "</p>" }}</a> 
+    </p>
+    <p class="small-gray left">
+      tags: {% for tag in page.tags %}
+        {{ tag }}
+      {% endfor %}
+    </p>
+    <p class="small-gray right">
+      date: {{ post.date | date_to_string }}
+    </p>
+  {% endif %}
+{% endfor %} 

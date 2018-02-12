@@ -1,0 +1,42 @@
+/*全局<code>标签*/
+code, .highlight pre {
+  white-space: pre;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+}
+
+/*Markdown 内置代码块*/
+div.highlighter-rouge {
+  padding: 0.5em 1em;
+  border: 1px #8080A0 solid;
+  background-color: #EEEEEE;
+}
+
+/*Markdown 行内代码*/
+p code.highlighter-rouge {
+  padding: 0.1em 0.25em;
+  border: 1px #8080A0 solid;
+  background-color: #EEEEEE;
+}
+
+/*Jekyll 代码格式化*/
+figure.highlight {
+  padding: 0.5em 1em;
+  border: 1px #8080A0 solid;
+  background-color: #EEEEEE;
+}
+
+/*处理连续两个代码块*/
+.highlight + .highlight,
+.highlighter-rouge + .highlight,
+.highlight + .highlighter-rouge,
+.highlighter-rouge + .highlighter-rouge {
+  margin-top: 1em;
+}
+
+/*行号*/
+pre.lineno {
+  margin-left: -0.5em;
+  padding-right: 0.25em;
+  border-right: 2px #808080 solid;
+}

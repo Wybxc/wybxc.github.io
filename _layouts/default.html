@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>{{ page.title }}</title>
+
+    {% include links.html %}
+
+    {% include scripts.html %}
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+    <script type="text/javascript"
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+  </head>
+  <body>
+  
+    {% include slidebar.html %} 
+    
+    <div id="main">
+      <h1>{{ page.title }}</h1>
+      
+{{ content }}
+
+      <hr/>
+      <p class="small left">
+        tags: {% for tag in page.tags %}
+          {{ tag }}
+        {% endfor %}
+      </p>
+      <p class="small right">
+        date: {{ page.date | date_to_string }}
+      </p>
+    </div>
+  </body>
+</html>
