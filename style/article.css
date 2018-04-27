@@ -69,3 +69,9 @@ img[alt^="l:"] {
   /*大号图片*/
 }
 /*</img>*/
+
+pre.poem {
+  margin-left: 30%;
+  font-family: "Times New Roman", "Microsoft YaHei", serif;
+  font-size: 1em;
+}
