@@ -1,14 +1,16 @@
+function returnTop(){
+  $("html,body").animate({scrollTop: 0}, Math.log(document.documentElement.scrollTop) * 100);
+}
 function onSchSubmit(){
-    let url = encodeURI($(".sch").val());
-    if (url != ""){
-      // window.open("https://www.baidu.com/#ie=UTF-8&&wd=" + url);
-      url = "https://m.baidu.com/#ie=UTF-8&&wd=" + url;
-      $("#subform").attr("src", url).slideDown();
-      $("#subform a").attr("src", url);
-    }else{
-      $("#subform").attr("src", "").slideUp();
-    }
+  let url = encodeURI($(".sch").val());
+  if (url != ""){
+    url = "https://m.baidu.com/#ie=UTF-8&&wd=" + url;
+    $("#subform").attr("src", url).slideDown();
+    $("#subform a").attr("href", url);
+  }else{
+    $("#subform").attr("src", "").slideUp();
   }
+}
 $(function(){
   "use strict";
   let slidebar = $("#slidebar");

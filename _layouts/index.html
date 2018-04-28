@@ -11,53 +11,21 @@
 
   </head>
   <body>
-      <div id="nav">
-      <div id="menu">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-          <line x1="10" y1="15" x2="40" y2="15" style="stroke:white;stroke-width:4;stroke-linecap:round"/>
-          <line x1="10" y1="25" x2="40" y2="25" style="stroke:white;stroke-width:4;stroke-linecap:round"/>
-          <line x1="10" y1="35" x2="40" y2="35" style="stroke:white;stroke-width:4;stroke-linecap:round"/>
-        </svg>
-      </div>
-      <div>
-        <p style="position:absolute">美人愁思兮，采芙蓉于南浦。 公子忘忧兮，树萱草于北堂。</p>
-      </div>
-      <div style="float: right">
-        <input class="sch" type="text" placeholder="搜索内容" onkeydown="if((event.which==13)||(event.keycode==13))onSchSubmit();"/>
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="schbtn" style="width:30px; height:37px; position:absolute; top:5px; right:6px">
-          <circle cx="11.5" cy="18" r="8.5" stroke="black" stroke-width="2" fill="white"/>
-          <line x1="18" y1="23" x2="26" y2="30" style="stroke:black;stroke-width:2;stroke-linecap:round"/>
-        </svg>
-      </div>
-    </div>
-  
-    {% include slidebar.html %} 
-    
+    {% include nav.html %}
+
+    {% include slidebar.html %}
+
     <div id="main">
       <h1>{{ page.title }}</h1>
-      
+
 {{ content }}
 
     </div>
-    
+
     <iframe id="subform" sandbox="allow-forms allow-scripts allow-same-origin">
       <p>您的浏览器不支持&lt;iframe&gt;,请点击<a>这个链接</a>访问。</p>
     </iframe>
-    
-    <script type="text/javascript">
-      function returnTop(){
-        $("html,body").animate({scrollTop:0}, 500);
-      }
-    </script>
-    
-    <div class="footer">
-      <a title="回到顶部" href="javascript:returnTop()">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-          <polygon
-            style="fill:#404040"
-            points="13,0 0,14 7,14 7,23 19,23 19,14 26,14" />
-        </svg>
-      </a>
-    </div>
+
+    {% include returnTop.html %}
   </body>
 </html>
