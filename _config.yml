@@ -1,3 +1,2 @@
 encoding: UTF-8
 permalink: /:categories/:year/:month/:day/:title/
-pygments: true
