@@ -18,9 +18,9 @@
   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
   <script>
+  const hash = str => str.split('').reduce((a, b) => (a * 131 + b.charCodeAt(0))|0, 0).toString(16);
   const gitment = new Gitment({
-    id: encodeURI(location.href),
-    link: encodeURI(location.href),
+    id: hash(location.href),
     owner: 'Wybxc',
     repo: 'wybxc.github.io',
     oauth: {
