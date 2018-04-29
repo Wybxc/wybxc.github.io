@@ -19,12 +19,14 @@
   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
   <script>
   const gitment = new Gitment({
+    id: encodeURI(location.href),
     owner: 'Wybxc',
     repo: 'wybxc.github.io',
     oauth: {
       client_id: 'e1e459175a9ddeb47646',
       client_secret: '9dc3d932e62f88b62e3b6de096de4b74c77f97b2',
     },
+    perPage: 10
   });
   $(function(){gitment.render('comments');});
   </script>
