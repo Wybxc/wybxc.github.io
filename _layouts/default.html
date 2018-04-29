@@ -1,48 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-    <title>{{ page.title }}</title>
+  <title>{{ page.title }}</title>
 
-    {% include links.html %}
+  {% include links.html %}
 
-    {% include scripts.html %}
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-      });
-    </script>
-    <script type="text/javascript"
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
+  {% include scripts.html %}
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  const gitment = new Gitment({
+    owner: 'Wybxc',
+    repo: 'wybxc.github.io',
+    oauth: {
+      client_id: 'e1e459175a9ddeb47646',
+      client_secret: '9dc3d932e62f88b62e3b6de096de4b74c77f97b2',
+    },
+  });
+  $(function(){gitment.render('comments');});
+  </script>
+</head>
+<body>
+  {% include nav.html %}
 
-  </head>
-  <body>
-    {% include nav.html %}
+  {% include slidebar.html %}
 
-    {% include slidebar.html %}
-
-    <div id="main">
-      <h1>{{ page.title }}</h1>
+  <div id="main">
+    <h1>{{ page.title }}</h1>
 
 {{ content }}
 
-      <hr/>
-      <p class="small left">
-        tags: {% for tag in page.tags %}
-          {{ tag }}
-        {% endfor %}
-      </p>
-      <p class="small right">
-        date: {{ page.date | date_to_string }}
-      </p>
+    <hr/>
+    
+    <div id="comments">
+    <!-- Thanks for Gitment! -->
     </div>
+    
+    <p class="small left">
+      tags: {% for tag in page.tags %}
+        {{ tag }}
+      {% endfor %}
+    </p>
+    <p class="small right">
+      date: {{ page.date | date_to_string }}
+    </p>
+  </div>
 
-    <iframe id="subform" sandbox="allow-forms allow-scripts allow-same-origin">
-      <p>您的浏览器不支持&lt;iframe&gt;,请点击<a>这个链接</a>访问。</p>
-    </iframe>
+  <iframe id="subform" sandbox="allow-forms allow-scripts allow-same-origin">
+    <p>您的浏览器不支持&lt;iframe&gt;,请点击<a>这个链接</a>访问。</p>
+  </iframe>
 
-    {% include returnTop.html %}
-  </body>
+  {% include returnTop.html %}
+</body>
 </html>
