@@ -34,19 +34,24 @@ div.footer {
   /*手动页脚*/
 }
 
+/*navigate-begin*/
 #nav {
   width: 100%;
   height: 50px;
+  /*导航栏宽度全屏，高度50px*/
   position: fixed;
   top: 0;
-  z-index:99;
   left: 0;
+  /*位于页面最上部*/
+  z-index:99;
+  /*防止被遮挡*/
   background-color: #5418FF;
   color: #FFFFFF;
 }
 
 #nav > div {
   float: left;
+  /*导航栏中元素左浮动*/
 }
 
 #menu {
@@ -58,6 +63,7 @@ div.footer {
   width: 50px;
   height: 50px;
 }
+/*navigate-end*/
 
 /*slidebar-begin*/
 #slidebar > ul, #slidebar > ol {
@@ -84,7 +90,9 @@ div.footer {
   overflow: auto;
   /*滚动条(仅当高度不足时)*/
   display: none;
+  z-index: 98;
 }
+/*slidebar-end*/
 
 #main {
   margin: 5px 10%;
@@ -93,20 +101,24 @@ div.footer {
   /*补充消失的空白*/
   font-family: "Times New Roman", "Microsoft YaHei", serif;
 }
-/*slidebar-end*/
 
+/*子搜索窗口*/
 #subform {
   float: right;
-  background-color: #D0D0D0;
   position: fixed;
+  top: 50px;
   right: 0;
   width: 30%;
-  top: 50px;
   height: 70%;
+  /*确定位置与大小*/
   overflow: auto;
+  /*自动滚动条*/
   border-style: none ridge ridge ridge;
   border-width: 5px;
+  background-color: #D0D0D0;
+  /*边框与背景*/
   display: none;
+  z-index: 98;
 }
 
 .sch {
