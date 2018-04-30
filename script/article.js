@@ -45,7 +45,7 @@ $(function(){
   // 侧栏子菜单
   $("li[index]").mouseenter(function(){
     const index = $(this).attr("index");
-    const a = Number($('li[index]').first().attr('index')) - Number(index);
+    const a = Number(index) - Number($('li[index]').first().attr('index'));
     $("div[index=" + index + "]").stop().css("top", (a * 52 + 65).toString() + "px").show();
     $("#tagform").stop().show();
     $(this).css('background-color', "rgba(187,152,178,0.8");
