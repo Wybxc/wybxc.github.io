@@ -2,13 +2,18 @@ function returnTop(){
   $("html,body").animate({scrollTop: 0}, Math.log(document.documentElement.scrollTop) * 100);
 }
 function onSchSubmit(){
-  let url = encodeURI($(".sch").val());
-  if (url != ""){
-    url = "https://m.baidu.com/#ie=UTF-8&&wd=" + url;
-    $("#subform").attr("src", url).slideDown();
-    $("#subform a").attr("href", url);
-  }else{
-    $("#subform").attr("src", "").slideUp();
+  let value = $(".sch").val();
+  if (value == '#test#') {
+    location.href = '/tests/';
+  } else {
+    let url = encodeURI(value);
+    if (url != ""){
+      url = "https://m.baidu.com/#ie=UTF-8&&wd=" + url;
+      $("#subform").attr("src", url).slideDown();
+      $("#subform a").attr("href", url);
+    } else {
+      $("#subform").attr("src", "").slideUp();
+    }
   }
 }
 $(function(){
@@ -24,5 +29,4 @@ $(function(){
   });
   $("#subform").slideUp(0);
   $(".schbtn").click(onSchSubmit);
-  $("pre.hightlight").removeClass("hightlight");
 });
