@@ -44,17 +44,18 @@
 
     <hr/>
     
-    <div style="width:100%">
+    <div>
       {% if page.previous.url %}
-      <div style="float:left">
+      <div style="float: left">
         <p>上一篇：<a href="{{ site.baseurl }}{{ page.previous.url }}">{{ page.previous.title }}</a></p>
       </div>
       {% endif %}
       {% if page.next.url %}
-      <div style="float:right">
+      <div style="float: right">
         <p>下一篇：<a href="{{ site.baseurl }}{{ page.next.url }}">{{ page.next.title }}</a></p>
       </div>
       {% endif %}
+      <p style="width: 100%"/>
     </div>
     
     <div id="comments">
