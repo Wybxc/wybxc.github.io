@@ -142,7 +142,7 @@ ul.taglist li:hover::after {
   right: 1em;
 }
 
-div.tagform div {
+#tagform div {
   display: none;
   position: absolute;
   left: 0;
