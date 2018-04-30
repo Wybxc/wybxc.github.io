@@ -3,6 +3,12 @@
   /*清除所有对象的外边距, 以避免不必要的空白*/
 }
 
+body {
+  background: url(/images/bg1.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 h1 + ul, h1 + ol,
 h2 + ul, h2 + ol,
 h3 + ul, h3 + ol,
@@ -28,7 +34,7 @@ div.footer {
   position: fixed;
   right: 10px;
   padding: 10px 10px 10px 9px;
-  border: 2px solid #808080;
+  border: 2px solid white;
   border-radius: 16px;
   bottom: 10px;
   /*手动页脚*/
@@ -45,7 +51,7 @@ div.footer {
   /*位于页面最上部*/
   z-index:99;
   /*防止被遮挡*/
-  background-color: #5418FF;
+  background-color: rgba(128,128,128,0);
   color: #FFFFFF;
 }
 
@@ -79,7 +85,7 @@ div.footer {
   float: left;
   position: fixed;
   /*设置为左边固定*/
-  background: #5418FF;
+  background: rgba(128,128,128,0);
   color: #FFFFFF;
   /*背景*/
   width: 17%;
@@ -90,9 +96,63 @@ div.footer {
   overflow: auto;
   /*滚动条(仅当高度不足时)*/
   display: none;
-  z-index: 98;
+  z-index: 97;
 }
 /*slidebar-end*/
+
+/*taglist*/
+#tagform {
+  float: left;
+  position: fixed;
+  width: 15%;
+  padding: 10px 3% 100% 2%;
+  margin-right: 100%;
+  color: #FFFFFF;
+  top: 50px;
+  left: 15%;
+  height: 100%;
+  overflow: auto;
+  z-index: 96;
+  display: none;
+}
+
+ul.taglist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  top: 65px;
+}
+
+ul.taglist li {
+  display: block;
+  width: 100%;
+  height: 20px;
+  float: left;
+  padding: 16px 2em;
+  margin: 0;
+}
+
+ul.taglist li:hover::after {
+  content: '>';
+  font-family: monospace;
+  font-size: 20px;
+  position: absolute;
+  right: 1em;
+}
+
+div.tagform div {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 65px;
+  width: 100%;
+  z-index: 98;
+  background-color: rgba(187,152,178,0.8);
+  padding-left: 10px;
+}
+/*taglist*/
 
 #main {
   margin: 5px 10%;
@@ -100,6 +160,9 @@ div.footer {
   padding: 50px 0px 0px 20px;
   /*补充消失的空白*/
   font-family: "Times New Roman", "Microsoft YaHei", serif;
+  background-color: rgba(255,255,255,0.9);
+  border: 1px solid #808080;
+  border-radius: 15px;
 }
 
 /*子搜索窗口*/

@@ -12,17 +12,22 @@
 <div id="slidebar">
   <h1><a style="text-decoration: none; color: white;" href="{{ site.url }}">忘忧北萱草的博客</a></h1>
   <p>最新文章:</p>
-  <ul>
+  <ul class="taglist">
     {%- for tag in tags %}
-    <li>{{- tag -}}:<br/><ul>
-      {%- for post in site.posts %}
-        {%- if post.tags contains tag %}
-        <li>{%- include date2str.html date = post.date -%}&nbsp; 
-          <a href="{{ site.baseurl }}{{ post.url }}">{{- post.title -}}</a>
-        </li>
-        {%- endif %}
-      {%- endfor %}
-    </ul></li>  
+    <li index="{%- increment ti -%}">{{- tag -}}:</li>
     {%- endfor %}
   </ul>
+</div>
+<div id="tagform">
+{%- for tag in tags %}
+  <div index="{%- increment pi -%}"><ul>
+    {%- for post in site.posts %}
+      {%- if post.tags contains tag %}
+      <li>{%- include date2str.html date = post.date -%}&nbsp;
+        <a href="{{ site.baseurl }}{{ post.url }}">{{- post.title -}}</a>
+      </li>
+      {%- endif %}
+    {%- endfor %}
+  </ul></div>
+{%- endfor %}
 </div>
