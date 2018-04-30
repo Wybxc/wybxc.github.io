@@ -44,25 +44,24 @@ $(function(){
   onscroll();
   // 侧栏子菜单
   $("li[index]").mouseenter(function(){
-      const index = $(this).attr("index");
-      $("div[index=" + index + "]").stop().css("top", (Number(index) * 52 + 13).toString() + "px").show();
-      $("div.tagform").stop().show();
-      $(this).css('background-color', "rgba(187,152,178,0.8");
-    });
-    $("div[index]").mouseenter(function(){
-      $(this).stop().show();
-      $("div.tagform").stop().show();
-      $("li[index=" + $(this).attr("index") + "]").css('background-color', "rgba(187,152,178,0.8");
-    });
-    $("li[index]").mouseleave(function(){
-      $("div[index=" + $(this).attr("index") + "]").hide(1);
-      $("div.tagform").hide(1);
-      $(this).css('background-color', "rgba(187,152,178,0");
-    });
-    $("div[index]").mouseleave(function(){
-      $(this).hide(1); // <- 黑科技
-      $("div.tagform").hide(1);
-      $("li[index=" + $(this).attr("index") + "]").css('background-color', "rgba(187,152,178,0");
-    });
+    const index = $(this).attr("index");
+    $("div[index=" + index + "]").stop().css("top", (Number(index) * 52 + 65).toString() + "px").show();
+    $("div.tagform").stop().show();
+    $(this).css('background-color', "rgba(187,152,178,0.8");
+  });
+  $("div[index]").mouseenter(function(){
+    $(this).stop().show();
+    $("div.tagform").stop().show();
+    $("li[index=" + $(this).attr("index") + "]").css('background-color', "rgba(187,152,178,0.8");
+  });
+  $("li[index]").mouseleave(function(){
+    $("div[index=" + $(this).attr("index") + "]").hide(1);
+    $("div.tagform").hide(1);
+    $(this).css('background-color', "rgba(187,152,178,0");
+  });
+  $("div[index]").mouseleave(function(){
+    $(this).hide(1); // <- 黑科技
+    $("div.tagform").hide(1);
+    $("li[index=" + $(this).attr("index") + "]").css('background-color', "rgba(187,152,178,0");
   });
 });

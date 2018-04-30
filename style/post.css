@@ -155,9 +155,9 @@ div.tagform div {
 /*taglist*/
 
 #main {
-  margin: 5px 10%;
+  margin: 65px 10% 5px;
   /*为边栏留出空间*/
-  padding: 50px 0px 0px 20px;
+  padding: 10px 20px 0px 20px;
   /*补充消失的空白*/
   font-family: "Times New Roman", "Microsoft YaHei", serif;
   background-color: rgba(255,255,255,0.9);
