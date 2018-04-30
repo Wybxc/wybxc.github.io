@@ -88,7 +88,7 @@ div.footer {
   background: rgba(128,128,128,0);
   color: #FFFFFF;
   /*背景*/
-  width: 17%;
+  width: 10%;
   padding: 10px 3% 100% 2%;
   /*限制宽度*/
   top: 50px;
@@ -163,6 +163,7 @@ div.tagform div {
   background-color: rgba(255,255,255,0.9);
   border: 1px solid #808080;
   border-radius: 15px;
+  min-height: 80%;
 }
 
 /*子搜索窗口*/

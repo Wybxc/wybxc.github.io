@@ -34,11 +34,11 @@ $(function(){
   // 导航栏变色
   onscroll = function(){
     if (document.documentElement.scrollTop > 50) {
-      $("div.nav").stop().animate({backgroundColor: "rgba(187,152,178,1)"}, 300);
-      $("div.slidebar").stop().animate({backgroundColor: "rgba(187,152,178,0.5)"}, 300);
+      $("#nav").stop().animate({backgroundColor: "rgba(187,152,178,1)"}, 300);
+      $("#slidebar").stop().animate({backgroundColor: "rgba(187,152,178,0.5)"}, 300);
     } else {
-      $("div.nav").stop().animate({backgroundColor: "rgba(128,128,128,0)"}, 300);
-      $("div.slidebar").stop().animate({backgroundColor: "rgba(187,152,178,0)"}, 300);
+      $("#nav").stop().animate({backgroundColor: "rgba(128,128,128,0)"}, 300);
+      $("#slidebar").stop().animate({backgroundColor: "rgba(187,152,178,0)"}, 300);
     }
   };
   onscroll();
@@ -46,22 +46,22 @@ $(function(){
   $("li[index]").mouseenter(function(){
     const index = $(this).attr("index");
     $("div[index=" + index + "]").stop().css("top", (Number(index) * 52 + 65).toString() + "px").show();
-    $("div.tagform").stop().show();
+    $("#tagform").stop().show();
     $(this).css('background-color', "rgba(187,152,178,0.8");
   });
   $("div[index]").mouseenter(function(){
     $(this).stop().show();
-    $("div.tagform").stop().show();
+    $("#tagform").stop().show();
     $("li[index=" + $(this).attr("index") + "]").css('background-color', "rgba(187,152,178,0.8");
   });
   $("li[index]").mouseleave(function(){
     $("div[index=" + $(this).attr("index") + "]").hide(1);
-    $("div.tagform").hide(1);
+    $("#tagform").hide(1);
     $(this).css('background-color', "rgba(187,152,178,0");
   });
   $("div[index]").mouseleave(function(){
     $(this).hide(1); // <- 黑科技
-    $("div.tagform").hide(1);
+    $("#tagform").hide(1);
     $("li[index=" + $(this).attr("index") + "]").css('background-color', "rgba(187,152,178,0");
   });
 });
