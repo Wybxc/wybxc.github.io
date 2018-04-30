@@ -17,7 +17,7 @@
     <li>{{- tag -}}:<br/><ul>
       {%- for post in site.posts %}
         {%- if post.tags contains tag %}
-        <li>{{- post.date | date_to_string -}} 
+        <li>{%- include date2str.html date = post.date -%}&nbsp; 
           <a href="{{ site.baseurl }}{{ post.url }}">{{- post.title -}}</a>
         </li>
         {%- endif %}
