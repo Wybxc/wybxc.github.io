@@ -1,0 +1,17 @@
+---
+layout: index
+title: 测试页面索引
+---
+
+<p>以下是测试用页面：</p>
+<ul>
+  {%- for post in site.posts %}
+    {%- if post.tags contains '测试' %}
+    <li>{%- include date2str.html date = post.date -%}&nbsp; 
+      <a href="{{ site.baseurl }}{{ post.url }}">{{- post.title -}}</a>
+    </li>
+    {%- endif %}
+  {%- endfor %}
+</ul>
+
+<hr/>
