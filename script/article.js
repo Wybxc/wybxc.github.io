@@ -86,4 +86,9 @@ $(function(){
     $("#tagform").hide(1);
     $("li[index=" + $(this).attr("index") + "]").css('background-color', bcolor(0));
   });
+  // 最小高度自适应
+  onresize = function(){
+    $("#main").css('min-height', (document.documentElement.clientHeight - 120) + 'px')
+  }
+  onresize();
 });
