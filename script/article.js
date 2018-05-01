@@ -67,7 +67,7 @@ $(function(){
   $("li[index]").mouseenter(function(){
     const index = $(this).attr("index");
     const a = Number(index) - Number($('li[index]').first().attr('index'));
-    $("div[index=" + index + "]").stop().css("top", (a * 52 + 65).toString() + "px").show();
+    $("div[index=" + index + "]").stop().css("top", (a * 52 + 60).toString() + "px").show();
     $("#tagform").stop().show();
     $(this).css('background-color', bcolor(0.8));
   });
