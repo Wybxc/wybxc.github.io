@@ -1,7 +1,6 @@
 const bcolor = str => "rgba(187,152,178," + str + ")";
 function returnTop(){
-  $("#slidebar").slideUp(0);
-  $("html,body").animate({scrollTop: 0}, Math.log(document.documentElement.scrollTop) * 100);
+  $("html,body").stop().animate({scrollTop: 0}, Math.log(document.documentElement.scrollTop) * 100);
 }
 function onSchSubmit(){
   let value = $(".sch").val();
@@ -30,14 +29,13 @@ $(function(){
     if (b || (document.documentElement.scrollTop > 50)){
       $("#nav").stop().animate({backgroundColor: bcolor(1)}, 500); 
       $("#main").stop().animate({marginLeft: "20%"}, 500);
-      slidebar.stop().animate({opacity: 1}, 200);
+      slidebar.stop().animate({opacity: 1}, 200).slideDown(300);
     } else {
       $("#nav").stop().animate({backgroundColor: bcolor(0)}, 500);
       $("#main").stop().animate({marginLeft: "10%"}, 500);
-      slidebar.stop().animate({opacity: 0}, 200);
+      slidebar.stop().animate({opacity: 0}, 200).slideUp(300);
     }
     b = !b;
-    slidebar.slideToggle(500);
   });
   $("#main").click(function(){
     b = true;
@@ -51,6 +49,7 @@ $(function(){
     }
     $("#main").stop().animate({marginLeft: "10%"},500);
     $("#subform").attr("src", "").slideUp();
+    $("#subform a").attr("href", "");
   });
   $("#subform").slideUp(0);
   // 搜索
