@@ -19,8 +19,8 @@ function onSchSubmit(){
 }
 $(function(){
   "use strict";
-  $("div.tagform div").css('background-color', bcolor(1));
-  $("div.slidebar").css('border-color', bcolor(1));
+  $("#tagform div").css('background-color', bcolor(1));
+  $("#slidebar").css('border-color', bcolor(1));
   // 边栏 Expand
   let b = true;
   let slidebar = $("#slidebar");
