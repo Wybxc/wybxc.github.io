@@ -19,7 +19,7 @@
 </div>
 <div id="tagform">
 {%- for tag in tags %}
-  <div index="{%- increment pi -%}"><ul>
+  <div index="{%- increment pi -%}"><ul style="list-style-type: none">
     {%- for post in site.posts %}
       {%- if post.tags contains tag %}
       <li>{%- include date2str.html date = post.date -%}&nbsp;

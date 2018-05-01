@@ -76,10 +76,6 @@ div.footer {
   /*侧栏中的列表总是有神奇的缩进*/
 }
 
-#slidebar a {
-  color: #A0A0FF;
-}
-
 #slidebar {
   float: left;
   position: fixed;
@@ -152,6 +148,12 @@ ul.taglist li:hover::after {
   width: 100%;
   z-index: 98;
   padding-left: 10px;
+}
+
+#tagform div ul {
+  list-style-type: none;
+  margin-left: -40px;
+  width: 90%;
 }
 /*taglist*/
 
