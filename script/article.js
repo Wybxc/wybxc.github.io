@@ -42,7 +42,6 @@ $(function(){
   });
   $("#main").click(function(){
     b = true;
-    slidebar.slideUp(500);
     if (document.documentElement.scrollTop > 50) {
       $("#nav").stop().animate({backgroundColor: bcolor(1)}, 500);
       slidebar.stop().animate({opacity: 1},200);
@@ -50,6 +49,7 @@ $(function(){
       $("#nav").stop().animate({backgroundColor: bcolor(0)}, 500);
       slidebar.stop().animate({opacity: 0},200);
     }
+    slidebar.slideUp(300);
     $("#main").stop().animate({marginLeft: "10%"},500);
     $("#subform").attr("src", "").slideUp();
     $("#subform a").attr("href", "");
