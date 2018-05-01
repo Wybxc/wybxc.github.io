@@ -51,7 +51,6 @@ div.footer {
   /*位于页面最上部*/
   z-index:99;
   /*防止被遮挡*/
-  background-color: rgba(128,128,128,0);
   color: #FFFFFF;
 }
 
@@ -85,16 +84,20 @@ div.footer {
   float: left;
   position: fixed;
   /*设置为左边固定*/
-  background: rgba(128,128,128,0);
-  color: #FFFFFF;
+  background: rgba(255,255,255,0.94);
   /*背景*/
   width: 10%;
   padding: 10px 3% 100% 2%;
   /*限制宽度*/
-  top: 50px;
+  top: 41px;
   height: 100%;
   overflow: auto;
   /*滚动条(仅当高度不足时)*/
+  border-radius: 10px;
+  border-width: 4px;
+  border-style: solid;
+  /*边框*/
+  opacity: 0;
   display: none;
   z-index: 97;
 }
@@ -106,10 +109,8 @@ div.footer {
   position: fixed;
   width: 15%;
   padding: 10px 3% 100% 2%;
-  margin-right: 100%;
-  color: #FFFFFF;
   top: 50px;
-  left: 10%;
+  left: 15%;
   height: 100%;
   overflow: auto;
   z-index: 96;
@@ -136,6 +137,7 @@ ul.taglist li {
 
 ul.taglist li:hover::after {
   content: '>';
+  color: white;
   font-family: monospace;
   font-size: 20px;
   position: absolute;
@@ -145,11 +147,10 @@ ul.taglist li:hover::after {
 #tagform div {
   display: none;
   position: absolute;
-  left: 0;
+  left: 8px;
   top: 65px;
   width: 100%;
   z-index: 98;
-  background-color: rgba(187,152,178,0.8);
   padding-left: 10px;
 }
 /*taglist*/
