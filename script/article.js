@@ -35,7 +35,7 @@ $(function(){
       $("#main").stop().animate({marginLeft: "20%", marginTop: (65 - document.documentElement.scrollTop / 20)|0 + "px"}, 500);
       slidebar.stop().animate({opacity: 1}, 200).slideDown(300);
     } else {
-      $("#main").stop().animate({marginLeft: "10%",  marginTop: "65px"}}, 500);
+      $("#main").stop().animate({marginLeft: "10%", marginTop: "65px"}, 500);
       slidebar.stop().animate({opacity: 0}, 200).slideUp(300);
     }
     b = !b;
