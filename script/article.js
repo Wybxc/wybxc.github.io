@@ -29,10 +29,13 @@ $(function(){
     if (b || (document.documentElement.scrollTop > 50)){
       $("#nav").stop().animate({backgroundColor: bcolor(1)}, 500); 
       $("#main").stop().animate({marginLeft: "20%"}, 500);
-      slidebar.stop().animate({opacity: 1}, 200).slideDown(300);
     } else {
       $("#nav").stop().animate({backgroundColor: bcolor(0)}, 500);
       $("#main").stop().animate({marginLeft: "10%"}, 500);
+    }
+    if (b){
+      slidebar.stop().animate({opacity: 1}, 200).slideDown(300);
+    } else {
       slidebar.stop().animate({opacity: 0}, 200).slideUp(300);
     }
     b = !b;
