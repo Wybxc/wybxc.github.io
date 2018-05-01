@@ -1,5 +1,6 @@
 const bcolor = str => "rgba(187,152,178," + str + ")";
 function returnTop(){
+  $("#slidebar").slideUp(0);
   $("html,body").animate({scrollTop: 0}, Math.log(document.documentElement.scrollTop) * 100);
 }
 function onSchSubmit(){
