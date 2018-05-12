@@ -40,9 +40,9 @@ function bgcolor(){
   if (n < 10) {
     r = 0; g = 0; b = 0; n = 1;
     for(i = 0; i < imgData.data.length; i += 4){
-      const dr = imgData.data[i],
-            dg = imgData.data[i+1],
-            db = imgData.data[i+2];
+      dr = imgData.data[i],
+      dg = imgData.data[i+1],
+      db = imgData.data[i+2];
       n += 1;
       r += dr;
       g += dg;
