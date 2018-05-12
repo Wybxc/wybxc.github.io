@@ -39,6 +39,7 @@ function bgcolor(){
       g += dg;
       b += db;
     }  
+    console.log(n, r, g, b);
   }
   if (n < 10) {
     console.log(`P2:${n}`);
@@ -51,8 +52,8 @@ function bgcolor(){
       b += db;
     }
     n = i >> 2;
+    console.log(n, r, g, b);
   }
-  console.log(n, r, g, b);
   r = (r / n) |0;
   g = (g / n) |0;
   b = (b / n) |0;
