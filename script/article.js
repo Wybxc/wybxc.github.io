@@ -57,6 +57,9 @@ function bgcolor(){
   r = (r / n) |0;
   g = (g / n) |0;
   b = (b / n) |0;
+  if (r * g * b == 0) {
+    return 'rgba(187,152,178,';
+  }
   return `rgba(${r},${g},${b},`;
 }
 var bcolor = str => `rgba(0,0,0,${str})`;
