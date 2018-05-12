@@ -39,8 +39,8 @@ function bgcolor(){
       g += dg;
       b += db;
     }  
-    console.log(n, r, g, b);
   }
+  console.log(n, r, g, b);
   if (n < 10) {
     console.log(`P2:${n}`);
     r = 0; g = 0; b = 0;
