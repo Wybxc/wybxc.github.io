@@ -1,13 +1,12 @@
-const bcolor = str => "rgba(187,152,178," + str + ")";
 function returnTop(){
   $("html,body").stop().animate({scrollTop: 0}, Math.log(document.documentElement.scrollTop) * 100);
 }
 function onSchSubmit(){
-  let value = $(".sch").val();
+  var value = $(".sch").val();
   if (value == '#test#') {
     location.href = '/tests/';
   } else {
-    let url = encodeURI(value);
+    var url = encodeURI(value);
     if (url != ""){
       url = "https://m.baidu.com/#ie=UTF-8&&wd=" + url;
       $("#subform").attr("src", url).slideDown();
@@ -17,13 +16,63 @@ function onSchSubmit(){
     }
   }
 }
+function bgcolor(){
+  const canvas = document.createElement("canvas");
+  const c = canvas.getContext("2d");
+  const img = document.getElementById("background");
+  c.drawImage(img, 0, 0);
+  const imgData = c.getImageData(0, 0, 50, img.clientWidth);
+  var r = 0, g = 0, b = 0, n = 1;
+  for(var i = 0; i < imgData.data.length; i += 4){
+    const dr = imgData.data[i];
+    const dg = imgData.data[i+1];
+    const db = imgData.data[i+2];
+    const max = Math.max(dr, dg, db), min = Math.min(dr, dg, db); 
+    const l = (max + min) >> 1;
+    const s = l < 128 ? (max - min) / (max + min) : (max - min) / (512 - max - min);
+    if ((l > 128) && (l < 230) && (s > 0.2)) {
+      n += 1;
+      r += dr;
+      g += dg;
+      b += db;
+    }  
+  }
+  if (n < 10) {
+    r = 0; g = 0; b = 0; n = 1;
+    for(var i = 0; i < imgData.data.length; i += 4){
+      const dr = imgData.data[i],
+            dg = imgData.data[i+1],
+            db = imgData.data[i+2];
+      n += 1;
+      r += dr;
+      g += dg;
+      b += db;
+    }
+  }
+  console.log(n, r, g, b);
+  r = (r / n) |0;
+  g = (g / n) |0;
+  b = (b / n) |0;
+  return `rgba(${r},${g},${b},`;
+}
+var bcolor = str => `rgba(0,0,0,${str})`;
 $(function(){
   "use strict";
+  const cookies = document.cookie.split(';').map(str => str.split('='));
+  const color = cookies.find(arr => arr[0] == 'bcolor');
+  if (color) {
+    bcolor = str => color[1] + str + ')';
+  } else {
+    const c = bgcolor();
+    document.cookie = `bcolor=${c};`;
+    console.log(document.cookie);
+    bcolor = str => c + str + ')';
+  }
   $("#tagform div").css('background-color', bcolor(1));
   $("#slidebar").css('border-color', bcolor(1));
   // 边栏 Expand
-  let b = true;
-  let slidebar = $("#slidebar");
+  var b = true;
+  var slidebar = $("#slidebar");
   slidebar.slideUp(0);
   $("#menu").click(function(){
     if (b || (document.documentElement.scrollTop > 50)){

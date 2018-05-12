@@ -1,3 +1,7 @@
 encoding: UTF-8
 permalink: /:categories/:year/:month/:day/:title/
-hightlight: rouge
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jemoji
