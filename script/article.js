@@ -32,7 +32,7 @@ function bgcolor(){
     db = imgData.data[i+2];
     const max = Math.max(dr, dg, db), min = Math.min(dr, dg, db); 
     const l = (max + min) >> 1;
-    const s = l < 128 ? (max - min) / (max + min) : (max - min) / (512 - max - min);
+    const s = (l < 128) ? ((max - min) / (max + min)) : ((max - min) / (512 - max - min));
     if ((l > 128) && (l < 230) && (s > 0.2)) {
       n += 1;
       r += dr;
@@ -42,16 +42,15 @@ function bgcolor(){
   }
   if (n < 10) {
     console.log(`P2:${n}`);
-    r = 0; g = 0; b = 0; n = 1;
+    r = 0; g = 0; b = 0;
     for(i = 0; i < imgData.data.length; i += 4){
       dr = imgData.data[i],
       dg = imgData.data[i+1],
-      db = imgData.data[i+2];
-      n += 1;
       r += dr;
       g += dg;
       b += db;
     }
+    n = i >> 2;
   }
   console.log(n, r, g, b);
   r = (r / n) |0;
