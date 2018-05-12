@@ -25,10 +25,11 @@ function bgcolor(){
   const imgData = c.getImageData(0, 0, 50, img.clientWidth);
   console.log("P1");
   var r = 0, g = 0, b = 0, n = 1;
+  var dr = 0, dg = 0, db = 0;
   for(var i = 0; i < imgData.data.length; i += 4){
-    const dr = imgData.data[i];
-    const dg = imgData.data[i+1];
-    const db = imgData.data[i+2];
+    dr = imgData.data[i];
+    dg = imgData.data[i+1];
+    db = imgData.data[i+2];
     const max = Math.max(dr, dg, db), min = Math.min(dr, dg, db); 
     const l = (max + min) >> 1;
     const s = l < 128 ? (max - min) / (max + min) : (max - min) / (512 - max - min);
