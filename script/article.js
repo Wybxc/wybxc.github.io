@@ -23,9 +23,9 @@ function bgcolor(){
   const img = document.getElementById("background");
   c.drawImage(img, 0, 0);
   const imgData = c.getImageData(0, 0, 50, img.clientWidth);
+  console.log("P1");
   var r = 0, g = 0, b = 0, n = 1;
   for(var i = 0; i < imgData.data.length; i += 4){
-    console.log("P1");
     const dr = imgData.data[i];
     const dg = imgData.data[i+1];
     const db = imgData.data[i+2];
