@@ -16,6 +16,7 @@ function onSchSubmit(){
     }
   }
 }
+function rmCookie(name){document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;}
 function bgcolor(){
   const canvas = document.createElement("canvas");
   const c = canvas.getContext("2d");
@@ -24,6 +25,7 @@ function bgcolor(){
   const imgData = c.getImageData(0, 0, 50, img.clientWidth);
   var r = 0, g = 0, b = 0, n = 1;
   for(var i = 0; i < imgData.data.length; i += 4){
+    console.log("P1");
     const dr = imgData.data[i];
     const dg = imgData.data[i+1];
     const db = imgData.data[i+2];
@@ -38,6 +40,7 @@ function bgcolor(){
     }  
   }
   if (n < 10) {
+    console.log("P2");
     r = 0; g = 0; b = 0; n = 1;
     for(i = 0; i < imgData.data.length; i += 4){
       dr = imgData.data[i],
