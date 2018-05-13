@@ -8,8 +8,9 @@
 @-webkit-keyframes gitment-spin { 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg) }}
 @keyframes gitment-spin { 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg) }}
 .gitment-root-container { margin: 19px 0; }
-.gitment-header-container { margin: 19px 0; }
+.gitment-header-container { margin: 19px 0; font-size: 1.1em; }
 .gitment-header-like-btn, .gitment-comment-like-btn { cursor: pointer; }
+.gitment-header-like-btn.liked span { color: #F44336; }
 .gitment-comment-like-btn { float: right; }
 .gitment-comment-like-btn.liked { color: #F44336; }
 .gitment-header-like-btn svg { vertical-align: middle; height: 30px; }

@@ -6,7 +6,7 @@ const wybxcTheme = ablePro ? {
     container.className = 'gitment-container gitment-root-container';
     container.appendChild(instance.renderHeader(state, instance));
     container.appendChild(instance.renderComments(state, instance));
-    const comments = $('.gitment-comments-container');
+    const comments = $(container).filter('.gitment-comments-container');
     comments.find('[lang=en-US]').removeAttr('lang');
     comments.find('.gitment-comment-header').each(function(){
       const user = $(this).find('.gitment-comment-name').first();
@@ -47,7 +47,6 @@ const wybxcTheme = ablePro ? {
     });
     const likeButton = document.createElement('span');
     likeButton.className = 'gitment-header-like-btn';
-    $(likeButton).css('font-size','1.5em');
     likeButton.innerHTML = (likedReaction ? '取消感谢' : '感谢');
     $(likeButton).prepend('<span class="fa fa fa-heart-o"></span>');
     if (likedReaction) {
