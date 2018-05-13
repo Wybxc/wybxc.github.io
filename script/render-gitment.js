@@ -77,7 +77,7 @@ const wybxcTheme = ablePro ? {
   renderFooter: function(state, instance){
     const container = document.createElement('div');
     container.className = 'gitment-container gitment-footer-container';
-    container.innerHTML = 'Powered by <a class="gitment-footer-project-link" href="https://github.com/imsun/gitment" target="_blank">Gitment</a> <a class="fa fa-github" href="https://github.com" target="_blank"></a>';
+    container.innerHTML = 'Powered by <a class="gitment-footer-project-link" href="https://github.com/imsun/gitment" target="_blank">Gitment</a> <a class="fa fa-github" style="font-size: 1.5em;" href="https://github.com" target="_blank"></a>';
     return container;
   }
 } : {
