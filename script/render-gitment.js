@@ -29,7 +29,7 @@ const wybxcTheme = ablePro ? {
     });
     container.append(instance.renderEditor(state, instance));
     container.append(instance.renderFooter(state, instance));
-    return container.get();
+    return container.get(0);
   },
   renderHeader: function(state, instance){
     // 获取信息
