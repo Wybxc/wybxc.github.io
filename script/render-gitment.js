@@ -8,10 +8,10 @@ const wybxcTheme = ablePro ? {
     container.append(instance.renderEditor(state, instance));
     container.append(instance.renderFooter(state, instance));
     container.on('DOMSubtreeModified', function(e){
-      var comments = null;
+      const target = $(e.target).find('.gitment-comments-container').get(0);
       console.log(e.target);
-      if($(e.target).hasClass('.gitment-comments-container'))
-        comments = container.find('');
+      if(target)
+        var comments = $(target);
       else
         return;
       console.log(comments.get(0));
