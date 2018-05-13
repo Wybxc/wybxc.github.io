@@ -20,12 +20,7 @@ const wybxcTheme = ablePro ? {
         const user = $(this).find('.gitment-comment-name').first();
         const userName = user.text().trim();
         const userLink = user.attr('href');
-        $(this).text('').prepend(
-          '<span> 评论于</span>'
-        ).prepend(
-          $('<a></a>').text(userName).attr({href:userLink, target:'_blank'}).addClass('gitment-comment-name')
-        );
-        const date = $(this).find('span[title]').first()
+        const date = $(this).find('span[title]').first();
         const time = new Date(date.attr('title'));
         date.attr('title', time.toLocaleString());
         date.text(`${time.getFullYear()}年${time.getMonth()+1}月${time.getDate()}日`);
@@ -34,6 +29,11 @@ const wybxcTheme = ablePro ? {
           const editTime = new Date($(this).attr('title'));
           $(this).attr('title', editTime.toLocaleString());
         });
+        $(this).text('').prepend(
+          '<span> 评论于</span>'
+        ).prepend(
+          $('<a></a>').text(userName).attr({href:userLink, target:'_blank'}).addClass('gitment-comment-name')
+        ).append(date).append(editDate);
       });
     });
     return container.get(0);
