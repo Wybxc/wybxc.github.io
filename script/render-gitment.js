@@ -67,7 +67,7 @@ const wybxcTheme = ablePro ? {
     $(container).append(issueLink);
     // return
     return container;
-  }
+  },
   renderFooter: function(state, instance){
     const container = document.createElement('div');
     container.className = 'gitment-container gitment-footer-container';
