@@ -1,3 +1,4 @@
+const dot = '&nbsp;\u2022&nbsp;';
 const ua = $.ua();
 const ablePro = (ua.browser == 'chrome' && ua.version > 60) || (ua.browser == 'firefox' && ua.version > 50);
 const wybxcTheme = ablePro ? {
@@ -43,7 +44,6 @@ const wybxcTheme = ablePro ? {
     const meta = state.meta,
           user = state.user,
           reactions = state.reactions;
-    const dot = '&nbsp;\u2022&nbsp;';
     // 容器
     const container = document.createElement('div');
     container.className = 'gitment-container gitment-header-container';
