@@ -7,7 +7,7 @@ const wybxcTheme = ablePro ? {
     container.append(instance.renderComments(state, instance));
     container.append(instance.renderEditor(state, instance));
     container.append(instance.renderFooter(state, instance));
-    container.on('DOMNodeInserted', function(){
+    container.one('DOMNodeInserted', function(){
       const comments = container.find('.gitment-comments-container');
       console.log(comments.get(0));
       comments.find('[lang=en-US]').removeAttr('lang');
