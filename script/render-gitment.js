@@ -7,7 +7,7 @@ const wybxcTheme = ablePro ? {
     container.appendChild(instance.renderHeader(state, instance));
     const comments = instance.renderComments(state, instance);
     $(comments).find('[lang=en-US]').removeAttr('lang');
-    $(comments).find('.gitment-comment-header').each(function{
+    $(comments).find('.gitment-comment-header').each(function(){
       const user = $(this).find('.gitment-comment-name').first();
       const userName = user.text();
       const userLink = user.attr('href');
