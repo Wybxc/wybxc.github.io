@@ -27,7 +27,7 @@ const wybxcTheme = ablePro ? {
         editDate.each(function(){
           const editTime = new Date($(this).attr('title'));
           $(this).attr('title', editTime.toLocaleString());
-          $(this).text(dot + `编辑于${editTime.getFullYear()}年${editTime.getMonth()+1}月${editTime.getDate()}日`);
+          $(this).text(' \u2022 ' + `编辑于${editTime.getFullYear()}年${editTime.getMonth()+1}月${editTime.getDate()}日`);
         });
         const likeBtn = $(this).find('.gitment-comment-like-btn');
         $(this).text('').prepend(
