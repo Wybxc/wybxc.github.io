@@ -2,11 +2,10 @@ const ua = $.ua();
 const ablePro = (ua.browser == 'chrome' && ua.version > 60) || (ua.browser == 'firefox' && ua.version > 50);
 const wybxcTheme = ablePro ? {
   render: function(state, instance){
-    const container = document.createElement('div');
-    container.className = 'gitment-container gitment-root-container';
-    container.appendChild(instance.renderHeader(state, instance));
-    container.appendChild(instance.renderComments(state, instance));
-    const comments = $(container).filter('.gitment-comments-container');
+    const container = $('<div class="gitment-container gitment-root-container"></div>');
+    container.append(instance.renderHeader(state, instance));
+    container.append(instance.renderComments(state, instance));
+    const comments = container.filter('.gitment-comments-container');
     comments.find('[lang=en-US]').removeAttr('lang');
     comments.find('.gitment-comment-header').each(function(){
       const user = $(this).find('.gitment-comment-name').first();
@@ -28,9 +27,9 @@ const wybxcTheme = ablePro ? {
         $(this).attr('title', editTime.toLocaleString());
       });
     });
-    container.appendChild(instance.renderEditor(state, instance));
-    container.appendChild(instance.renderFooter(state, instance));
-    return container;
+    container.append(instance.renderEditor(state, instance));
+    container.append(instance.renderFooter(state, instance));
+    return container.get();
   },
   renderHeader: function(state, instance){
     // 获取信息
@@ -47,7 +46,7 @@ const wybxcTheme = ablePro ? {
     });
     const likeButton = document.createElement('span');
     likeButton.className = 'gitment-header-like-btn';
-    likeButton.innerHTML = (likedReaction ? '取消感谢' : '感谢');
+    likeButton.innerHTML = '&nbsp;' + (likedReaction ? '取消感谢' : '感谢');
     $(likeButton).prepend('<span class="fa fa fa-heart-o"></span>');
     if (likedReaction) {
       likeButton.classList.add('liked');
