@@ -5,8 +5,8 @@ const wybxcTheme = ablePro ? {
     const container = $('<div class="gitment-container gitment-root-container"></div>');
     container.append(instance.renderHeader(state, instance));
     container.append(instance.renderComments(state, instance));
-    const comments = container.children().filter('.gitment-comments-container');
-    console.log(comments);
+    const comments = container.find('.gitment-comments-container');
+    console.log(comments.get(0));
     comments.find('[lang=en-US]').removeAttr('lang');
     comments.find('.gitment-comment-header').each(function(){
       const user = $(this).find('.gitment-comment-name').first();
