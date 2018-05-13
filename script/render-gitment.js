@@ -7,8 +7,12 @@ const wybxcTheme = ablePro ? {
     container.append(instance.renderComments(state, instance));
     container.append(instance.renderEditor(state, instance));
     container.append(instance.renderFooter(state, instance));
-    container.one('DOMNodeInserted', function(){
-      const comments = container.find('.gitment-comments-container');
+    container.on('DOMSubtreeModified', function(e){
+      var comments = null;
+      if($(e.target).hasClass('.gitment-comments-container'))
+        comments = container.find('');
+      else
+        return;
       console.log(comments.get(0));
       comments.find('[lang=en-US]').removeAttr('lang');
       comments.find('.gitment-comment-header').each(function(){
