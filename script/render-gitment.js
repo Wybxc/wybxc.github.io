@@ -9,12 +9,10 @@ const wybxcTheme = ablePro ? {
     container.append(instance.renderFooter(state, instance));
     container.on('DOMSubtreeModified', function(e){
       const target = $(e.target).find('.gitment-comments-container').get(0);
-      console.log(e.target);
       if(target)
         var comments = $(target);
       else
         return;
-      console.log(comments.get(0));
       comments.find('[lang=en-US]').removeAttr('lang');
       comments.find('.gitment-comment-header').each(function(){
         const user = $(this).find('.gitment-comment-name').first();
@@ -29,11 +27,12 @@ const wybxcTheme = ablePro ? {
           const editTime = new Date($(this).attr('title'));
           $(this).attr('title', editTime.toLocaleString());
         });
+        const likeBtn = $(this).find('.gitment-comment-like-btn');
         $(this).text('').prepend(
           '<span> 评论于</span>'
         ).prepend(
           $('<a></a>').text(userName).attr({href:userLink, target:'_blank'}).addClass('gitment-comment-name')
-        ).append(date).append(editDate);
+        ).append(date).append(editDate).append(likeBtn);
       });
     });
     return container.get(0);
