@@ -5,31 +5,32 @@ const wybxcTheme = ablePro ? {
     const container = $('<div class="gitment-container gitment-root-container"></div>');
     container.append(instance.renderHeader(state, instance));
     container.append(instance.renderComments(state, instance));
-    const comments = container.find('.gitment-comments-container');
-    console.log(comments.get(0));
-    comments.find('[lang=en-US]').removeAttr('lang');
-    comments.find('.gitment-comment-header').each(function(){
-      const user = $(this).find('.gitment-comment-name').first();
-      const userName = user.text().trim();
-      const userLink = user.attr('href');
-      user.remove();
-      const date = $(this).find('span[title]').first()
-      const time = new Date(date.attr('title'));
-      date.attr('title', time.toLocaleString());
-      date.text(`${time.getFullYear()}年${time.getMonth()+1}月${time.getDate()}日`);
-      $(this).text('').prepend(
-        '<span>评论于</span>'
-      ).prepend(
-        $('<a></a>').text(userName).attr({href:userLink, target:'_blank'}).addClass('gitment-comment-name')
-      );
-      const editDate = date.next().filter('span[title]');
-      editDate.each(function(){
-        const editTime = new Date($(this).attr('title'));
-        $(this).attr('title', editTime.toLocaleString());
-      });
-    });
     container.append(instance.renderEditor(state, instance));
     container.append(instance.renderFooter(state, instance));
+    container.on('DOMNodeInserted', function(){
+      const comments = container.find('.gitment-comments-container');
+      console.log(comments.get(0));
+      comments.find('[lang=en-US]').removeAttr('lang');
+      comments.find('.gitment-comment-header').each(function(){
+        const user = $(this).find('.gitment-comment-name').first();
+        const userName = user.text().trim();
+        const userLink = user.attr('href');
+        $(this).text('').prepend(
+          '<span> 评论于</span>'
+        ).prepend(
+          $('<a></a>').text(userName).attr({href:userLink, target:'_blank'}).addClass('gitment-comment-name')
+        );
+        const date = $(this).find('span[title]').first()
+        const time = new Date(date.attr('title'));
+        date.attr('title', time.toLocaleString());
+        date.text(`${time.getFullYear()}年${time.getMonth()+1}月${time.getDate()}日`);
+        const editDate = date.next().filter('span[title]');
+        editDate.each(function(){
+          const editTime = new Date($(this).attr('title'));
+          $(this).attr('title', editTime.toLocaleString());
+        });
+      });
+    });
     return container.get(0);
   },
   renderHeader: function(state, instance){
