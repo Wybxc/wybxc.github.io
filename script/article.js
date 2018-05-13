@@ -30,7 +30,7 @@ function bgcolor(){
     dr = imgData.data[i];
     dg = imgData.data[i+1];
     db = imgData.data[i+2];
-    const max = Math.max(dr, dg, db), min = Math.min(dr, dg, db); 
+    const max = Math.max(dr, dg, db), min = Math.min(dr, dg, db);
     const l = (max + min) >> 1;
     const s = (l < 128) ? ((max - min) / (max + min)) : ((max - min) / (512 - max - min));
     if ((l > 128) && (l < 230) && (s > 0.2)) {
@@ -38,7 +38,7 @@ function bgcolor(){
       r += dr;
       g += dg;
       b += db;
-    }  
+    }
   }
   console.log(n, r, g, b);
   if (n < 10) {
@@ -83,7 +83,7 @@ $(function(){
   slidebar.slideUp(0);
   $("#menu").click(function(){
     if (b || (document.documentElement.scrollTop > 50)){
-      $("#nav").stop().animate({backgroundColor: bcolor(1)}, 500); 
+      $("#nav").stop().animate({backgroundColor: bcolor(1)}, 500);
     } else {
       $("#nav").stop().animate({backgroundColor: bcolor(0)}, 500);
     }

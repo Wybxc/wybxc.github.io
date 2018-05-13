@@ -17,23 +17,6 @@
   </script>
   <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-  <script>
-  const hash = str => str.split('').reduce((a, b) => (a * 131 + b.charCodeAt(0))|0, 0).toString(16);
-  const gitment = new Gitment({
-    id: hash(location.href),
-    owner: 'Wybxc',
-    repo: 'wybxc.github.io',
-    oauth: {
-      client_id: 'e1e459175a9ddeb47646',
-      client_secret: '9dc3d932e62f88b62e3b6de096de4b74c77f97b2',
-    },
-    perPage: 10
-  });
-  $(function(){gitment.render('comments');});
-  </script>
-  
   <style>
   div.gitment-comment-main, div.gitment-editor-header {
     background-color: white;
