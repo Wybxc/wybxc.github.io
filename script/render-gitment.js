@@ -6,6 +6,28 @@ const wybxcTheme = ablePro ? {
     container.className = 'gitment-container gitment-root-container';
     container.appendChild(instance.renderHeader(state, instance));
     container.appendChild(instance.renderComments(state, instance));
+    const comments = $('.gitment-comments-container');
+    comments.find('[lang=en-US]').removeAttr('lang');
+    comments.find('.gitment-comment-header').each(function(){
+      const user = $(this).find('.gitment-comment-name').first();
+      const userName = user.text().trim();
+      const userLink = user.attr('href');
+      user.remove();
+      const date = $(this).find('span[title]').first()
+      const time = new Date(date.attr('title'));
+      date.attr('title', time.toLocaleString());
+      date.text(`${time.getFullYear()}年${time.getMonth()+1}月${time.getDate()}日`);
+      $(this).text('').prepend(
+        '<span>评论于</span>'
+      ).prepend(
+        $('<a></a>').text(userName).attr({href:userLink, target:'_blank'}).addClass('gitment-comment-name')
+      );
+      const editDate = date.next().filter('span[title]');
+      editDate.each(function(){
+        const editTime = new Date($(this).attr('title'));
+        $(this).attr('title', editTime.toLocaleString());
+      });
+    });
     container.appendChild(instance.renderEditor(state, instance));
     container.appendChild(instance.renderFooter(state, instance));
     return container;
@@ -25,6 +47,7 @@ const wybxcTheme = ablePro ? {
     });
     const likeButton = document.createElement('span');
     likeButton.className = 'gitment-header-like-btn';
+    $(likeButton).css('font-size','1.5em');
     likeButton.innerHTML = (likedReaction ? '取消感谢' : '感谢');
     $(likeButton).prepend('<span class="fa fa fa-heart-o"></span>');
     if (likedReaction) {
@@ -49,7 +72,7 @@ const wybxcTheme = ablePro ? {
   renderFooter: function(state, instance){
     const container = document.createElement('div');
     container.className = 'gitment-container gitment-footer-container';
-    container.innerHTML = 'Powered by<a class="gitment-footer-project-link" href="https://github.com/imsun/gitment" target="_blank">Gitment</a><a class="fa fa-github" href="https://github.com" target="_blank"></a>';
+    container.innerHTML = 'Powered by <a class="gitment-footer-project-link" href="https://github.com/imsun/gitment" target="_blank">Gitment</a> <a class="fa fa-github" href="https://github.com" target="_blank"></a>';
     return container;
   }
 } : {
@@ -77,26 +100,4 @@ const gitment = new Gitment({
 });
 $(function(){
   gitment.render('comments');
-  const comments = $('.gitment-comments-container');
-  comments.find('[lang=en-US]').removeAttr('lang');
-  comments.find('.gitment-comment-header').each(function(){
-    const user = $(this).find('.gitment-comment-name').first();
-    const userName = user.text().trim();
-    const userLink = user.attr('href');
-    user.remove();
-    const date = $(this).find('span[title]').first()
-    const time = new Date(date.attr('title'));
-    date.attr('title', time.toLocaleString());
-    date.text(`${time.getFullYear()}年${time.getMonth()+1}月${time.getDate()}日`);
-    $(this).text('').prepend(
-      '<span>评论于</span>'
-    ).prepend(
-      $('<a></a>').text(userName).attr({href:userLink, target:'_blank'}).addClass('gitment-comment-name')
-    );
-    const editDate = date.next().filter('span[title]');
-    editDate.each(function(){
-      const editTime = new Date($(this).attr('title'));
-      $(this).attr('title', editTime.toLocaleString());
-    });
-  });
 });
