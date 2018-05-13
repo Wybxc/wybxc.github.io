@@ -211,6 +211,6 @@ const gitment = new Gitment({
     client_secret: '9dc3d932e62f88b62e3b6de096de4b74c77f97b2',
   },
   perPage: 10,
-  theme: wybxcTheme;
+  theme: wybxcTheme
 });
 $(function(){gitment.render('comments');});
