@@ -12,10 +12,4 @@ $(function(){
     visitor: true,
   });
 
-  // 加载自定义css
-  const link = document.createElement("link");
-  link.type = "text/css";
-  link.rel = "stylesheet";
-  link.href = "/style/comments.css";
-  document.getElementsByTagName("head")[0].appendChild(link);
 })

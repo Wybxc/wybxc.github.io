@@ -1,32 +1,32 @@
 #comments {
-    background-color: hsla(0, 0%, 100%, 0.75);
-    border-radius: 15px;
-    padding: 2em;
+    background-color: hsla(0, 0%, 100%, 0.75) !important;
+    border-radius: 15px !important;
+    padding: 2em !important;
 }
 
 .v.vwrap {
-    border: none;
-    padding: 0;
+    border: none !important;
+    padding: 0 !important;
 }
 
 .v .vinput {
-    border: solid #ddd 1px;
+    border: solid #ddd 1px !important;
 
 }
 
 .v .vwrap .vheader .vinput {
-    width: 32.93%;
+    width: 32.93% !important;
 }
 
 .v .vnick {
-    margin-right: 0.3%;
+    margin-right: 0.3% !important;
 }
 
 .v .vmail {
-    margin-left: 0.3%;
-    margin-right: 0.3%;
+    margin-left: 0.3% !important;
+    margin-right: 0.3% !important;
 }
 
 .v .vlink {
-    margin-left: 0.3%;
+    margin-left: 0.3% !important;
 }
