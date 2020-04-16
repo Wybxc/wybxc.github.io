@@ -96,7 +96,7 @@ const gitalk = new Gitalk({
   id: hash(location.origin + location.pathname),
   clientID: 'bba14e53f0fac5b06925',
   clientSecret: '1c561822e56c40f8aad6c4eabfae044f7310bda2',
-  repo: 'https://wybxc.github.io',
+  repo: 'wybxc.github.io',
   owner: 'Wybxc',
   admin: ['Wybxc'],
 });
