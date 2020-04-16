@@ -51,12 +51,16 @@
     </div>
     
     <p class="small left">
-      tags: {% for tag in page.tags %}
+      标签: {% for tag in page.tags %}
         {{ tag }}
       {% endfor %}
     </p>
     <p class="small right">
-      date: {{ page.date | date_to_string }}
+      发布日期: {{ page.date | date_to_string }}
+      阅读量: <span id="{{ page.id }}" class="leancloud_visitors" data-flag-title="{{ page.title }}">
+          <em class="post-meta-item-text">阅读量 </em>
+          <i class="leancloud-visitors-count">0</i>
+        </span>
     </p>
     <div style="clear: both"/>
   </div>

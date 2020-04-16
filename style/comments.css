@@ -1,4 +1,30 @@
 #comments {
-    background-color: hsla(0, 0%, 100%, 0.6);
+    background-color: hsla(0, 0%, 100%, 0.75);
     border-radius: 15px;
+}
+
+.v .vcopy {
+    padding-right: 2%;
+}
+
+.v .vinput {
+    border: solid #ddd 1px;
+
+}
+
+.v .vwrap .vheader .vinput {
+    width: 32.93%;
+}
+
+.v .vnick {
+    margin-right: 0.3%;
+}
+
+.v .vmail {
+    margin-left: 0.3%;
+    margin-right: 0.3%;
+}
+
+.v .vlink {
+    margin-left: 0.3%;
 }
