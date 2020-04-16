@@ -1,10 +1,12 @@
 #comments {
     background-color: hsla(0, 0%, 100%, 0.75);
     border-radius: 15px;
+    padding: 2em;
 }
 
-.v .vcopy {
-    padding-right: 2%;
+.v.vwrap {
+    border: none;
+    padding: 0;
 }
 
 .v .vinput {
