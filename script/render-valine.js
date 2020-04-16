@@ -9,7 +9,6 @@ $(function(){
     pageSize: 10,
     avatar: 'identicon',
     placeholder: '写下你的评论……',
-    visitor: true,
   });
 
 })
