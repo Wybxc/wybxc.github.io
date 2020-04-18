@@ -6,7 +6,7 @@ $('body').ready(function () {
   
     $("script[type='math/tex; mode=display']").replaceWith(function() {
         const tex = $(this).html();
-        return '\\[' + tex + '\\]'
+        return '<p>\\[' + tex + '\\]</p>'
     });
 
     const hasEquation = /(\$\$.*\$\$)|(\\\(.*\\\))|(\\\[.*\]\\)/.test($('#main').text())

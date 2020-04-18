@@ -2,7 +2,8 @@
 code, .highlight pre {
   white-space: pre;
   font-size: 14px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Consolas', monospace;
+  overflow-x: auto;
 }
 
 /*Markdown 内置代码块*/
@@ -14,6 +15,8 @@ div.highlighter-rouge {
 
 /*Markdown 行内代码*/
 p code.highlighter-rouge {
+  margin-left: 0.3em;
+  margin-right: 0.3em;
   padding: 0.1em 0.25em;
   border: 1px #8080A0 solid;
   background-color: #EEEEEE;

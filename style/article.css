@@ -33,19 +33,6 @@ img + em {
   /*图片注释*/
 }
 
-/*公式*/
-.tex {
-  margin: -0.5em 0.2em 0.5em; 
-  position: relative;         
-  top: 0.7em;
-  /*
-    1.添加边距
-    2.解决莫名下移的问题
-    3.用js手动处理带中文的公式莫名上移的问题(见totex.js)
-  */
-}
-/*end-公式*/
-
 /*利用<img>的"alt"属性, 标记图片格式*/
 img[alt^="e:"] {
   max-width: 3em;
