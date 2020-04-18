@@ -1,17 +1,26 @@
 $('body').ready(function () {
-    const hasEquation = /(\$\$.*\$\$)|(\\\(.*\\\))/.test($('#main').text())
+    $("script[type='math/tex']").replaceWith(function() {
+        const tex = $(this).text();
+        return '$$' + tex + '$$';
+    });
+  
+    $("script[type='math/tex; mode=display']").replaceWith(function() {
+        const tex = $(this).html();
+        return '\\[' + tex + '\\]'
+    });
+
+    const hasEquation = /(\$\$.*\$\$)|(\\\(.*\\\))|(\\\[.*\]\\)/.test($('#main').text())
     if (hasEquation) {
         window.MathJax = {
             tex: {
                 inlineMath: [
-                    ['\\(', '\\)']
+                    ['$$', '$$']
                 ],
                 displayMath: [
-                    ['$$', '$$'],
-                    ['\\[', '\\]']
+                    ['\\[', '\\]'],                    
                 ],
             },
         };
-        $.getScript('https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js');
+        $.getScript('https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-svg.js');
     }
 })

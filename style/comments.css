@@ -1,7 +1,7 @@
 #comments {
     background-color: hsla(0, 0%, 100%, 0.75) !important;
     border-radius: 15px !important;
-    padding: 2em !important;
+    padding: 2em 2em 0 2em !important;
 }
 
 .v .vwrap {

@@ -1,4 +1,4 @@
 _site/
-.jekyll-metadata
+.jekyll*
 yulib.config
 yulib.resource/

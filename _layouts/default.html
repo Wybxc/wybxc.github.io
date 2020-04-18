@@ -56,7 +56,7 @@
       {% endfor %}
     </p>
     <p class="small right">
-      发布日期: {{ page.date | date_to_string }}
+      发布日期: {{ page.date | date: "%Y年%m月%d日" }}
     </p>
     <div style="clear: both"/>
   </div>

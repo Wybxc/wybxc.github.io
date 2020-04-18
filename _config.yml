@@ -1,7 +1,7 @@
 encoding: UTF-8
 permalink: /:categories/:year/:month/:day/:title/
+markdown: kramdown
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
-  - jemoji
