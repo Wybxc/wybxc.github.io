@@ -7,7 +7,7 @@ title: 测试页面索引
 <ul>
   {%- for post in site.posts %}
     {%- if post.tags contains '测试' %}
-    <li>{%- include date2str.html date = post.date -%}&nbsp; 
+    <li>{{ post.date | date: '%Y年%m月%d日' }}&nbsp; 
       <a href="{{ site.baseurl }}{{ post.url }}">{{- post.title -}}</a>
     </li>
     {%- endif %}

@@ -45,8 +45,9 @@ function bgcolor(){
     console.log(`P2:${n}`);
     r = 0; g = 0; b = 0;
     for(i = 0; i < imgData.data.length; i += 4){
-      dr = imgData.data[i],
-      dg = imgData.data[i+1],
+      dr = imgData.data[i];
+      dg = imgData.data[i+1];
+      db = imgData.data[i+2];
       r += dr;
       g += dg;
       b += db;

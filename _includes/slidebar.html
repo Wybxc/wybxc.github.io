@@ -21,8 +21,8 @@
 {%- for tag in tags %}
   <div index="{%- increment pi -%}"><ul style="list-style-type: none">
     {%- for post in site.posts %}
-      {%- if post.tags contains tag %}
-      <li>{%- include date2str.html date = post.date -%}&nbsp;
+      {%- if post.tags contains tag %}      
+      <li>{{ post.date | date: '%Y年%m月%d日' }}&nbsp;
         <a href="{{ site.baseurl }}{{ post.url }}">{{- post.title -}}</a>
       </li>
       {%- endif %}

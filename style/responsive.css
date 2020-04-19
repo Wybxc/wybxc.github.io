@@ -1,0 +1,48 @@
+@media only screen and (max-device-width: 600px) {
+* {
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3, h4, h5, h6 {
+    font-size: 1.2em;
+}
+
+#nav {
+    height: 5%;
+}
+
+#sign {
+    visibility: hidden;
+}
+
+#searchform {
+    visibility: hidden;
+}
+
+#menu {
+    width: 10%;
+    height: 100%;
+}
+
+#menu svg {
+    width: 100%;
+    height: 100%;
+}
+
+#slidebar h1 {
+    visibility: hidden;
+}
+
+#slidebar #tagform {
+    font-size: 16px;
+}
+
+}
