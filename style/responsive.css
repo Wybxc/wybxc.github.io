@@ -4,6 +4,7 @@
 
 @media only screen and (max-device-width: 799px) {
 * {
+    max-height: 1000000px; /* 禁止浏览器自动放大字体 */
     font-size: 40px;
 }
 
@@ -23,7 +24,13 @@ h3, h4, h5, h6 {
     margin: 0;
     padding: 10% 30px 0;
     border-radius: initial;
+    position: fixed;
+    width: auto;
+    left: 0;
+    right: 0;
+    top: 0;
     bottom: 0;
+    overflow: auto;
 }
 
 #nav {
@@ -57,16 +64,81 @@ h3, h4, h5, h6 {
     height: 100%;
 }
 
-#slidebar h1 {
-    display: none;
-}
-
-#slidebar #tagform {
-    font-size: 16px;
+#mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: darken;
+    z-index: 0;
 }
 
 .footer {
     display: none;
+}
+
+code, .highlight pre {
+    font-size: 40px;
+}
+
+img[alt^="e:"] {
+    padding: 1em 0;
+}
+
+img[alt^="l:"] {
+    max-width: 100%;
+}
+
+/* 侧边栏 */
+#slidebar {
+    display: block;
+    padding: 0;
+    top: 5%;
+    left: -40%;
+    right: 100%;
+    width: auto;
+    opacity: 1;
+    border-right: 2px gray solid;
+}
+
+#slidebar h1 {
+    display: none;
+}
+
+ul.taglist {
+    top: 0;
+}
+
+ul.taglist li {
+    height: 1.2em;
+    border-bottom: 2px solid;
+}
+
+#tagform {
+    display: none;
+    position: fixed;
+    left: 40%;
+    right: 0;
+    top: 5%;
+    width: auto;
+    padding: 0;
+    background-color: rgb(255, 255, 255, 0.94);
+}
+
+#tagform div {
+    top: 0;
+    padding: 0;
+}
+
+#tagform div ul {
+    width: 100%;
+}
+
+#tagform div li {
+    border-bottom: 2px solid;
+    padding: 0.5em;
+    margin: 0;
 }
 
 /* 评论区 */

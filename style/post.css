@@ -92,10 +92,6 @@ div.footer {
   height: 100%;
   overflow: auto;
   /*滚动条(仅当高度不足时)*/
-  border-radius: 10px;
-  border-width: 4px;
-  border-style: solid;
-  /*边框*/
   opacity: 0;
   display: none;
   z-index: 97;
@@ -108,8 +104,8 @@ div.footer {
   position: fixed;
   width: 15%;
   padding: 10px 3% 100% 2%;
-  top: 50px;
-  left: 15%;
+  top: 46px;
+  left: 14%;
   height: 100%;
   overflow: auto;
   z-index: 96;
@@ -150,7 +146,7 @@ ul.taglist li:hover::after {
   top: 65px;
   width: 100%;
   z-index: 98;
-  padding-left: 10px;
+  padding-left: 14px;
 }
 
 #tagform div ul {
@@ -169,6 +165,7 @@ ul.taglist li:hover::after {
   background-color: rgba(255,255,255,0.9);
   border-radius: 15px;
   min-height: 500px;
+  width: 80%;
 }
 
 /*子搜索窗口*/

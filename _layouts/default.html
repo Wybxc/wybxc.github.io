@@ -25,6 +25,7 @@
 
   {% include slidebar.html %}
 
+  <div id="mask"></div>
   <div id="main">
     <h1>{{ page.title }}</h1>
 
@@ -43,7 +44,7 @@
         <p>下一篇：<a href="{{ site.baseurl }}{{ page.next.url }}">{{ page.next.title }}</a></p>
       </div>
       {% endif %}
-      <div style="clear: both"/>
+      <div style="clear: both"></div>
     </div>
     
     <div id="comments">
@@ -58,7 +59,7 @@
     <p class="small right">
       发布日期: {{ page.date | date: "%Y年%m月%d日" }}
     </p>
-    <div style="clear: both"/>
+    <div style="clear: both"></div>
   </div>
 
   <iframe id="subform" sandbox="allow-forms allow-scripts allow-same-origin">
