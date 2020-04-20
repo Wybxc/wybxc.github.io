@@ -63,9 +63,9 @@ function bgcolor(){
   }
   return `rgba(${r},${g},${b},`;
 }
-var bcolor = str => `rgba(0,0,0,${str})`;
-$(function(){
-  "use strict";
+
+function getBackgroundColor() {
+  var bcolor = str => `rgba(0,0,0,${str})`;
   const cookies = document.cookie.split(';').map(str => str.split('='));
   const color = cookies.find(arr => arr[0] == 'bcolor');
   if (color) {
@@ -76,76 +76,94 @@ $(function(){
     console.log(document.cookie);
     bcolor = str => c + str + ')';
   }
-  $("#tagform div").css('background-color', bcolor(1));
-  $("#slidebar").css('border-color', bcolor(1));
-  // 边栏 Expand
-  var b = true;
-  var slidebar = $("#slidebar");
-  slidebar.slideUp(0);
-  $("#menu").click(function(){
-    if (b || (document.documentElement.scrollTop > 50)){
-      $("#nav").stop().animate({backgroundColor: bcolor(1)}, 500);
-    } else {
-      $("#nav").stop().animate({backgroundColor: bcolor(0)}, 500);
-    }
-    if (b){
-      $("#main").stop().animate({marginLeft: "20%", marginTop: (65 - document.documentElement.scrollTop / 20)|0 + "px"}, 500);
-      slidebar.stop().animate({opacity: 1}, 200).slideDown(300);
-    } else {
-      $("#main").stop().animate({marginLeft: "10%", marginTop: "65px"}, 500);
-      slidebar.stop().animate({opacity: 0}, 200).slideUp(300);
-    }
-    b = !b;
+  return bcolor;
+}
+
+// 桌面版
+if (window.screen.width >= 800) {
+  $(function(){
+    "use strict";  
+    var bcolor = getBackgroundColor();
+    $("#tagform div").css('background-color', bcolor(1));
+    $("#slidebar").css('border-color', bcolor(1));
+    // 边栏 Expand
+    var b = true;
+    var slidebar = $("#slidebar");
+    slidebar.slideUp(0);
+    $("#menu").click(function(){
+      if (b || (document.documentElement.scrollTop > 50)){
+        $("#nav").stop().animate({backgroundColor: bcolor(1)}, 500);
+      } else {
+        $("#nav").stop().animate({backgroundColor: bcolor(0)}, 500);
+      }
+      if (b){
+        $("#main").stop().animate({marginLeft: "20%", marginTop: (65 - document.documentElement.scrollTop / 20)|0 + "px"}, 500);
+        slidebar.stop().animate({opacity: 1}, 200).slideDown(300);
+      } else {
+        $("#main").stop().animate({marginLeft: "10%", marginTop: "65px"}, 500);
+        slidebar.stop().animate({opacity: 0}, 200).slideUp(300);
+      }
+      b = !b;
+    });
+    $("#main").click(function(){
+      b = true;
+      if (document.documentElement.scrollTop > 50) {
+        $("#nav").stop().animate({backgroundColor: bcolor(1)}, 500);
+        slidebar.stop().animate({opacity: 1},200);
+      } else {
+        $("#nav").stop().animate({backgroundColor: bcolor(0)}, 500);
+        slidebar.stop().animate({opacity: 0},200);
+      }
+      slidebar.slideUp(300);
+      $("#main").stop().animate({marginLeft: "10%"},500);
+      $("#subform").attr("src", "").slideUp();
+      $("#subform a").attr("href", "");
+    });
+    $("#subform").slideUp(0);
+    // 搜索
+    $(".schbtn").click(onSchSubmit);
+    // 导航栏变色
+    onscroll = function(){
+      if (!b || (document.documentElement.scrollTop > 50)) {
+        $("#nav").stop().animate({backgroundColor: bcolor(1)}, 300);
+      } else {
+        $("#nav").stop().animate({backgroundColor: bcolor(0)}, 300);
+      }
+    };
+    onscroll();
+    // 侧栏子菜单
+    $("li[index]").mouseenter(function(){
+      const index = $(this).attr("index");
+      const a = Number(index) - Number($('li[index]').first().attr('index'));
+      $("div[index=" + index + "]").stop().css("top", (a * 52 + 60).toString() + "px").show();
+      $("#tagform").stop().show();
+      $(this).css('background-color', bcolor(0.8));
+    });
+    $("div[index]").mouseenter(function(){
+      $(this).stop().show();
+      $("#tagform").stop().show();
+      $("li[index=" + $(this).attr("index") + "]").css('background-color', bcolor(0.8));
+    });
+    $("li[index]").mouseleave(function(){
+      $("div[index=" + $(this).attr("index") + "]").hide(1);
+      $("#tagform").hide(1);
+      $(this).css('background-color', bcolor(0));
+    });
+    $("div[index]").mouseleave(function(){
+      $(this).hide(1); // <- 黑科技
+      $("#tagform").hide(1);
+      $("li[index=" + $(this).attr("index") + "]").css('background-color', bcolor(0));
+    });    
   });
-  $("#main").click(function(){
-    b = true;
-    if (document.documentElement.scrollTop > 50) {
-      $("#nav").stop().animate({backgroundColor: bcolor(1)}, 500);
-      slidebar.stop().animate({opacity: 1},200);
-    } else {
-      $("#nav").stop().animate({backgroundColor: bcolor(0)}, 500);
-      slidebar.stop().animate({opacity: 0},200);
-    }
-    slidebar.slideUp(300);
-    $("#main").stop().animate({marginLeft: "10%"},500);
-    $("#subform").attr("src", "").slideUp();
-    $("#subform a").attr("href", "");
+} else { // 移动版
+  $(function(){
+    "use strict";
+    const defaultColor = getBackgroundColor()(1);
+    $("#nav").css('background-color', defaultColor);
   });
-  $("#subform").slideUp(0);
-  // 搜索
-  $(".schbtn").click(onSchSubmit);
-  // 导航栏变色
-  onscroll = function(){
-     if (!b || (document.documentElement.scrollTop > 50)) {
-      $("#nav").stop().animate({backgroundColor: bcolor(1)}, 300);
-    } else {
-      $("#nav").stop().animate({backgroundColor: bcolor(0)}, 300);
-    }
-  };
-  onscroll();
-  // 侧栏子菜单
-  $("li[index]").mouseenter(function(){
-    const index = $(this).attr("index");
-    const a = Number(index) - Number($('li[index]').first().attr('index'));
-    $("div[index=" + index + "]").stop().css("top", (a * 52 + 60).toString() + "px").show();
-    $("#tagform").stop().show();
-    $(this).css('background-color', bcolor(0.8));
-  });
-  $("div[index]").mouseenter(function(){
-    $(this).stop().show();
-    $("#tagform").stop().show();
-    $("li[index=" + $(this).attr("index") + "]").css('background-color', bcolor(0.8));
-  });
-  $("li[index]").mouseleave(function(){
-    $("div[index=" + $(this).attr("index") + "]").hide(1);
-    $("#tagform").hide(1);
-    $(this).css('background-color', bcolor(0));
-  });
-  $("div[index]").mouseleave(function(){
-    $(this).hide(1); // <- 黑科技
-    $("#tagform").hide(1);
-    $("li[index=" + $(this).attr("index") + "]").css('background-color', bcolor(0));
-  });
+}
+
+$(function(){
   // 最小高度自适应
   onresize = function(){
     $("#main").css('min-height', (document.documentElement.clientHeight - 120) + 'px')

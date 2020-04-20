@@ -167,7 +167,6 @@ ul.taglist li:hover::after {
   /*补充消失的空白*/
   font-family: "Times New Roman", "Microsoft YaHei", serif;
   background-color: rgba(255,255,255,0.9);
-  border: 1px solid #808080;
   border-radius: 15px;
   min-height: 500px;
 }

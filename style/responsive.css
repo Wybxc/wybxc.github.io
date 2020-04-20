@@ -1,6 +1,10 @@
-@media only screen and (max-device-width: 600px) {
+#logo {
+    display: none;
+}
+
+@media only screen and (max-device-width: 799px) {
 * {
-    font-size: 16px;
+    font-size: 40px;
 }
 
 h1 {
@@ -15,21 +19,37 @@ h3, h4, h5, h6 {
     font-size: 1.2em;
 }
 
+#main {
+    margin: 0;
+    padding: 10% 30px 0;
+    border-radius: initial;
+    bottom: 0;
+}
+
 #nav {
     height: 5%;
+    text-align: center;
 }
 
 #sign {
-    visibility: hidden;
+    display: none;
+}
+
+#logo {
+    display: block;
+    font-size: 3vh;
+    height: 100%;
+    margin: 0.5vh auto;
 }
 
 #searchform {
-    visibility: hidden;
+    display: none;
 }
 
 #menu {
     width: 10%;
     height: 100%;
+    position: absolute;
 }
 
 #menu svg {
@@ -38,11 +58,28 @@ h3, h4, h5, h6 {
 }
 
 #slidebar h1 {
-    visibility: hidden;
+    display: none;
 }
 
 #slidebar #tagform {
     font-size: 16px;
+}
+
+.footer {
+    display: none;
+}
+
+/* 评论区 */
+.v * {
+    font-size: 35px !important;
+}
+
+.v .vemoji {
+    max-height: 40px !important;
+}
+
+.v .vwrap .vemojis i {
+    width: 50px !important;
 }
 
 }
