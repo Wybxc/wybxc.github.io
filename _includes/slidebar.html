@@ -1,13 +1,14 @@
 {%- capture tagstr %}
   {%- for post in site.posts %}
-    {%- unless post.tags contains '测试' %}
+    {%- assign tags = post.tags | join: ' ' %}
+    {%- unless tags contains '测试' or tags contains '隐藏' %}
       {%- for tag in post.tags %}
         {{ tag }}
       {%- endfor %}
     {%- endunless %}
   {%- endfor %}
 {%- endcapture %}
-{%- assign tags = tagstr | split: ' ' | uniq | sort_nature %}
+{%- assign tags = tagstr | normalize_whitespace | split: ' ' | uniq | sort_nature %}
 <!--左边栏-->
 <div id="slidebar">
   <h1><a style="text-decoration: none; color: indigo" href="/">忘忧。</a></h1>
@@ -21,10 +22,13 @@
 {%- for tag in tags %}
   <div data-index="{%- increment pi -%}"><ul style="list-style-type: none">
     {%- for post in site.posts %}
-      {%- if post.tags contains tag %}      
-      <li>{{ post.date | date: '%Y年%m月%d日' }}&nbsp;
-        <a href="{{ site.baseurl }}{{ post.url }}">{{- post.title -}}</a>
-      </li>
+      {%- assign tags = post.tags | join: ' ' %}
+      {%- if tags contains tag %}
+        {%- unless tags contains '测试' or tags contains '隐藏' %}
+          <li>{{ post.date | date: '%Y年%m月%d日' }}&nbsp;
+            <a href="{{ site.baseurl }}{{ post.url }}">{{- post.title -}}</a>
+          </li>
+        {%- endunless %}
       {%- endif %}
     {%- endfor %}
   </ul></div>
