@@ -43,16 +43,22 @@ img[alt^="e:"] {
 
 img[alt^="s:"] {
   max-width: 128px;
+  display: block;
+  margin: 0.5em auto;
   /*小号图片"*/
 }
 
 img[alt^="m:"] {
   max-width: 256px;
+  display: block;
+  margin: 0.5em auto;
   /*中号图片*/
 }
 
 img[alt^="l:"] {
   max-width: 85%;
+  display: block;
+  margin: 0.5em auto;
   /*大号图片*/
 }
 /*</img>*/

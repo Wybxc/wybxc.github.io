@@ -3,6 +3,10 @@
   /*清除所有对象的外边距, 以避免不必要的空白*/
 }
 
+body {
+  overflow-x: hidden;  
+}
+
 img#background{
   position: fixed;
   width: 100%;

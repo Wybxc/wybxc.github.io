@@ -100,10 +100,10 @@ if (window.screen.width >= 800) {
         $("#nav").stop().animate({ backgroundColor: bcolor(0) }, 500);
       }
       if (notExpanded) {
-        $("#main").stop().animate({ marginLeft: "20%", marginTop: (65 - document.documentElement.scrollTop / 20) | 0 + "px" }, 500);
+        $("#main").stop().animate({ marginLeft: "20%" }, 500);
         slidebar.stop().animate({ opacity: 1 }, 200).slideDown(300);
       } else {
-        $("#main").stop().animate({ marginLeft: "10%", marginTop: "65px" }, 500);
+        $("#main").stop().animate({ marginLeft: "10%" }, 500);
         slidebar.stop().animate({ opacity: 0 }, 200).slideUp(300);
       }
       notExpanded = !notExpanded;
@@ -112,7 +112,7 @@ if (window.screen.width >= 800) {
       notExpanded = true;
       if (document.documentElement.scrollTop > 50) {
         $("#nav").stop().animate({ backgroundColor: bcolor(1) }, 500);
-        slidebar.stop().animate({ opacity: 1 }, 200);
+        slidebar.stop().animate({ opacity: 0 }, 200);
       } else {
         $("#nav").stop().animate({ backgroundColor: bcolor(0) }, 500);
         slidebar.stop().animate({ opacity: 0 }, 200);

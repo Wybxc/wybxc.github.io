@@ -30,7 +30,7 @@ h3, h4, h5, h6 {
     right: 0;
     top: 0;
     bottom: 0;
-    overflow: auto;
+    overflow-x: hidden;
 }
 
 #nav {
@@ -84,6 +84,14 @@ code, .highlight pre {
 
 img[alt^="e:"] {
     padding: 1em 0;
+}
+
+img[alt^="s:"] {
+    max-width: 320px;    
+}
+
+img[alt^="m:"] {
+    max-width: 640px;    
 }
 
 img[alt^="l:"] {
