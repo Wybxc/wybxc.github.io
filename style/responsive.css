@@ -115,6 +115,10 @@ ul.taglist li {
     border-bottom: 2px solid;
 }
 
+ul.taglist li:hover::after {
+    content: none;
+  }
+
 #tagform {
     display: none;
     position: fixed;
