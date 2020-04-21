@@ -52,5 +52,5 @@ if __name__ == '__main__':
     req.encoding = 'utf-8'
     soup = BeautifulSoup(req.text, features='lxml')
     with open(f'./_drafts/{soup.title.text}.md', 'w', encoding='utf-8') as f:
-        for node in soup.find(class_='RichText'):
-            f.write(html2md(node))
+        for n in soup.find(class_='RichText'):
+            f.write(html2md(n))
