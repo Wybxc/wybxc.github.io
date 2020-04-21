@@ -114,6 +114,7 @@ div.footer {
   overflow: auto;
   z-index: 46;
   display: none;
+  color: white;
 }
 
 ul.taglist {

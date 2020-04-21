@@ -135,6 +135,7 @@ ul.taglist li:hover::after {
     width: auto;
     padding: 0;
     background-color: rgb(255, 255, 255, 0.94);
+    color: black;
 }
 
 #tagform div {
