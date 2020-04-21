@@ -182,7 +182,7 @@ if (window.screen.width >= 800) {
     var currentTag = $("li[data-index]").first()[0];
     $("#menu").click(function () {
       if (notExpanded) {
-        $mask.css("z-data-index", "10");
+        $mask.css({ "z-index": "10", "opacity": "1" });
         $mask.stop().animate({ backgroundColor: "rgb(128,128,128,0.8)" });
         $tagform.stop().show().css({ "left": "-20%", "right": "40%", "opacity": "0" });
         $(currentTag).click();
@@ -190,7 +190,7 @@ if (window.screen.width >= 800) {
           $tagform.animate({ left: '40%', right: '0', opacity: '1' }, animateTime);
         });
       } else {
-        $mask.css("z-data-index", "0");
+        $mask.css({ "z-index": "-1", "opacity": "1" });
         $mask.stop().animate({ backgroundColor: "rgb(128,128,128,0)" });
         $tagform.stop().css({ "left": "40%", "right": "0", "opacity": "1" });
         $slidebar.stop();
@@ -218,4 +218,6 @@ $(function () {
     $("#main").css('min-height', (document.documentElement.clientHeight - 120) + 'px')
   }
   onresize();
+  // 脚注图标
+  $("a.reversefootnote").css('text-decoration', 'none').attr('class', 'fa fa-reply').empty();
 });

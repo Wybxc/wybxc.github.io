@@ -8,7 +8,7 @@
     {%- endunless %}
   {%- endfor %}
 {%- endcapture %}
-{%- assign tags = tagstr | normalize_whitespace | split: ' ' | uniq | sort_nature %}
+{%- assign tags = tagstr | normalize_whitespace | split: ' ' | uniq | sort %}
 <!--左边栏-->
 <div id="slidebar">
   <h1><a style="text-decoration: none; color: indigo" href="/">忘忧。</a></h1>

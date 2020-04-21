@@ -64,22 +64,21 @@ h3, h4, h5, h6 {
     height: 100%;
 }
 
-#mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    mix-blend-mode: darken;
-    z-index: 0;
-}
-
 .footer {
     display: none;
 }
 
 code, .highlight pre {
     font-size: 40px;
+}
+
+#mask {
+    mix-blend-mode: darken;
+}
+
+a {
+    transition: none;
+    background-size: 100% 1.5px;
 }
 
 img[alt^="e:"] {

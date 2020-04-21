@@ -4,10 +4,10 @@
 }
 
 body {
-  overflow-x: hidden;  
+  overflow-x: hidden;
 }
 
-img#background{
+img#background {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -16,12 +16,7 @@ img#background{
   z-index: -1;
 }
 
-h1 + ul, h1 + ol,
-h2 + ul, h2 + ol,
-h3 + ul, h3 + ol,
-h4 + ul, h4 + ol,
-h5 + ul, h5 + ol,
-h6 + ul, h6 + ol {
+h1+ul, h1+ol, h2+ul, h2+ol, h3+ul, h3+ol, h4+ul, h4+ol, h5+ul, h5+ol, h6+ul, h6+ol {
   margin-top: 1em;
   /*解决列表跟在标题之后的问题*/
   /*顺便吐槽一下这个鬼畜的选择器*/
@@ -48,6 +43,7 @@ div.footer {
 }
 
 /*navigate-begin*/
+
 #nav {
   width: 100%;
   height: 50px;
@@ -56,12 +52,12 @@ div.footer {
   top: 0;
   left: 0;
   /*位于页面最上部*/
-  z-index:99;
+  z-index: 50;
   /*防止被遮挡*/
   color: #FFFFFF;
 }
 
-#nav > div {
+#nav>div {
   float: left;
   /*导航栏中元素左浮动*/
 }
@@ -75,10 +71,12 @@ div.footer {
   width: 50px;
   height: 50px;
 }
+
 /*navigate-end*/
 
 /*slidebar-begin*/
-#slidebar > ul, #slidebar > ol {
+
+#slidebar>ul, #slidebar>ol {
   margin-left: -10%;
   /*侧栏中的列表总是有神奇的缩进*/
 }
@@ -87,7 +85,7 @@ div.footer {
   float: left;
   position: fixed;
   /*设置为左边固定*/
-  background: rgba(255,255,255,0.94);
+  background: rgba(255, 255, 255, 0.94);
   /*背景*/
   width: 10%;
   padding: 10px 3% 100% 2%;
@@ -98,11 +96,13 @@ div.footer {
   /*滚动条(仅当高度不足时)*/
   opacity: 0;
   display: none;
-  z-index: 97;
+  z-index: 47;
 }
+
 /*slidebar-end*/
 
 /*taglist*/
+
 #tagform {
   float: left;
   position: fixed;
@@ -112,7 +112,7 @@ div.footer {
   left: 14%;
   height: 100%;
   overflow: auto;
-  z-index: 96;
+  z-index: 46;
   display: none;
 }
 
@@ -149,7 +149,7 @@ ul.taglist li:hover::after {
   left: 8px;
   top: 65px;
   width: 100%;
-  z-index: 98;
+  z-index: 48;
   padding-left: 14px;
 }
 
@@ -158,21 +158,34 @@ ul.taglist li:hover::after {
   margin-left: -40px;
   width: 90%;
 }
+
 /*taglist*/
+
+#mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: -1;
+  text-align: center;
+}
 
 #main {
   margin: 65px 10% 5px;
   /*为边栏留出空间*/
   padding: 10px 20px 0px 20px;
   /*补充消失的空白*/
-  font-family: "Times New Roman", "Microsoft YaHei", serif;
-  background-color: rgba(255,255,255,0.9);
+  font-family: sans-serif;
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
   min-height: 500px;
   width: 80%;
 }
 
 /*子搜索窗口*/
+
 #subform {
   float: right;
   position: fixed;
@@ -188,7 +201,7 @@ ul.taglist li:hover::after {
   background-color: #D0D0D0;
   /*边框与背景*/
   display: none;
-  z-index: 98;
+  z-index: 48;
 }
 
 .sch {

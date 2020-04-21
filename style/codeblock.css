@@ -25,6 +25,7 @@ p code.highlighter-rouge {
 /*Jekyll 代码格式化*/
 figure.highlight {
   padding: 0.5em 1em;
+  margin: 0 1em;
   border: 1px #8080A0 solid;
   background-color: #EEEEEE;
 }
