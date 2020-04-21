@@ -182,7 +182,7 @@ if (window.screen.width >= 800) {
     var currentTag = $("li[data-index]").first()[0];
     $("#menu").click(function () {
       if (notExpanded) {
-        $mask.css({ "z-index": "10", "opacity": "1" });
+        $mask.css({ "z-index": "10", "opacity": "1", "mix-blend-mode": "darken" });
         $mask.stop().animate({ backgroundColor: "rgb(128,128,128,0.8)" });
         $tagform.stop().show().css({ "left": "-20%", "right": "40%", "opacity": "0" });
         $(currentTag).click();
@@ -190,7 +190,7 @@ if (window.screen.width >= 800) {
           $tagform.animate({ left: '40%', right: '0', opacity: '1' }, animateTime);
         });
       } else {
-        $mask.css({ "z-index": "-1", "opacity": "1" });
+        $mask.css({ "z-index": "-1", "opacity": "1", "mix-blend-mode": "darken" });
         $mask.stop().animate({ backgroundColor: "rgb(128,128,128,0)" });
         $tagform.stop().css({ "left": "40%", "right": "0", "opacity": "1" });
         $slidebar.stop();

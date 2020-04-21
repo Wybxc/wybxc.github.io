@@ -21,6 +21,7 @@ $('body').ready(function () {
                 'background-color': 'white',
                 'opacity': '0',
                 'z-index': '60',
+                'mix-blend-mode': 'normal',
             }).animate({ opacity: '0.75' }, 250).append('<div style="position: relative;top: 40%;margin: 0 auto;">' +
                 '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>' +
                 '<p>加载 Mathjax 中……</p>' +
@@ -35,7 +36,7 @@ $('body').ready(function () {
             shown = false;
         }
         showMask();
-        setTimeout(hideMask, 8000);
+        setTimeout(hideMask, 10000);
         window.MathJax = {
             tex: {
                 inlineMath: [
@@ -54,6 +55,6 @@ $('body').ready(function () {
                 }
             }
         };
-        $.getScript('https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-mml-chtml.js');
+        $.getScript('http://cdn.bootcss.com/mathjax/3.0.5/es5/tex-chtml.js');
     }
 })

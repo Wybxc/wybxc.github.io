@@ -5,6 +5,13 @@
 @media only screen and (max-device-width: 799px) {
 * {
     max-height: 1000000px; /* 禁止浏览器自动放大字体 */
+}
+
+mjx-container, mjx-container * {
+    font-size: inherit;
+}
+
+* {
     font-size: 40px;
 }
 
@@ -33,6 +40,10 @@ h3, h4, h5, h6 {
     overflow-x: hidden;
 }
 
+mjx-container {
+    overflow-x: auto;
+}
+
 #nav {
     height: 5%;
     text-align: center;
@@ -47,6 +58,10 @@ h3, h4, h5, h6 {
     font-size: 3vh;
     height: 100%;
     margin: 0.5vh auto;
+}
+
+#logo a {
+    background-size: 0 100%;
 }
 
 #searchform {
@@ -164,6 +179,19 @@ ul.taglist li:hover::after {
 
 .v .vwrap .vemojis i {
     width: 50px !important;
+}
+
+/*摘要*/
+#main .excerpt-container h2 a {
+    color: #666;
+    transition: none;
+    background-size: 0 100%;
+}
+
+#main .excerpt-container:hover h2 a {
+    color: black;
+    transition: none;
+    background-size: 0 100%;
 }
 
 }

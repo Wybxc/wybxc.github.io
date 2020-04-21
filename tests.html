@@ -4,12 +4,5 @@ title: 测试页面索引
 ---
 
 <p>以下是测试用页面：</p>
-<ul>
-  {%- for post in site.posts %}
-    {%- if post.tags contains '测试' %}
-    <li>{{ post.date | date: '%Y年%m月%d日' }}&nbsp; 
-      <a href="{{ site.baseurl }}{{ post.url }}">{{- post.title -}}</a>
-    </li>
-    {%- endif %}
-  {%- endfor %}
-</ul>
+{%- assign tags = '测试' | split: ' ' %}
+{% include summary.html tags = tags %}

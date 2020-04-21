@@ -1,0 +1,27 @@
+<div class="excerpt-container-container">
+{%- assign num = 0 %}
+{%- for post in site.posts %}
+    {%- assign post_tags = post.tags | join: ' ' %}
+    {%- assign output = false %}
+    {%- for tag in include.tags %}    
+        {%- if post_tags contains tag %}
+            {%- assign output = true %}
+            {%- break %}
+        {%- endif %}
+    {%- endfor %}
+    {%- if output %}
+        {%- assign num = num | plus: 1 %}
+        {%- if num > 8 %}
+            {%- break %}
+        {%- endif %}
+    {%- endif %}
+    {%- if output %}
+<div class="excerpt-container">
+<h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+<p class="date"><i class="fa fa-calendar"></i>&nbsp;{{ post.date | date:'%Y年%m月%d日' }}</p>
+<div style="clear: both"></div>
+<p class="excerpt">{{ post.content | strip_html | truncate: 100, '……' }}</p>
+</div>
+    {%- endif %}
+{%- endfor %}
+</div>

@@ -4,12 +4,5 @@ title: 隐藏页面索引
 ---
 
 <p>以下是隐藏页面：</p>
-<ul>
-  {%- for post in site.posts %}
-    {%- if post.tags contains '隐藏' %}
-    <li>{{ post.date | date: '%Y年%m月%d日' }}&nbsp; 
-      <a href="{{ site.baseurl }}{{ post.url }}">{{- post.title -}}</a>
-    </li>
-    {%- endif %}
-  {%- endfor %}
-</ul>
+{%- assign tags = '隐藏' | split: ' ' %}
+{% include summary.html tags = tags %}
