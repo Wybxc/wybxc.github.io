@@ -55,6 +55,6 @@ $('body').ready(function () {
                 }
             }
         };
-        $.getScript('http://cdn.bootcss.com/mathjax/3.0.5/es5/tex-chtml.js');
+        $.getScript('https://cdn.bootcss.com/mathjax/3.0.5/es5/tex-chtml.js');
     }
 })
