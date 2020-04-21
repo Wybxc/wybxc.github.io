@@ -25,8 +25,8 @@
       {%- assign tags = post.tags | join: ' ' %}
       {%- if tags contains tag %}
         {%- unless tags contains '测试' or tags contains '隐藏' %}
-          <li>{{ post.date | date: '%Y年%m月%d日' }}&nbsp;
-            <a href="{{ site.baseurl }}{{ post.url }}">{{- post.title -}}</a>
+          <li>
+            <a href="{{ site.baseurl }}{{ post.url }}">{{ post.date | date: '%Y年%m月%d日' }}&nbsp;{{- post.title -}}</a>
           </li>
         {%- endunless %}
       {%- endif %}

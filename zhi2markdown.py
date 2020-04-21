@@ -3,6 +3,7 @@
 '''
 
 import re
+import urllib
 import requests
 from bs4 import BeautifulSoup
 
@@ -12,6 +13,11 @@ headers = {
 
 def escape(s):
     return re.sub(r'[\\`\*_\{\}\[\]\(\)#\+-\.\!]', lambda match: '\\'+ match.group(), s).replace('\\,', ',')
+
+def link(s):
+    if s[:31] == 'https://link.zhihu.com/?target=':
+        return urllib.parse.unquote(s[31:])
+    return s
 
 def html2md(node):
     if node is None:
@@ -24,7 +30,7 @@ def html2md(node):
         if node.attrs.get('data-reference-link'):
             index = node.attrs['href'].split('_')[1]
             return f'[^{index}]'
-        return f'[{node.text}]({node.attrs["href"]})' + ('\n' if 'LinkCard' in node.attrs['class'] else '')
+        return f'[{node.text}]({link(node.attrs["href"])})' + ('\n' if 'LinkCard' in node.attrs['class'] else '')
     if node.name == 'hr':
         return '\n---\n'
     if node.name == 'h2':
