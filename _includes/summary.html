@@ -1,4 +1,4 @@
-<div class="excerpt-container-container">
+<ul id="excerpt-container-container">
 {%- assign num = 0 %}
 {%- for post in site.posts %}
     {%- assign post_tags = post.tags | join: ' ' %}
@@ -16,12 +16,12 @@
         {%- endif %}
     {%- endif %}
     {%- if output %}
-<div class="excerpt-container">
+<li class="excerpt-container">
 <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
 <p class="date"><i class="fa fa-calendar"></i>&nbsp;{{ post.date | date:'%Y年%m月%d日' }}</p>
 <div style="clear: both"></div>
 <p class="excerpt">{{ post.content | strip_html | truncate: 100, '……' }}</p>
-</div>
+</li>
     {%- endif %}
 {%- endfor %}
-</div>
+</ul>

@@ -1,45 +1,47 @@
-/* #main .excerpt-container-container {
-    
-} */
+#excerpt-container-container {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
 
-#main .excerpt-container {    
+#excerpt-container-container .excerpt-container {    
     margin: 10px auto;
     padding: 1em;
     transition: 0.3s;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-#main .excerpt-container:hover {
+#excerpt-container-container .excerpt-container:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-#main .excerpt-container h2 {
+#excerpt-container-container .excerpt-container h2 {
     float: left;
     font-size: 1.3em;    
 }
 
-#main .excerpt-container h2 a {
+#excerpt-container-container .excerpt-container h2 a {
     color: #666;
     background-image: linear-gradient(black, black);
 }
 
-#main .excerpt-container:hover h2 a {
+#excerpt-container-container .excerpt-container:hover h2 a {
     color: black;
 }
 
-#main .excerpt-container .date {
+#excerpt-container-container .excerpt-container .date {
     float: right;
     margin: 0;
 }
 
-#main .excerpt-container .excerpt {
+#excerpt-container-container .excerpt-container .excerpt {
     color: #666;
 }
 
-#main .excerpt-container:hover .excerpt {
+#excerpt-container-container .excerpt-container:hover .excerpt {
     color: black;
 }
 
-#main .excerpt-container .excerpt::before {
+#excerpt-container-container .excerpt-container .excerpt::before {
     content: '→';
 }
