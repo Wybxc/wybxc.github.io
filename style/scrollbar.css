@@ -1,6 +1,6 @@
 #main ::-webkit-scrollbar, #main::-webkit-scrollbar{    
-    width: 8px;
-    height: 8px;
+    width: 5px;
+    height: 5px;
 }
 /* 定义滑块 内阴影+圆角 */
 #main ::-webkit-scrollbar-thumb, #main::-webkit-scrollbar-thumb{
@@ -14,6 +14,6 @@
 }
 /* 适应圆角页面 */
 #main ::-webkit-scrollbar-button, #main::-webkit-scrollbar-button{
-    width: 8px;
-    height: 8px;
+    width: 5px;
+    height: 5px;
 }
