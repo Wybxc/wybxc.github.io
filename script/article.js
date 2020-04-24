@@ -2,6 +2,10 @@ function returnTop() {
   $("html,body").stop().animate({ scrollTop: 0 }, Math.log(document.documentElement.scrollTop) * 100);
 }
 
+function jumpto(url) {
+  window.location.href = url;
+}
+
 function onSchSubmit() {
   var value = $(".sch").val();
   if (value == '#test#') {
@@ -9,7 +13,7 @@ function onSchSubmit() {
   } else {
     var url = encodeURI(value);
     if (url != "") {
-      url = "https://m.baidu.com/#ie=UTF-8&&wd=" + url;
+      url = "/search#" + url;
       $("#subform").attr("src", url).slideDown();
       $("#subform a").attr("href", url);
     } else {

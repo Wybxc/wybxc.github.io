@@ -218,7 +218,7 @@ ul.taglist li:hover::after {
   /*自动滚动条*/
   border-style: none ridge ridge ridge;
   border-width: 5px;
-  background-color: #D0D0D0;
+  background-color: white;
   /*边框与背景*/
   display: none;
   z-index: 48;

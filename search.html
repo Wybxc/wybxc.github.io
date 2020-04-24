@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <script src="/script/jquery-3.2.1.min.js"></script>
+    <script src="/script/TidSearch.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style/post.css" />
+    <link rel="stylesheet" type="text/css" href="/style/excerpt.css" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        //% <![CDATA[
+        $(function () {
+            const template = '<li class="excerpt-container">' +
+                '<h2><a href="javascript:parent.window.jumpto(\'{url}\')">{title}</a></h2>' +
+                '<p class="date"><i class="fa fa-calendar"></i>&nbsp;{date}</p>' +
+                '<div style="clear: both"></div>' +
+                '<p class="excerpt">{content}</p>' +
+                '</li>';
+            window.sch = new TidSearch({
+                input: document.getElementById('search-input'),
+                output: document.getElementById('excerpt-container-container'),
+                json: '/search.json',
+                template: template,
+                templateMiddleware: function (page, field) {
+                    if (field === 'content')
+                        return page.content.slice(0, 100) + '……';
+                    return page[field];
+                },
+                noResult: '没有找到对应的关键词。',
+            });
+            sch.loaded.then(() => {
+                const keyword = decodeURI(window.location.hash.substr(1));
+                document.getElementById('search-input').value = keyword;
+                sch.search(keyword);
+            });
+        });
+//%]]>
+    </script>
+
+</head>
+
+<body>
+    <div style="padding: 0.5em">
+    <input type="text" id="search-input" placeholder="搜索内容" style="width: 100%"/>
+    <ul id='excerpt-container-container'></ul>
+</div>
+</body>
+
+</html>
