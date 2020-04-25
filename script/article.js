@@ -98,7 +98,7 @@ if (window.screen.width >= 800) {
     var slidebar = $("#slidebar");
     slidebar.slideUp(0);
     $("#menu").click(function () {
-      if (notExpanded || (document.documentElement.scrollTop > 50)) {
+      if (notExpanded || (document.documentElement.scrollTop || document.body.scrollTop) > 50) {
         $("#nav").stop().animate({ backgroundColor: bcolor(1) }, 500);
       } else {
         $("#nav").stop().animate({ backgroundColor: bcolor(0) }, 500);
@@ -114,7 +114,7 @@ if (window.screen.width >= 800) {
     });
     $("#main").click(function () {
       notExpanded = true;
-      if (document.documentElement.scrollTop > 50) {
+      if ((document.documentElement.scrollTop || document.body.scrollTop) > 50) {
         $("#nav").stop().animate({ backgroundColor: bcolor(1) }, 500);
         slidebar.stop().animate({ opacity: 0 }, 200);
       } else {
