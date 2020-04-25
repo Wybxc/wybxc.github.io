@@ -3,7 +3,7 @@ function returnTop() {
 }
 
 function jumpto(url) {
-  window.location.href = url;
+  window.top.location = url; // window.location.href 在某些浏览器上不能正常跳转
 }
 
 function onSchSubmit() {
@@ -131,9 +131,9 @@ if (window.screen.width >= 800) {
     // 搜索
     $(".schbtn").click(onSchSubmit);
 
-    // 导航栏变色
+    // 导航栏变色    
     onscroll = function () {
-      if (!notExpanded || (document.documentElement.scrollTop > 50)) {
+      if (!notExpanded || (document.documentElement.scrollTop || document.body.scrollTop) > 50) {
         $("#nav").stop().animate({ backgroundColor: bcolor(1) }, 300);
       } else {
         $("#nav").stop().animate({ backgroundColor: bcolor(0) }, 300);
