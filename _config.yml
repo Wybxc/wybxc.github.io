@@ -5,3 +5,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
+exclude: 
+  - script/es6
+  - node_modules

@@ -1,7 +1,10 @@
+<!DOCTYPE html>
 <html>
 
 <head>
+    <script src="/script/polyfill.js"></script>
     <script src="/script/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tidsearch@latest/dist/TidSearch.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/style/post.css" />
     <link rel="stylesheet" type="text/css" href="/style/excerpt.css" />
@@ -27,7 +30,7 @@
                 },
                 noResult: '没有找到对应的关键词。',
             });
-            sch.loaded.then(() => {
+            sch.loaded.then(function () {
                 const keyword = decodeURI(window.location.hash.substr(1));
                 document.getElementById('search-input').value = keyword;
                 sch.search(keyword);
@@ -40,9 +43,9 @@
 
 <body>
     <div style="padding: 0.5em">
-    <input type="text" id="search-input" placeholder="搜索内容" style="width: 100%"/>
-    <ul id='excerpt-container-container'></ul>
-</div>
+        <input type="text" id="search-input" placeholder="搜索内容" style="width: 100%" />
+        <ul id='excerpt-container-container'></ul>
+    </div>
 </body>
 
 </html>

@@ -3,3 +3,4 @@ _site/
 .vscode
 yulib.config
 yulib.resource/
+node_modules/

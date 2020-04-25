@@ -1,0 +1,25 @@
+{
+  "name": "wybxc.github.io",
+  "version": "1.0.0",
+  "main": "serve.js",
+  "scripts": {
+    "serve": "node serve.js"
+  },
+  "author": "wybxc",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "uglify-js": "^3.9.1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "bluebird": "^3.7.2",
+    "child_process": "^1.0.2",
+    "js-yaml": "^3.13.1",
+    "node-watch": "^0.6.3",
+    "serve": "^11.3.0",
+    "uglify-js": "^3.9.1"
+  }
+}
