@@ -76,7 +76,10 @@ function getBackgroundColor() {
         bcolor = str => color[1] + str + ')';
     } else {
         const c = bgcolor();
-        document.cookie = `bcolor=${c};`;
+        const d = new Date();
+        d.setDate(d.getDate() + 1);
+        d.setHours(0); d.setMinutes(0); d.setSeconds(0);
+        document.cookie = `bcolor=${c}; expires=${d.toUTCString()}`;
         bcolor = str => c + str + ')';
     }
     return bcolor;
