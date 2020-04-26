@@ -14,21 +14,28 @@ const fileWatchers = [];
 // 编译js文件
 
 function compile(filename, out) {
+    filename = path.normalize(filename);
+    out = path.normalize(out);
     console.log('Compile ' + filename);
-    return babel.transformFileAsync(filename, { code: true }).then(result =>
-        UglifyJS.minify(result.code).code
-    ).then(code =>
+    return babel.transformFileAsync(filename, { code: true }).then(result => {
+        const ug = UglifyJS.minify(result.code, {
+            warnings: true
+        });
+        if (ug.error) console.log(filename + ' :'), console.log(ug.error);        
+        return ug.code;        
+    }).then(code =>
         fs.writeFileAsync(out, code)
     );
 }
 
 function remove(filename) {
-    fs.unlinkAsync(filename);
+    return fs.unlinkAsync(filename);
 }
 
 // 编译jekyll
 
 function jekyllBuild(filename) {
+    console.log('\n');
     if (filename)
         console.log(filename + " changed, rebuilding Site...");
     exec("jekyll build", (_error, stdout, stderr) => {
@@ -45,17 +52,17 @@ const excluded = ['.', '_site', 'serve.js', 'package.json'];
 fileWatchers.push(watch(scriptInputFolder, (event, filename) => {
     filename = path.normalize(filename);
     const basename = path.basename(filename);
-    if(event === 'update')
+    if (event === 'update')
         compile(filename, scriptOutputFolder + basename);
     else
-        remove(scriptOutputFolder + basename);    
+        remove(scriptOutputFolder + basename);
 }));
 
 fs.readdirAsync(scriptInputFolder).then(files => {
     const firstCompilePromises = files.map(file => compile(scriptInputFolder + file, scriptOutputFolder + file));
     Promise.all(firstCompilePromises).then(() => {
         jekyllBuild();
-        fs.readFileAsync('_config.yml').then(data => yaml.safeLoad(data))
+        return fs.readFileAsync('_config.yml').then(data => yaml.safeLoad(data))
             .then(config => config.exclude.concat(excluded).map(p => path.normalize(p))).then(exclude => {
                 fileWatchers.push(watch('.', {
                     recursive: true,

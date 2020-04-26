@@ -1,7 +1,7 @@
 const hash = str => str.split('').reduce((a, b) => (a * 131 + b.charCodeAt(0)) | 0, 0).toString(16);
 
 $(function () {
-  valine = new Valine();
+  const valine = new Valine();
   valine.init({
     el: '#comments',
     appId: 'lrcDpOpEmijtwTFwpnUrPoLO-gzGzoHsz',
@@ -12,7 +12,7 @@ $(function () {
     placeholder: '写下你的评论……',
   });
   if (window.screen.width < 800) {
-    intervalID = setInterval(function () {
+    const intervalID = setInterval(function () {
       const selected = $('.v svg');
       if (selected.length != 0) {
         console.log(selected);

@@ -1,5 +1,11 @@
+function getScrollY() {
+    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+}
+
 function returnTop() {
-    $("html,body").stop().animate({ scrollTop: 0 }, Math.log(document.documentElement.scrollTop) * 100);
+    const scrollY = getScrollY();
+    if (scrollY > 0)
+        $("html,body").stop().animate({ scrollTop: 0 }, Math.log(scrollY) * 100);
 }
 
 function jumpto(url) {
@@ -20,10 +26,6 @@ function onSchSubmit() {
 
 function rmCookie(name) {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
-}
-
-function getScrollY() {
-    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 }
 
 function bgcolor() {
@@ -51,7 +53,7 @@ function bgcolor() {
                     b += db;
                 }
             }
-            valid = (_r, _g, _b) => true;            
+            validColor = (_r, _g, _b) => true;
         }
         r = (r / n) | 0;
         g = (g / n) | 0;
@@ -60,7 +62,7 @@ function bgcolor() {
             return 'rgba(187,152,178,';
         }
         return `rgba(${r},${g},${b},`;
-    } catch(e) {
+    } catch (e) {
         console.log(e);
         return 'rgba(187,152,178,';
     }
@@ -74,7 +76,7 @@ function getBackgroundColor() {
         bcolor = str => color[1] + str + ')';
     } else {
         const c = bgcolor();
-        document.cookie = `bcolor=${c};`;        
+        document.cookie = `bcolor=${c};`;
         bcolor = str => c + str + ')';
     }
     return bcolor;
@@ -101,10 +103,10 @@ if (window.screen.width >= 800) {
                 $nav.stop().animate({ backgroundColor: bcolor(0) }, 500);
             }
             if (notExpanded) {
-                $main.stop().animate({ marginLeft: "20%" }, 500);
+                $main.stop().animate({ marginLeft: "30%" }, 500);
                 $slidebar.stop().animate({ opacity: 1 }, 200).slideDown(300);
             } else {
-                $main.stop().animate({ marginLeft: "10%" }, 500);
+                $main.stop().animate({ marginLeft: "20%" }, 500);
                 $slidebar.stop().animate({ opacity: 0 }, 200).slideUp(300);
             }
             notExpanded = !notExpanded;
@@ -119,7 +121,7 @@ if (window.screen.width >= 800) {
                 $slidebar.stop().animate({ opacity: 0 }, 200);
             }
             $slidebar.slideUp(300);
-            $main.stop().animate({ marginLeft: "10%" }, 500);
+            $main.stop().animate({ marginLeft: "20%" }, 500);
             $("#subform").attr("src", "").slideUp();
             $("#subform a").attr("href", "");
         });

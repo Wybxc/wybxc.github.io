@@ -193,7 +193,7 @@ ul.taglist li:hover::after {
 }
 
 #main {
-  margin: 65px 10% 5px;
+  margin: 65px 20% 5px;
   /*为边栏留出空间*/
   padding: 10px 20px 0px 20px;
   /*补充消失的空白*/
@@ -201,7 +201,7 @@ ul.taglist li:hover::after {
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
   min-height: 500px;
-  width: 80%;
+  width: 60%;
 }
 
 /*子搜索窗口*/
