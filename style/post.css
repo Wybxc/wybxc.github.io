@@ -77,6 +77,14 @@ div.footer {
   /*导航栏中元素左浮动*/
 }
 
+i#schbtn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  color: black;
+  font-size: 25px;
+}
+
 #menu {
   float: left;
   margin-right: 30px;
@@ -206,7 +214,7 @@ ul.taglist li:hover::after {
 
 /*子搜索窗口*/
 
-#subform {
+ul#subform {
   float: right;
   position: fixed;
   top: 50px;
@@ -220,6 +228,10 @@ ul.taglist li:hover::after {
   border-width: 5px;
   background-color: white;
   /*边框与背景*/
+  list-style-type: none;
+  margin: 0;
+  padding: 0.5em;
+  color: initial;
   display: none;
   z-index: 48;
 }

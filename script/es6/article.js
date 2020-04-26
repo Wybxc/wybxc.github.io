@@ -12,16 +12,40 @@ function jumpto(url) {
     window.top.window.location = url; // window.location.href 在某些浏览器上不能正常跳转
 }
 
-function onSchSubmit() {
-    const value = $(".sch").val();
-    let url = encodeURI(value);
-    if (url != "") {
-        url = "/search#" + url;
-        $("#subform").attr("src", url).slideDown();
-        $("#subform a").attr("href", url);
-    } else {
-        $("#subform").attr("src", "").slideUp();
+function initTidSearch(input) {
+    if (!window.tidSearch) {
+        const template = '<li class="excerpt-container">' +
+            '<h2><a href="{url}" target="_blank">{title}</a></h2>' +
+            '<p class="date"><i class="fa fa-calendar"></i>&nbsp;{date}</p>' +
+            '<div style="clear: both"></div>' +
+            '<p class="excerpt">{content}</p>' +
+            '</li>';
+        window.tidSearch = new TidSearch({
+            input: input,
+            output: '#subform',
+            json: '/search.json',
+            template: template,
+            templateMiddleware: function (page, field) {
+                if (field === 'content')
+                    return page.content.slice(0, 100) + '……';
+                return page[field];
+            },
+            noResult: '没有找到对应的关键词。',
+        });
     }
+    return tidSearch.loaded;
+}
+
+function onSchSubmit() {
+    initTidSearch('.sch').then(() => {
+        const value = $(".sch").val();
+        if (value != "") {
+            window.tidSearch.search(value);
+            $("#subform").slideDown();
+        } else {
+            $("#subform").slideUp();
+        }
+    });
 }
 
 function rmCookie(name) {
@@ -99,7 +123,7 @@ if (window.screen.width >= 800) {
         const $nav = $("#nav");
         const $main = $("#main");
         $slidebar.slideUp(0);
-        $("#menu").click(function () {
+        $("#menu").click(() => {
             if (notExpanded || getScrollY() > 50) {
                 $nav.stop().animate({ backgroundColor: bcolor(1) }, 500);
             } else {
@@ -114,7 +138,7 @@ if (window.screen.width >= 800) {
             }
             notExpanded = !notExpanded;
         });
-        $main.click(function () {
+        const clickMain = () => {
             notExpanded = true;
             if (getScrollY() > 50) {
                 $nav.stop().animate({ backgroundColor: bcolor(1) }, 500);
@@ -125,8 +149,13 @@ if (window.screen.width >= 800) {
             }
             $slidebar.slideUp(300);
             $main.stop().animate({ marginLeft: "20%" }, 500);
-            $("#subform").attr("src", "").slideUp();
-            $("#subform a").attr("href", "");
+            $("#subform").slideUp();
+        };
+        $main.click(clickMain);
+        $('body').click(event => {
+            const target = event.target || event.srcElement;
+            if (target == document.body)
+                clickMain();
         });
         $("#subform").slideUp(0);
 
@@ -134,14 +163,13 @@ if (window.screen.width >= 800) {
         $(".schbtn").click(onSchSubmit);
 
         // 导航栏变色
-        window.onscroll = function () {
+        $(window).scroll(() => {
             if (!notExpanded || getScrollY() > 50) {
                 $nav.stop().animate({ backgroundColor: bcolor(1) }, 300);
             } else {
                 $nav.stop().animate({ backgroundColor: bcolor(0) }, 300);
             }
-        };
-        window.onscroll();
+        }).scroll();
 
         // 侧栏子菜单
         const $tagform = $("#tagform");
@@ -175,6 +203,26 @@ if (window.screen.width >= 800) {
         const defaultColor = getBackgroundColor()(1);
         $("#nav").css('background-color', defaultColor);
         $("ul.taglist li, #tagform li").css("border-color", defaultColor);
+
+        // 显示搜索按钮
+        const schbtn = document.getElementById('schbtn');
+        schbtn.parentNode.removeChild(schbtn);
+        document.getElementById('nav').appendChild(schbtn);
+        $(schbtn).click(() => {
+            jumpto('/search');
+        });
+
+        // 顶栏高度
+        $(window).resize(() => {
+            const height10pc = `${window.screen.height / 10}px`;
+            const height6pc = `${window.screen.height / 15}px`; 
+            $('#nav').css({
+                'height': height10pc,
+                'font-size': height6pc,
+            });
+            $('#slidebar, #tagform').css('top', height10pc);
+        }).resize();
+
 
         // 左边栏展开 & 侧栏子菜单
         let notExpanded = true;
@@ -221,10 +269,9 @@ if (window.screen.width >= 800) {
 
 $(function () {
     // 最小高度自适应
-    onresize = function () {
+    $(window).resize(() => {
         $("#main").css('min-height', (document.documentElement.clientHeight - 120) + 'px')
-    }
-    onresize();
+    }).resize();
     // 脚注图标
     $("a.reversefootnote").css('text-decoration', 'none').attr('class', 'fa fa-reply').empty();
 });

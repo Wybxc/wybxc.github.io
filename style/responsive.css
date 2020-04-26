@@ -55,13 +55,20 @@ mjx-container {
 
 #logo {
     display: block;
-    font-size: 3vh;
+    font-size: inherit;
     height: 100%;
-    margin: 0.5vh auto;
+    margin: 0.07em auto;
 }
 
 #logo a {
     background-size: 0 100%;
+}
+
+i#schbtn {    
+    top: 0.2em;
+    right: 0.2em;
+    color: white;
+    font-size: inherit;
 }
 
 #searchform {
@@ -77,6 +84,10 @@ mjx-container {
 #menu svg {
     width: 100%;
     height: 100%;
+}
+
+img#background {
+    background-color: rgb(206,176,253);
 }
 
 .footer {
@@ -192,6 +203,38 @@ ul.taglist li:hover::after {
     color: black;
     transition: none;
     background-size: 0 100%;
+}
+
+/*搜索框*/
+ul#subform {
+    float: none;
+    position: static;    
+    width: auto;
+    height: auto;
+    overflow: auto;
+    border: none;    
+    background-color: unset;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: initial;
+    display: none;    
+}
+
+input#search-input {
+    width: -webkit-fill-available;
+    margin: 0.5em 0;
+    padding: 0.3em;
+    outline-style: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input#search-input:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
 }
 
 }
