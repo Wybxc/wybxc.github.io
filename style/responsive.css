@@ -7,10 +7,6 @@
     max-height: 1000000px; /* 禁止浏览器自动放大字体 */
 }
 
-mjx-container, mjx-container * {
-    font-size: inherit;
-}
-
 * {
     font-size: 40px;
 }
@@ -38,10 +34,6 @@ h3, h4, h5, h6 {
     top: 0;
     bottom: 0;
     overflow-x: hidden;
-}
-
-mjx-container {
-    overflow-x: auto;
 }
 
 #nav {

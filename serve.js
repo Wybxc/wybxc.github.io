@@ -38,7 +38,7 @@ function jekyllBuild(filename) {
     console.log('\n');
     if (filename)
         console.log(filename + " changed, rebuilding Site...");
-    exec("jekyll build", (_error, stdout, stderr) => {
+    exec("jekyll build --drafts", (_error, stdout, stderr) => {
         console.log(stdout);
         console.log(stderr);
     });

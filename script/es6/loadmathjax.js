@@ -24,18 +24,19 @@ $('body').ready(function () {
     }
 
     function strip(s) {
+        console.log(s);
         return s.replace("% <![CDATA[", '').replace("%]]>", '')
             .replace(/[<>&"]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' })[c]).trim();
     }
 
     $("script[type='math/tex']").replaceWith(function () {
         const tex = $(this).html();
-        return '$$' + strip(tex) + '$$';
+        return '<span class="mathjax">$$' + strip(tex) + '$$</span>';
     });
 
     $("script[type='math/tex; mode=display']").replaceWith(function () {
         const tex = $(this).html();
-        return '<p>\\[' + strip(tex) + '\\]</p>';
+        return '<p class="mathjax">\\[' + strip(tex) + '\\]</p>';
     });
 
     const hasEquation = /(\$\$.*\$\$)|(\\\[.*\]\\)/.test($('#main').text());

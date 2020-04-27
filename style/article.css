@@ -90,3 +90,23 @@ pre.poem {
   font-family: "Times New Roman", "Microsoft YaHei", serif;
   font-size: 1em;
 }
+
+.mathjax * {
+  font-size: inherit;
+}
+
+span.mathjax {
+  display: inline-block;
+}
+
+p.mathjax {
+  display: block;
+}
+
+.mathjax {
+  position: relative;
+  top: 0.25em;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
