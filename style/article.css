@@ -110,3 +110,7 @@ p.mathjax {
   overflow-x: auto;
   overflow-y: hidden;
 }
+
+.CtxtMenu_Info.CtxtMenu_MousePost * {
+  font-size: inherit;
+}
