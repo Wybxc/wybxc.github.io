@@ -1,7 +1,7 @@
 ---
 layout: default
 title: LexBurner粉丝数实时查看
-tags: [杂项,隐藏]
+tags: [隐藏]
 ---
 
 当前粉丝数：
