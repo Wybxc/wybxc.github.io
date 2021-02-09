@@ -1,4 +1,9 @@
 <ul id="excerpt-container-container">
+{%- comment %}
+参数：
+    tags：列表，需要包含的tag
+    excludes：列表，需要排除的tag，优先度高于tags
+{%- endcomment%}
 {%- assign num = 0 %}
 {%- for post in site.posts %}
     {%- assign post_tags = post.tags | join: ' ' %}
@@ -6,6 +11,12 @@
     {%- for tag in include.tags %}    
         {%- if post_tags contains tag %}
             {%- assign output = true %}
+            {%- break %}
+        {%- endif %}
+    {%- endfor %}
+    {%- for tag in include.excludes %}    
+        {%- if post_tags contains tag %}
+            {%- assign output = false %}
             {%- break %}
         {%- endif %}
     {%- endfor %}

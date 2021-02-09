@@ -22,6 +22,7 @@ title: 忘忧北萱草的小博客
   {%- endfor %}
 {%- endcapture %}
 {%- assign tags = tagstr | normalize_whitespace | split: ' ' | uniq | sort %}
+{%- assign excludes = '测试 隐藏 ' | split: ' ' | uniq | sort%}
 
-{% include summary.html tags = tags %}
+{% include summary.html tags = tags excludes = excludes %}
 
