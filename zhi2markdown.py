@@ -11,13 +11,16 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36'
 }
 
+
 def escape(s):
-    return re.sub(r'[\\`\*_\{\}\[\]\(\)#\+-\.\!]', lambda match: '\\'+ match.group(), s).replace('\\,', ',')
+    return re.sub(r'[\\`\*_\{\}\[\]\(\)#\+-\.\!\|]', lambda match: '\\' + match.group(), s).replace('\\,', ',')
+
 
 def link(s):
     if s[:31] == 'https://link.zhihu.com/?target=':
         return urllib.parse.unquote(s[31:])
     return s
+
 
 def html2md(node):
     if node is None:
@@ -39,8 +42,8 @@ def html2md(node):
         return html2md(node.img) + '\n' + html2md(node.figcaption)
     if node.name == 'img':
         if node.attrs.get('eeimg'):
-            formula = node.attrs.get('alt')
-            return f'$${formula}$$'        
+            formula = node.attrs.get('alt').replace('|', '\\|')
+            return f'$${formula}$$'
         src = node.attrs['src']
         name = src.split('/')[-1]
         with open(f'./res/{name}', 'wb') as img:
@@ -59,8 +62,8 @@ def html2md(node):
     if node.name == 'code':
         return f'`{node.text}`'
     if node.name == 'blockquote':
-        content = ''.join((html2md(c) for c in node.children))        
-        return  '> ' + '\n> \n> '.join(content.split('\n')) + '\n\n'
+        content = ''.join((html2md(c) for c in node.children))
+        return '> ' + '\n> \n> '.join(content.split('\n')) + '\n\n'
     if node.name == 'br':
         return '\n'
     if node.name == 'ol':
@@ -92,7 +95,7 @@ if __name__ == '__main__':
     req = requests.get(url, headers=headers)
     req.encoding = 'utf-8'
     soup = BeautifulSoup(req.text, features='lxml')
-    title = soup.title.text.strip('- 知乎').strip()    
+    title = soup.title.text.strip('- 知乎').strip()
     markdown = f'''---
 layout: default
 title: {title}

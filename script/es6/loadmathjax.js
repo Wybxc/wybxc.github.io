@@ -24,8 +24,9 @@ $('body').ready(function () {
     }
 
     function strip(s) {
-        console.log(s);
+        // console.log(s);
         return s.replace("% <![CDATA[", '').replace("%]]>", '')
+            .replace(/\\\|/g, '|')
             .replace(/[<>&"]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' })[c]).trim();
     }
 
