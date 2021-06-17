@@ -40,14 +40,15 @@ $('body').ready(function () {
         return '<p class="mathjax">\\[' + strip(tex) + '\\]</p>';
     });
 
-    const hasEquation = /(\$\$.*\$\$)|(\\\[.*\]\\)/.test($('#main').text());
+    const hasEquation = /(\$\$.*\$\$)|(\\\[.*\\\])|(\\\(.*\\\))/.test($("#main").text());
     if (hasEquation) {
         showMask();
         setTimeout(hideMask, 10000);
         window.MathJax = {
             tex: {
                 inlineMath: [
-                    ['$$', '$$']
+                    ['$$', '$$'],
+                    ['\\(', '\\)'],
                 ],
                 displayMath: [
                     ['\\[', '\\]'],
