@@ -214,13 +214,13 @@ if (window.screen.width >= 800) {
 
         // 顶栏高度
         $(window).resize(() => {
-            const height10pc = `${window.screen.height / 10}px`;
-            const height6pc = `${window.screen.height / 15}px`; 
+            const height5pc = `${window.screen.height / 20}px`;
+            const height3pc = `${window.screen.height / 30}px`; 
             $('#nav').css({
-                'height': height10pc,
-                'font-size': height6pc,
+                'height': height5pc,
+                'font-size': height3pc,
             });
-            $('#slidebar, #tagform').css('top', height10pc);
+            $('#slidebar, #tagform').css('top', height5pc);
         }).resize();
 
 

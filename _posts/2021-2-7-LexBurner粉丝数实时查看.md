@@ -11,7 +11,7 @@ tags: [杂项,隐藏]
         return new Promise(function (resolve, reject) {
             const xhr = window.XMLHttpRequest ?
                 new window.XMLHttpRequest() :
-                new gloabl.ActiveXObject('Microsoft.XMLHTTP');
+                new window.ActiveXObject('Microsoft.XMLHTTP');
             xhr.open('GET', url, true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4) {
