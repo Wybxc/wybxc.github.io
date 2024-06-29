@@ -12,7 +12,6 @@
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "@astrojs/rss": "^4.0.7",
-    "@fontsource-variable/lora": "^5.0.18",
     "@picocss/pico": "^2.0.6",
     "astro": "^4.11.3",
     "marked": "^13.0.1",
