@@ -1,0 +1,124 @@
+---
+import IconGitHub from '@/components/IconGitHub.astro';
+import IconRss from '@/components/IconRss.astro';
+import ThemeToggle from '@/components/ThemeToggle.astro';
+
+export interface Props {
+    pageTitle: string;
+}
+
+const pageTitle = `Wybxc's Blog - ${Astro.props.pageTitle}`;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title={pageTitle}
+            href={new URL('rss.xml', Astro.site)}
+        />
+        <title>{pageTitle}</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="/"><strong>Wybxc</strong></a></li>
+                </ul>
+                <ul>
+                    <li><a href="/posts"><strong>Posts</strong></a></li>
+                    <li><a href="/tags"><strong>Tags</strong></a></li>
+                    <li><a href="/about"><strong>About</strong></a></li>
+                    <li><ThemeToggle /></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <slot />
+        </main>
+        <footer>
+            <nav>
+                <ul>
+                    <li>
+                        Licensed under <a
+                            href="https://creativecommons.org/licenses/by-nc/4.0/"
+                            target="_blank"
+                        >
+                            CC BY-NC 4.0
+                        </a> | Copyright &copy; {new Date().getFullYear()} Wybxc
+                    </li>
+                </ul>
+
+                <ul>
+                    <li>
+                        <a
+                            href="https://github.com/Wybxc"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="GitHub"
+                        >
+                            <IconGitHub style="font-size: 1.5em" />
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href={new URL('rss.xml', Astro.site)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Twitter"
+                        >
+                            <IconRss style="font-size: 1.5em" />
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+</html>
+
+<style>
+    @media (min-width: 1024px) {
+        main,
+        footer {
+            max-width: 800px;
+        }
+    }
+
+    nav a {
+        --pico-color: var(--pico--contrast);
+        text-decoration: none;
+    }
+</style>
+
+<style is:global lang="scss">
+    @use '@picocss/pico/scss/pico' with (
+        $enable-semantic-container: true,
+        $enable-classes: true
+    );
+    @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+    @font-face {
+        font-family: 'Monaspace Neon';
+        font-style: normal;
+        font-weight: 400;
+        src: url('../fonts/MonaspaceNeon-Regular.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-family: 'Monaspace Neon';
+        font-style: italic;
+        font-weight: 400;
+        src: url('../fonts/MonaspaceNeon-Italic.woff2') format('woff2');
+    }
+
+    :root {
+        --pico-font-family: 'Source Serif 4', serif;
+        --pico-font-family-monospace: 'Monaspace Neon', monospace;
+    }
+</style>

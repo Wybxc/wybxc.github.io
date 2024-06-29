@@ -1,0 +1,31 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BlogPost from '@/components/BlogPost.astro';
+import Layout from '@/layouts/Layout.astro';
+
+const posts = (
+    await getCollection(
+        'posts',
+        ({ data }) => import.meta.env.DEV || data.draft !== true,
+    )
+)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 5);
+---
+
+<Layout pageTitle="Home">
+    <hgroup>
+        <h1>Recent Posts</h1>
+    </hgroup>
+    {posts.map((post) => <BlogPost post={post} />)}
+</Layout>
+
+<style>
+    a.post-title {
+        text-decoration: none;
+    }
+
+    footer.right {
+        text-align: right;
+    }
+</style>

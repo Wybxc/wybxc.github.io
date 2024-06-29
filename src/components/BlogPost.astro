@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { marked } from 'marked';
+
+interface Props {
+    post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const url = `/posts/${post.slug}`;
+const title = post.data.title;
+const pubDate = post.data.pubDate.toLocaleDateString('en-us', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+});
+const body = await marked.parse(post.body, { async: true });
+const summary = (body.match(/<p>(.*)<\/p>/)?.[1] ?? body);
+---
+
+<article>
+    <header>
+        <hgroup>
+            <h2><a href={url} class="contrast post-title">{title}</a></h2>
+            <time>{pubDate}</time>
+        </hgroup>
+    </header>
+    <p set:html={summary} />
+    <footer class="right">
+        <a href={url} class="contrast"> Read more </a>
+    </footer>
+</article>
+
+<style>
+    a.post-title {
+        text-decoration: none;
+    }
+
+    footer.right {
+        text-align: right;
+    }
+</style>

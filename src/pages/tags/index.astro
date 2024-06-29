@@ -1,0 +1,32 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+const uniqueTags = [
+    ...new Set(posts.map((post) => post.data.tags).flat()),
+].sort();
+---
+
+<Layout pageTitle="Tags">
+    <hgroup>
+        <h1>Tags</h1>
+        <p><i>Tags for posts.</i></p>
+    </hgroup>
+    <p>
+        {
+            uniqueTags.map((tag) => (
+                <a href={`/tags/${tag}`} class="secondary tag">
+                    #{tag}
+                </a>
+            ))
+        }
+    </p>
+</Layout>
+
+<style>
+    a.tag {
+        text-decoration: dotted underline;
+        margin-inline: 0.5em;
+    }
+</style>

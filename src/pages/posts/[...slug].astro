@@ -1,0 +1,56 @@
+---
+import Comments from '@/components/Comments.astro';
+import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+    const posts = await getCollection('posts');
+
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const pageTitle = post.data.title ?? 'Untitled';
+const pubDate = post.data.pubDate.toLocaleDateString('en-us', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+});
+---
+
+<Layout pageTitle={pageTitle}>
+    <hgroup>
+        <h1>{pageTitle}</h1>
+        <time>{pubDate}</time>
+    </hgroup>
+    <Content />
+    <hr />
+    <p>
+        <small>
+            {
+                post.data.tags
+                    .map((tag, i) => ({
+                        tag: `#${tag}`,
+                        link: `/tags/${tag}`,
+                    }))
+                    .map(({ tag, link }) => (
+                        <a href={link} class="secondary tag">
+                            {tag}
+                        </a>
+                    ))
+            }
+        </small>
+    </p>
+    <Comments />
+</Layout>
+
+<style>
+    a.tag {
+        text-decoration: dotted underline;
+        margin-inline: 0.5em;
+    }
+</style>
