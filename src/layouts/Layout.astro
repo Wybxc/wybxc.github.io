@@ -2,6 +2,8 @@
 import IconGitHub from '@/components/IconGitHub.astro';
 import IconRss from '@/components/IconRss.astro';
 import ThemeToggle from '@/components/ThemeToggle.astro';
+import { Content as Copyright } from '@/components/Copyright.mdx';
+import ExternLink from '@/components/ExternLink.astro';
 
 export interface Props {
     pageTitle: string;
@@ -39,46 +41,33 @@ const pageTitle = `Wybxc's Blog - ${Astro.props.pageTitle}`;
                 </ul>
             </nav>
         </header>
+
         <main>
             <slot />
         </main>
+
         <footer>
             <nav>
                 <ul>
-                    <li>
-                        Licensed under <a
-                            href="https://creativecommons.org/licenses/by-nc/4.0/"
-                            target="_blank"
-                        >
-                            CC BY-NC 4.0
-                        </a>
-                        <br />
-                        Copyright &copy; {new Date().getFullYear()}
-                        Wybxc, all rights reserved
-                    </li>
+                    <li><Copyright /></li>
                 </ul>
 
                 <ul>
                     <li>
-                        <a
+                        <ExternLink
                             href="https://github.com/Wybxc"
-                            target="_blank"
-                            rel="noopener noreferrer"
                             aria-label="GitHub"
                         >
                             <IconGitHub style="font-size: 1.5em" />
-                        </a>
+                        </ExternLink>
                     </li>
-
                     <li>
-                        <a
+                        <ExternLink
                             href={new URL('rss.xml', Astro.site)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Twitter"
+                            aria-label="RSS Feed"
                         >
                             <IconRss style="font-size: 1.5em" />
-                        </a>
+                        </ExternLink>
                     </li>
                 </ul>
             </nav>
@@ -92,11 +81,6 @@ const pageTitle = `Wybxc's Blog - ${Astro.props.pageTitle}`;
         footer {
             max-width: 800px;
         }
-    }
-
-    nav a {
-        --pico-color: var(--pico--contrast);
-        text-decoration: none;
     }
 </style>
 
@@ -132,5 +116,10 @@ const pageTitle = `Wybxc's Blog - ${Astro.props.pageTitle}`;
             color: var(--shiki-dark) !important;
             background-color: var(--shiki-dark-bg) !important;
         }
+    }
+
+    nav a {
+        --pico-color: var(--pico--contrast);
+        text-decoration: none;
     }
 </style>
