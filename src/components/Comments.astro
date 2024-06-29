@@ -1,19 +1,43 @@
 <section class="giscus"></section>
 
-<script
-    is:inline
-    src="https://giscus.app/client.js"
-    data-repo="Wybxc/wybxc.github.io"
-    data-repo-id="MDEwOlJlcG9zaXRvcnkxMjEyMTUzMzc="
-    data-category="Blog Comments"
-    data-category-id="DIC_kwDOBzmZac4CgdtP"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="preferred_color_scheme"
-    data-lang="en"
-    crossorigin="anonymous"
-    async
-></script>
+<script>
+    import { getTheme } from './theme';
+
+    const giscusThemes = {
+        light: 'light',
+        dark: 'https://giscus.catppuccin.com/themes/mocha.css',
+    };
+    const theme = getTheme();
+
+    const giscus = document.createElement('script');
+    giscus.src = 'https://giscus.app/client.js';
+    giscus.setAttribute('data-repo', 'Wybxc/wybxc.github.io');
+    giscus.setAttribute('data-repo-id', 'MDEwOlJlcG9zaXRvcnkxMjEyMTUzMzc=');
+    giscus.setAttribute('data-category', 'Blog Comments');
+    giscus.setAttribute('data-category-id', 'DIC_kwDOBzmZac4CgdtP');
+    giscus.setAttribute('data-mapping', 'pathname');
+    giscus.setAttribute('data-strict', '0');
+    giscus.setAttribute('data-reactions-enabled', '1');
+    giscus.setAttribute('data-emit-metadata', '0');
+    giscus.setAttribute('data-input-position', 'top');
+    giscus.setAttribute('data-theme', giscusThemes[theme]);
+    giscus.setAttribute('data-lang', 'en');
+    giscus.crossOrigin = 'anonymous';
+    giscus.async = true;
+    document.body.appendChild(giscus);
+
+    function sendMessage<T>(message: T) {
+        const iframe = document.querySelector<HTMLIFrameElement>(
+            'iframe.giscus-frame',
+        );
+        iframe?.contentWindow?.postMessage(
+            { giscus: message },
+            'https://giscus.app',
+        );
+    }
+
+    document.addEventListener('theme-change', (event) => {
+        const theme = giscusThemes[event.detail.theme];
+        sendMessage({ setConfig: { theme } });
+    });
+</script>

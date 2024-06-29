@@ -37,37 +37,25 @@ import 'theme-toggles/css/classic.css';
     </svg>
 </a>
 
-<script is:inline>
+<script>
+    import { getTheme, setTheme } from './theme';
+
     const toggle = document.querySelector('.theme-toggle');
-
-    function setTheme(theme) {
-        const html = document.documentElement;
-
-        if (theme === 'light') {
-            toggle.classList.remove('theme-toggle--toggled');
-        } else {
-            toggle.classList.add('theme-toggle--toggled');
-        }
-
-        html.setAttribute('data-theme', theme);
-        localStorage?.setItem('theme', theme);
-    }
-
-    setTheme(
-        localStorage?.getItem('theme') ??
-            (window.matchMedia('(prefers-color-scheme: dark)').matches
-                ? 'dark'
-                : 'light'),
-    );
-
-    document
-        .querySelector('.theme-toggle')
-        .addEventListener('click', (event) => {
-            event.preventDefault();
-            setTheme(
-                localStorage?.getItem('theme') === 'light' ? 'dark' : 'light',
-            );
+    if (toggle) {
+        document.addEventListener('theme-change', (event) => {
+            const theme = event.detail.theme;
+            if (theme === 'light') {
+                toggle.classList.remove('theme-toggle--toggled');
+            } else {
+                toggle.classList.add('theme-toggle--toggled');
+            }
         });
+
+        toggle.addEventListener('click', (event) => {
+            event.preventDefault();
+            setTheme(getTheme() === 'light' ? 'dark' : 'light');
+        });
+    }
 </script>
 
 <style>

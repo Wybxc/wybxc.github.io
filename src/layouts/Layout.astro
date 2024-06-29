@@ -52,7 +52,8 @@ const pageTitle = `Wybxc's Blog - ${Astro.props.pageTitle}`;
                             CC BY-NC 4.0
                         </a>
                         <br />
-                        Copyright &copy; {new Date().getFullYear()} Wybxc, all rights reserved
+                        Copyright &copy; {new Date().getFullYear()} Wybxc, all rights
+                        reserved
                     </li>
                 </ul>
 
@@ -122,5 +123,13 @@ const pageTitle = `Wybxc's Blog - ${Astro.props.pageTitle}`;
     :root {
         --pico-font-family: 'Source Serif 4', serif;
         --pico-font-family-monospace: 'Monaspace Neon', monospace;
+    }
+
+    html[data-theme='dark'] {
+        .astro-code,
+        .astro-code span {
+            color: var(--shiki-dark) !important;
+            background-color: var(--shiki-dark-bg) !important;
+        }
     }
 </style>
