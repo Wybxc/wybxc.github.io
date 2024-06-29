@@ -33,7 +33,7 @@ const pubDate = post.data.pubDate.toLocaleDateString('en-us', {
         <small>
             {
                 post.data.tags
-                    .map((tag, i) => ({
+                    .map((tag) => ({
                         tag: `#${tag}`,
                         link: `/tags/${tag}`,
                     }))
