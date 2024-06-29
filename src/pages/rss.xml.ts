@@ -8,7 +8,7 @@ export async function GET(context: APIContext) {
         title: 'Wybxc\'s Blog',
         description: 'Wybxc\'s Blog',
         site: context.site ?? '',
-        stylesheet: '/pretty-feed-v3.xsl',
+        stylesheet: '/rss/pretty-feed-v3.xsl',
         items: posts.map((post) => ({
             title: post.data.title,
             pubDate: post.data.pubDate,
