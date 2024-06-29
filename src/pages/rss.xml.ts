@@ -1,10 +1,10 @@
 import type { APIRoute } from 'astro';
 
 import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
+import { getPosts } from '@/components/posts';
 
 export const GET: APIRoute = async (context) => {
-    const posts = await getCollection('posts');
+    const posts = await getPosts();
     return rss({
         title: 'Wybxc\'s Blog',
         description: 'Wybxc\'s Blog',

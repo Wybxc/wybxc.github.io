@@ -1,10 +1,10 @@
 ---
 import Comments from '@/components/Comments.astro';
+import { getPosts } from '@/components/posts';
 import Layout from '@/layouts/Layout.astro';
-import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-    const posts = await getCollection('posts');
+    const posts = await getPosts();
 
     return posts.map((post) => ({
         params: { slug: post.slug },

@@ -1,11 +1,8 @@
 ---
+import { getTags } from '@/components/posts';
 import Layout from '@/layouts/Layout.astro';
-import { getCollection } from 'astro:content';
 
-const posts = await getCollection('posts');
-const uniqueTags = [
-    ...new Set(posts.map((post) => post.data.tags).flat()),
-].sort();
+const uniqueTags = await getTags();
 ---
 
 <Layout pageTitle="Tags">

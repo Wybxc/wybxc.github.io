@@ -1,16 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
 import BlogPost from '@/components/BlogPost.astro';
 import Layout from '@/layouts/Layout.astro';
+import { getPosts } from '@/components/posts';
 
-const posts = (
-    await getCollection(
-        'posts',
-        ({ data }) => import.meta.env.DEV || data.draft !== true,
-    )
-)
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .slice(0, 5);
+const posts = (await getPosts()).slice(0, 5);
 ---
 
 <Layout pageTitle="Home">

@@ -13,6 +13,9 @@ export default defineConfig({
         light: 'catppuccin-latte',
         dark: 'catppuccin-mocha'
       }
+    },
+    remarkRehype: {
+      footnoteLabel: 'References and Comments',
     }
   }
 });
