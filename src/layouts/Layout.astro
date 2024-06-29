@@ -22,6 +22,7 @@ const pageTitle = `Wybxc's Blog - ${Astro.props.pageTitle}`;
             title={pageTitle}
             href={new URL('rss.xml', Astro.site)}
         />
+        <link rel="sitemap" href="/sitemap-index.xml" />
         <title>{pageTitle}</title>
     </head>
     <body>
@@ -52,8 +53,8 @@ const pageTitle = `Wybxc's Blog - ${Astro.props.pageTitle}`;
                             CC BY-NC 4.0
                         </a>
                         <br />
-                        Copyright &copy; {new Date().getFullYear()} Wybxc, all rights
-                        reserved
+                        Copyright &copy; {new Date().getFullYear()}
+                        Wybxc, all rights reserved
                     </li>
                 </ul>
 

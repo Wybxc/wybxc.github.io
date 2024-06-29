@@ -1,8 +1,9 @@
+import type { APIRoute } from 'astro';
+
 import rss from '@astrojs/rss';
-import type { APIContext } from 'astro';
 import { getCollection } from 'astro:content';
 
-export async function GET(context: APIContext) {
+export const GET: APIRoute = async (context) => {
     const posts = await getCollection('posts');
     return rss({
         title: 'Wybxc\'s Blog',
