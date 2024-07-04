@@ -15,7 +15,7 @@ export default defineConfig({
       }
     },
     remarkRehype: {
-      footnoteLabel: 'References and Comments',
+      footnoteLabel: 'Notes',
     }
   }
 });

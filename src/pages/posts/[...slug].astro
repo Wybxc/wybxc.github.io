@@ -27,7 +27,9 @@ const pubDate = post.data.pubDate.toLocaleDateString('en-us', {
         <h1>{pageTitle}</h1>
         <time>{pubDate}</time>
     </hgroup>
-    <Content />
+    <div class="md">
+        <Content />
+    </div>
     <hr />
     <p>
         <small>
@@ -52,5 +54,14 @@ const pubDate = post.data.pubDate.toLocaleDateString('en-us', {
     a.tag {
         text-decoration: dotted underline;
         margin-inline: 0.5em;
+    }
+</style>
+
+<style is:global lang="scss">
+    .md {
+        blockquote {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
     }
 </style>
