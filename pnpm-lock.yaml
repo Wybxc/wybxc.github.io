@@ -20,6 +20,9 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.1.6
         version: 3.1.6
+      '@fontsource/source-serif-4':
+        specifier: ^5.0.18
+        version: 5.0.18
       '@picocss/pico':
         specifier: ^2.0.6
         version: 2.0.6
@@ -360,6 +363,9 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource/source-serif-4@5.0.18':
+    resolution: {integrity: sha512-Iia+KzciDzgI8CVofgqVOqRk9v/NUlouY050064RImxpkOBODMiUcrFg0neGA+OwIKOh21gTn0RBCTd38pOclA==}
 
   '@img/sharp-darwin-arm64@0.33.4':
     resolution: {integrity: sha512-p0suNqXufJs9t3RqLBO6vvrgr5OhgbWp76s5gTRvdmxmuv9E1rcaqGUsl3l4mKVmXPkTkTErXediAui4x+8PSA==}
@@ -2455,6 +2461,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.5':
     optional: true
+
+  '@fontsource/source-serif-4@5.0.18': {}
 
   '@img/sharp-darwin-arm64@0.33.4':
     optionalDependencies:
