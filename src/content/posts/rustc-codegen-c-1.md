@@ -12,6 +12,8 @@ Before diving in, conducting a survey on the topic is essential. Rust has more a
 
 This blog post is basically an expanded version on my OSPP application, including details I initially missed.
 
+## Contents
+
 ## Data Layout
 
 Rust offers more complex data structures compared to C. Its [default memory model](https://doc.rust-lang.org/nomicon/repr-rust.html), `#[repr(Rust)]`, provides no stability guarantees, allowing Rust to optimize memory usage by rearranging fields for better efficiency.

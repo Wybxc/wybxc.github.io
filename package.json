@@ -20,6 +20,7 @@
     "@picocss/pico": "^2.0.6",
     "astro": "^4.11.3",
     "marked": "^13.0.1",
+    "remark-toc": "^9.0.0",
     "sass": "^1.77.6",
     "theme-toggles": "^4.10.1",
     "typescript": "^5.5.2"
