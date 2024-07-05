@@ -20,6 +20,9 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.1.6
         version: 3.1.6
+      '@fontsource/monaspace-neon':
+        specifier: ^5.0.1
+        version: 5.0.1
       '@fontsource/source-serif-4':
         specifier: ^5.0.18
         version: 5.0.18
@@ -363,6 +366,9 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource/monaspace-neon@5.0.1':
+    resolution: {integrity: sha512-tW+QZIMjsyMt+TsBjWNWENDgoKUOS87voA9LEAIqMhcZPKKxSoh9Paq2qpw2Pcp1ihx/vxMAMdjLYsroyKQRtQ==}
 
   '@fontsource/source-serif-4@5.0.18':
     resolution: {integrity: sha512-Iia+KzciDzgI8CVofgqVOqRk9v/NUlouY050064RImxpkOBODMiUcrFg0neGA+OwIKOh21gTn0RBCTd38pOclA==}
@@ -2461,6 +2467,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.5':
     optional: true
+
+  '@fontsource/monaspace-neon@5.0.1': {}
 
   '@fontsource/source-serif-4@5.0.18': {}
 
