@@ -4,6 +4,10 @@ pubDate: 2024-07-28
 tags: ["rust", "rustc"]
 ---
 
+## Contents
+
+## Introduction
+
 Pretty printing is a programming technique used to format and display data structures, such as code, data, and configuration files, in a more readable and aesthetically pleasing way. This technique is especially useful during development, as it helps developers easily grasp the hierarchy and structure of code and data.
 
 The main task of pretty printing involves managing line breaks and indentation. When data output is too lengthy to fit on a single line, pretty printing breaks it into multiple lines. It then determines the appropriate indentation for the subsequent lines, ensuring that the structure remains clear and easy to follow.
@@ -175,7 +179,7 @@ cbox_delim(pp, INDENT, ("{", "}"), 1, |pp| {
 });
 ```
 
-For more examples, check out my [rustc_codegen_c](https://github.com/Wybxc/rustc_codegen_c/blob/master/crates/rustc_codegen_c_ast/src/pretty.rs) project.
+More examples can be found in my [rustc_codegen_c](https://github.com/Wybxc/rustc_codegen_c/blob/master/crates/rustc_codegen_c_ast/src/pretty.rs) project.
 
 
 
