@@ -7,6 +7,7 @@ import remarkToc from 'remark-toc';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://wybxc.github.io',
+  prefetch: true,
   integrations: [sitemap(), mdx()],
   markdown: {
     shikiConfig: {
