@@ -12,20 +12,20 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
-    "@astrojs/mdx": "^3.1.2",
-    "@astrojs/rss": "^4.0.7",
-    "@astrojs/sitemap": "^3.1.6",
-    "@fontsource/monaspace-neon": "^5.0.1",
-    "@fontsource/source-serif-4": "^5.0.18",
+    "@astrojs/mdx": "^3.1.8",
+    "@astrojs/rss": "^4.0.9",
+    "@astrojs/sitemap": "^3.2.1",
+    "@fontsource/monaspace-neon": "^5.1.0",
+    "@fontsource/source-serif-4": "^5.1.0",
     "@picocss/pico": "^2.0.6",
-    "astro": "^4.11.3",
+    "astro": "^4.16.7",
     "katex": "^0.16.11",
-    "marked": "^13.0.1",
+    "marked": "^13.0.3",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
     "remark-toc": "^9.0.0",
-    "sass": "^1.77.6",
+    "sass": "^1.80.4",
     "theme-toggles": "^4.10.1",
-    "typescript": "^5.5.2"
+    "typescript": "^5.6.3"
   }
 }
