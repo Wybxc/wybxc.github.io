@@ -4,7 +4,6 @@ import IconRss from '@/components/IconRss.astro';
 import ThemeToggle from '@/components/ThemeToggle.astro';
 import { Content as Copyright } from '@/components/Copyright.mdx';
 import ExternLink from '@/components/ExternLink.astro';
-import ViewTransitions from 'astro/components/ViewTransitions.astro';
 
 import '@fontsource/source-serif-4/400.css';
 import '@fontsource/source-serif-4/600.css';
@@ -40,7 +39,6 @@ const pageTitle = `Wybxc's Blog - ${Astro.props.pageTitle}`;
             href={new URL('rss.xml', Astro.site)}
         />
         <link rel="sitemap" href="/sitemap-index.xml" />
-        <ViewTransitions />
         <title>{pageTitle}</title>
     </head>
     <body>
