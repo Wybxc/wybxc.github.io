@@ -18,7 +18,7 @@
     "@fontsource/monaspace-neon": "^5.1.0",
     "@fontsource/source-serif-4": "^5.1.0",
     "@picocss/pico": "^2.0.6",
-    "astro": "^4.16.7",
+    "astro": "^4.16.18",
     "katex": "^0.16.11",
     "marked": "^13.0.3",
     "rehype-katex": "^7.0.1",
