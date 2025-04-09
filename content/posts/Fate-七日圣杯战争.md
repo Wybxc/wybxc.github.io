@@ -3,6 +3,7 @@ layout: default
 title: Fate/七日圣杯战争
 tags:
   - 小说
+date: 2018-09-01
 ---
 $$
 \color{#808080}{\tiny{注：平行时间线中，人物不一定等同于原作同名人物。}}
