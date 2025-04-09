@@ -1,6 +1,6 @@
 ---
-title: Welcome to Quartz
+title: 🌱 萱草的博客
+date: 2000-01-01
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+美人愁思兮，采芙蓉于南浦；公子忘忧兮，树萱草于北堂。
