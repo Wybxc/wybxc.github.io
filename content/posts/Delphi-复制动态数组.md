@@ -1,0 +1,75 @@
+---
+title: Delphi 复制动态数组
+tags:
+  - Delphi
+date: 2018-02-08
+---
+
+Delphi 的动态数组使用很方便，支持自动管理内存，无需显式释放；其实质是指向连续内存的智能指针。既然是指针，直接赋值就会导致两个变量指向同一个数组，如果修改其中一个，另一个也会改变。例如：
+
+```pascal
+var
+  a, b: array of Integer;
+begin
+  SetLength(a, 2);
+  a[0] := 1;
+  a[1] := 2;
+  // 此时 a 为 [1,2]
+  b := a;
+  b[1] := 3;
+  // 此时 a, b 皆为 [1,3]
+end;
+```
+
+如果要想把数组复制一份，并且修改其中一个另一个不会变动，就要复制数组的内容。可以写一个这样的方法复制数组。
+
+```pascal
+procedure MyCopyArr(out Dest: array of Integer; const Source: array of Integer);
+var
+  Len, i: Integer;
+begin
+  Len := Length(Source);
+  SetLength(Dest, Len);
+  for i := 0 to Len - 1 do
+    Dest[i] := Source[i];
+end;
+```
+
+但是，这样会报错：`E2008 Incompatible types`。这是因为单独写一个`array of Integer`相当于声明一个新类型，在不同地方出现的`array of Integer`是不能相容的。
+
+一种解决方法是定义类型名：
+
+```pascal
+type
+  TIntArr = array of Integer;
+```
+
+这样使用`TIntArr`代替`array of Integer`就不会报错。但是每次都要声明一个新类型很麻烦，毕竟懒惰是程序员的第一动力。Delphi 早就想好了应对方法，在`System`单元中有一个隐藏的声明：
+
+```pascal
+type
+  TArray<T> = array of T;
+```
+
+这是 Delphi 泛型的语法，了解 C++ 的 template 的同学应该能理解。如此，就可以用`TArray<Integer>`代替`array of Integer`，也不会出现编译器报错。
+
+另外，Delphi 也内置了一个复制动态数组的方法`Copy`。它不只可以复制整个数组，也可以复制数组的一部分。举个栗子：
+
+```pascal
+var
+  a, b: TArray<Integer>; // 这里写成 array of Integer 不会报错，因为 a 和 b 的声明是简写在一起的。
+  // 如果写成 a: array of Integer; b: array of Integer; 就会报错。
+begin
+  SetLength(a, 2);
+  a[0] := 1;
+  a[1] := 2;
+  // 此时 a 为 [1,2]
+  b := Copy(a); // 复制整个数组
+  b[1] := 3;
+  // 此时 a 为 [1,2]，b 为 [1,3]
+  a := Copy(b, 1, 1);
+  // 此时 a 为 [3]，b 为 [1,3]
+end;
+```
+
+实际使用中，我更推荐使用内置的函数`Copy`，而不是自己造轮子。而且，为了规避编译错误，我也推荐使用`TArray<T>`代替`array of T`的声明。

@@ -1,6 +1,9 @@
 ---
 title: Rustc Codegen C, part 1
 date: 2024-06-30
+tags:
+  - OSPP
+  - Rust
 ---
 For OSPP 2024, I applied for and was accepted to participate in the project ["C codegen backend for rustc"](https://blog.rust-lang.org/2024/05/07/OSPP-2024.html). This is an exciting opportunity for me to engage with a community-driven open-source project for the first time.
 

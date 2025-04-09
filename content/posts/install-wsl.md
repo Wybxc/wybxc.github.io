@@ -1,6 +1,8 @@
 ---
 title: A simple method to install WSL on a non-system drive
 date: 2023-06-13
+tags:
+  - WSL
 ---
 By default, WSL is installed on the system drive. If there is insufficient space on the system drive, you can install WSL on a non-system drive using the following steps:
 

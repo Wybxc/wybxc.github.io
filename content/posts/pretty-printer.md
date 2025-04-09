@@ -1,6 +1,8 @@
 ---
 title: Pretty Printer in Rustc
 date: 2024-07-28
+tags:
+  - Rust
 ---
 ## Introduction
 
@@ -74,7 +76,7 @@ trait Printer {
     fn end(&mut self);
 
     fn break_offset(&mut self, n: usize, off: isize);
-	fn space(&mut self);
+    fn space(&mut self);
     fn zerobreak(&mut self);
     fn hardbreak(&mut self);
     

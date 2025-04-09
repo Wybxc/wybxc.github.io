@@ -1,0 +1,174 @@
+---
+layout: default
+title: Ren'Py 无上限！
+tags: []
+date: 2021-06-17
+---
+本文记录一些在使用 Ren'Py 时发现的一些增强表现力的小技巧的实现方法。
+
+---
+## 行内字体描边
+在同一行内设置不同的字体描边。
+
+因为文本样式标签不继承 outlines 属性，所以需要特殊的方法实现。
+
+{% highlight python %}
+style border_ is text:
+    color "#fff"
+    outlines [(5, "#000", 0, 0)]
+    ypos -0.2 
+ 
+style borderbox_:
+    xmaximum 24 # 此处适用于字号为22的情况
+ 
+init python:
+    def border_tag(tag, argument, contents):        
+        return sum([
+            [(
+                renpy.TEXT_DISPLAYABLE, 
+                Fixed(Text(c, style="border_"), style="borderbox_")
+            ) for c in text]
+            if kind == renpy.TEXT_TEXT
+            else [(kind, text)]
+            for kind, text in contents
+        ], [])
+ 
+    config.custom_text_tags["border"] = border_tag
+
+label start:
+    "Yiri" "有时候需要一点{border}{cps=20}恐怖的文字{/cps}{/border}。"
+```
+
+原理是把需要改变描边放到 Text 中，这样就能设置单独的 style。为了实现慢速显示，这里为每一个字都包装了单独的 Text，并且外包 Fixed 来控制字间距。
+
+效果图：
+
+![l:v2-76023d34f1fa5ffcd433409b3f6c1fbe_b.jpg](./v2-76023d34f1fa5ffcd433409b3f6c1fbe_b.jpg)
+（**感谢 [@被诅咒的章鱼](https://www.zhihu.com/people/cf2985fccedf9e3f30de57d7e10c5dca) 的技术支持**）
+
+---
+## 等待一定时间后触发特殊剧情
+某些隐藏剧情的进入条件是在某一处对话处等待一定时间，可以通过这样的方式实现。
+
+{% highlight python %}
+define y = Character("Yiri")
+label start:
+    $ before_time = renpy.get_game_runtime()
+    y "你需要在这里等待5秒钟。{w=5}{nw}"
+    $ diff_time = renpy.get_game_runtime() - before_time
+    if diff_time < 5: # 如果等待时间不足，进入正常剧情
+        y "时间还不到哦。"
+        y "你只等了[diff_time]秒，你有点缺少耐心了。"
+    else: # 如果等待时间充足，进入隐藏剧情
+        y "不错，你等了5秒钟。"
+```
+
+原理是设置一个超时自动跳过的对话，并记录对话前后的时间，对比时间差。
+
+使用`renpy.get_game_runtime`，不会计算在菜单界面或存档期间的时间。 
+
+---
+## 主菜单淡入
+从启动界面切换到主菜单时，使用转场。
+
+首先在`screens.rpy`中，找到`main_menu`界面的的定义，改成别的名字，比如`main_menu_origin` 。
+
+{% highlight python %}
+screen main_menu_origin(): # 修改这里
+    ...
+```
+
+然后在你的脚本中编写`label main_menu`，在这里`call screen main_menu_origin` ，并使用转场。
+
+{% highlight python %}
+ label main_menu:
+    call screen main_menu_origin with dissolve
+    return
+```
+
+这是使用`call screen`而不是`show screen`，后者会导致无限循环。
+
+注意`with dissolve`要和`call`写在同一行，以表明这是进入界面时的转场。
+
+---
+## 主菜单二级菜单
+对于多故事组成的游戏，在开始游戏时不是进入某一段剧情，而是打开选择剧本的二级菜单。
+
+首先编写二级菜单的`screen`。这里我为了省事，直接套用了`main_menu`的样式。 
+
+{% highlight python %}
+screen 故事选择():
+    tag menu
+    add gui.main_menu_background
+
+    frame:
+        style "main_menu_frame"
+
+    vbox:
+        style_prefix "navigation"
+
+        xpos gui.navigation_xpos
+        yalign 0.5
+
+        spacing gui.navigation_spacing
+
+        textbutton _("Story1") action Start("start1")
+        textbutton _("Story2") action Start("start2")
+        textbutton _("Story3") action Start("start3")
+        textbutton _("返回") action Return() 
+```
+
+`start1` `start2` `start3` 分别是三个故事的起始`label`。
+
+使用`action Return()`返回主菜单。 
+
+然后在`screens.rpy`中修改`navigation`界面，把其中的`Start()`改为`ShowMenu('故事选择') `。 
+
+{% highlight python %}
+screen navigation():
+    ...
+    if main_menu:
+        textbutton _("开始游戏") action ShowMenu("故事选择")
+```
+
+---
+## 存档钩子
+有的时候我们需要在玩家存档、读档时进行一些额外的操作，这就需要拦截`FileAction`这一行为。
+
+{% highlight python %}
+init -5 python:
+    FileActionOld = FileAction # 保存原本的 FileAction
+    def FileActionNew(name, page=None, **kwargs):
+        if forbid_saving and renpy.current_screen().screen_name[0] == "save":
+            return Notify("不，你现在不可以存档。") # 返回不同的 action，可以拦截存档读档行为
+        elif forbid_loading and renpy.current_screen().screen_name[0] == "load":
+            return Notify("不，你现在不可以读档。")
+        else:
+            return FileActionOld(name, page=page, **kwargs) # 调用原本的 FileAction 来完成存档读档操作
+    FileAction = FileActionNew # 替换为自定义的 FileAction
+
+define y = Character("Yiri")
+default forbid_saving = False
+default forbid_loading = False
+label start:
+    y "接下来是存档测试。"
+    $ forbid_saving = True
+    y "现在，存档被禁止了。"
+    y "这很有趣，不是吗？"
+    $ forbid_saving = False
+    y "好了，你现在可以存档了。"
+    $ forbid_loading = True
+    y "不过，不能读档。"
+    $ forbid_saving = True
+    y "现在，试试一起被禁用的感觉。"
+    $ forbid_saving = False
+    $ forbid_loading = False
+    y "很好，玩笑开够了。你可以继续了。"
+    return
+```
+
+理论上用这种方法，可以拦截绝大多数的内置 action。
+
+---
+（持续更新中……）
+
