@@ -7,7 +7,11 @@ export const sharedPageComponents: SharedLayout = {
   header: [],
   afterBody: [
     Component.ConditionalRender({
-      component: Component.RecentNotes({ limit: 10 }),
+      component: Component.RecentNotes({ 
+        title: "最近的文章",
+        limit: 10,
+        filter: (page) => page.slug?.includes("posts") || false,
+      }),
       condition: (page) => page.fileData.slug === "index",
     }),
   ],
