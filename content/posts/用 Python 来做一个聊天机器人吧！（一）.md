@@ -24,7 +24,7 @@ date: 2019-12-09
 
 安装和其他的 Python 库一样简单：
 
-{% highlight bash %}
+```bash
 pip3 install chatterbot chatterbot_corpus
 ```
 
@@ -34,7 +34,7 @@ pip3 install chatterbot chatterbot_corpus
 
 所以，在使用 Chatterbot 前，我们需要先进行训练。
 
-{% highlight python %}
+```python
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 
@@ -49,7 +49,7 @@ trainer.train("chatterbot.corpus.english")
 
 我们分析一下这几行代码。
 
-{% highlight python %}
+```python
 bot = ChatBot(
     'Sakura',
     storage_adapter='chatterbot.storage.MongoDatabaseAdapter'
@@ -60,7 +60,7 @@ bot = ChatBot(
 
 这句代码里面有一个单词 adapter，官方翻译为“适配器”。其实它更准确的含义是“组件”。创建 Chatbot 时还有很多 xxx_adapter 这样的参数，可以为机器人开启各种各样的功能。不过有一点要注意，有些功能可能只对于英语进行了适配，对其他语言支持并不好。
 
-{% highlight python %}
+```python
 trainer = ChatterBotCorpusTrainer(bot)
 trainer.train("chatterbot.corpus.chinese")
 trainer.train("chatterbot.corpus.english")
@@ -91,7 +91,7 @@ trainer.train("chatterbot.corpus.english")
 
 首先，要创建机器人实例，代码和上面训练时一样：
 
-{% highlight python %}
+```python
 from chatterbot import ChatBot
 
 bot = ChatBot(
@@ -104,20 +104,20 @@ bot 对象有一个`get_response`方法，顾名思义，就是获取一句回�
 
 现在可以试一下：
 
-{% highlight python %}
+```python
 print(bot.get_response('你好吗？'))
 ```
 
 在经过短暂的等待之后，就能看到机器人的回答啦~
 
-{% highlight python %}
+```python
 print(bot.get_response('你好吗？'))
 # 输出：你好！
 ```
 
 `get_response`返回的是一个`Statement`对象，它有两个常用的属性`text`和`confindence`，分别代表返回的语句的内容和可信度（0到1）。
 
-{% highlight python %}
+```python
 r = bot.get_response('你好吗？')
 print('{} ,confidence={}'.format(r.text, r.confidence))
 # 输出：你好！ ,confidence=1.0
@@ -127,7 +127,7 @@ print('{} ,confidence={}'.format(r.text, r.confidence))
 
 然后是一只无限对话的小程序：
 
-{% highlight python %}
+```python
 from chatterbot import ChatBot
 bot = ChatBot(
     'Sakura',
@@ -140,7 +140,7 @@ while True:
     if i != 'exit':
         print(r(i))
     else:
-        break   
+        break
 ```
 
 享受和机器人沙雕对话的乐趣吧！
@@ -170,7 +170,7 @@ while True:
 
 然后我们需要 Python 端的对应接口。**[Aiocqhttp](https://github.com/richardchien/python-aiocqhttp) 就是 Python 上的 CoolQ HTTP API 接口**。同样，它可以用 pip 安装：
 
-{% highlight bash %}
+```bash
 pip3 install aiocqhttp
 ```
 
@@ -180,7 +180,7 @@ pip3 install aiocqhttp
 
 - 增加如下两行
 
-{% highlight json %}
+```json
 "ws_reverse_url": "ws://127.0.0.1:7700/ws/",
 "use_ws_reverse": true,
 ```
@@ -199,7 +199,7 @@ pip3 install aiocqhttp
 
 先上一个模板代码：
 
-{% highlight python %}
+```python
 from aiocqhttp import CQHttp
 
 bot = CQHttp(access_token='你刚才设置的 access_token', enable_http_post=False)
@@ -217,20 +217,20 @@ if __name__ == '__main__':
 
 现在我们分析一下这段代码：
 
-{% highlight python %}
+```python
 bot = CQHttp(access_token='你刚才设置的 access_token', enable_http_post=False)
 ```
 
 创建一个机器人实例，因为设置了`enable_http_post=False`，所以启用的是反向 WebSocket 模式，这个模式下，只需要传入 access_token 即可。
 
-{% highlight python %}
+```python
 if __name__ == '__main__':
     bot.run(host = '127.0.0.1', port = 7700)
 ```
 
 在本地的 7700 端口开启反向 WebSocket 服务。如果机器人的主程序有公网IP，那么还可以实现把任意一个酷Q连接到机器人（虽然我买不起公网IP，也没试过）。
 
-{% highlight python %}
+```python
 @bot.on_message('private')
 async def handle_msg(context):
     await bot.send(context, '现在为您复读：')
@@ -260,7 +260,7 @@ async def handle_msg(context):
 
 废话不多说，直接上代码：
 
-{% highlight python %}
+```python
 from aiocqhttp import CQHttp
 from chatterbot import ChatBot
 
@@ -290,7 +290,7 @@ if __name__ == '__main__':
 
 在下一篇文章里，我会介绍我在编写自己的机器人时用到的一些处理逻辑和小技巧。*（虽然也不知道下一篇文章会鸽几个月）*
 
-下一篇文章：[用 Python 来做一个聊天机器人吧！（二）]({% post_url 2020-2-5-用 Python 来做一个聊天机器人吧！（二） %})
+下一篇文章：[[用 Python 来做一个聊天机器人吧！（二）]]
 ​
 <hr/>
 

@@ -28,7 +28,7 @@ date: 2020-04-15
 
 首先，导入所需要的库。
 
-{% highlight python %}
+```python
 import plotly
 import plotly.graph_objects as go
 from selenium.webdriver import Chrome
@@ -39,13 +39,13 @@ pathlib 是为了方便将 plotly 输出的路径转化为链接，也可以用�
 
 然后打开一个 Chrome 窗口。
 
-{% highlight python %}
+```python
 driver = Chrome()
 ```
 
 接下来画图。
 
-{% highlight python %}
+```python
 trace = go.Scatter(x=x_list, y=y_list, mode='lines')
 plot = plotly.offline.plot([trace], auto_open=False, filename='graph.html')
 ```
@@ -54,13 +54,13 @@ plot = plotly.offline.plot([trace], auto_open=False, filename='graph.html')
 
 最后用 Chrome 显示出来。
 
-{% highlight python %}
-driver.get((Path.cwd() / plot).as_uri()) 
+```python
+driver.get((Path.cwd() / plot).as_uri())
 ```
 
 完整代码：
 
-{% highlight python %}
+```python
 import plotly
 import plotly.graph_objects as go
 from selenium.webdriver import Chrome
@@ -79,7 +79,7 @@ try:
 
         trace = go.Scatter(x=x_list, y=y_list, mode='lines')
         plot = plotly.offline.plot([trace], auto_open=False, filename='graph.html')
-        driver.get((Path.cwd() / plot).as_uri()) 
+        driver.get((Path.cwd() / plot).as_uri())
 
         time.sleep(1) # 用一个 sleep 来代替实际应用场景中的其他操作
 finally:

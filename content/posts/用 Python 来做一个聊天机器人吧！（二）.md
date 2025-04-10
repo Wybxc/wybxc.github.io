@@ -7,9 +7,9 @@ date: 2020-02-05
 ---
 
 
-咕咕咕了几个月，我又回来啦。在[上一篇文章]({% post_url 2019-12-9-用 Python 来做一个聊天机器人吧！（一） %})里，我们利用 Chatterbot + CoolQ 搭建了一个简单的 QQ 聊天机器人。这一篇文章可以看作是对上一篇文章的补充，主要介绍我在编写机器人时用到的一些处理逻辑和小技巧。
+咕咕咕了几个月，我又回来啦。在上一篇文章()里，我们利用 Chatterbot + CoolQ 搭建了一个简单的 QQ 聊天机器人。这一篇文章可以看作是对上一篇文章的补充，主要介绍我在编写机器人时用到的一些处理逻辑和小技巧。
 
-上一篇文章：[用 Python 来做一个聊天机器人吧！（一）]({% post_url 2019-12-9-用 Python 来做一个聊天机器人吧！（一） %})
+上一篇文章：[[用 Python 来做一个聊天机器人吧！（一）]]
 
 ---
 ## 群聊中@的判断
@@ -23,11 +23,11 @@ CoolQ 的消息转义可以帮助我们方便地实现这一功能。
 
 **CoolQ 在收到消息的非文本部分（比如图片，@某人，表情等）时，会将这一部分消息转义为「CQ码」**。CQ码是一类形如`[CQ:xx,xxxxx]`的字符串，比如`[CQ:face,id=176]`就是一个可爱的表情。**CQ码不仅可以在接受消息时使用，在发送消息时，消息中的CQ码也会被 CoolQ 自动转义**。
 
-**@某人对应的CQ码的格式是这样的：`[CQ:at,qq=被@人的qq号]`**。 
+**@某人对应的CQ码的格式是这样的：`[CQ:at,qq=被@人的qq号]`**。
 
 因为CQ码也是一段字符串，因此我们可以在收到消息时，通过字符串匹配的方式加以判断：
 
-{% highlight python %}
+```python
 import re
 
 @bot.on_message('group')
@@ -46,11 +46,11 @@ async def handle_msg_group(context):
 
 注意，为了避免事件连接刚建立时，方法连接还没有建立，需要在配置文件中加入`"ws_reverse_use_universal_client": true` ，具体请看第一篇文章。
 
-{% highlight python %}
+```python
 import re
 
 self_ID = 0
-    
+
 @bot.on_meta_event('lifecycle') # 反向 WebSocket 目前只能收到这一个 lifecycle 事件，所以不需要再进行类型判断
 async def init(context):
     global self_ID
@@ -69,11 +69,11 @@ async def handle_msg_group(context):
 
 不过，这样还有一点小问题，如果别人只是@一下机器人，就会把一个空字符串送到输入里面，这种情况可以单独处理一下：
 
-{% highlight python %}
+```python
 import re
 
 self_ID = 0
-    
+
 @bot.on_meta_event('lifecycle')
 async def init(context):
     global self_ID
@@ -98,7 +98,7 @@ async def handle_msg_group(context):
 
 要让机器人只回复一部分非@消息，最简单的办法是使用随机数：
 
-{% highlight python %}
+```python
 import random, re
 
 @bot.on_message('group')
@@ -133,9 +133,9 @@ async def handle_msg_group(context):
 *confindence=1，代表这句话在语料库中有原句*
 ![l:Confidence0.jpg](Confidence0.jpg)
 *confidence=0，代表这句话无从查证，只能瞎蒙*
-因此，我们可以通过判断`response`对象的`confidence`属性，只回答那些“能接上话”的句子，这样机器人的表现就会好一些。 
+因此，我们可以通过判断`response`对象的`confidence`属性，只回答那些“能接上话”的句子，这样机器人的表现就会好一些。
 
-{% highlight python %}
+```python
 import re
 
 @bot.on_message('group')
