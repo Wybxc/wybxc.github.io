@@ -5,6 +5,7 @@ public
 prof
 tsconfig.tsbuildinfo
 .obsidian
+.smart-env
 .quartz-cache
 private/
 .replit
