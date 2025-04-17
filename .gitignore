@@ -10,3 +10,4 @@ tsconfig.tsbuildinfo
 private/
 .replit
 replit.nix
+.trash
