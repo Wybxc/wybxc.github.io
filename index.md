@@ -5,7 +5,7 @@ layout: homepage
 ## About Me
 
 Hello! I am Jiayi Zhuang(庄嘉毅). Welcome to my homepage.
-I am an undergraduate student at the School of Electronics Engineering and Computer Science, Peking University.
+I am an PhD student at the School of Computer Science, Peking University.
 
 ## Research Interests
 
