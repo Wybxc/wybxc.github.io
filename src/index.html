@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiayi Zhuang | Peking University</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f5f0 0%, #e8e8e0 100%);
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px;
+            box-sizing: border-box;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            /* double border effect */
+            border: 3px solid #2c3e50;
+            outline: 1px solid #2c3e50;
+            outline-offset: -10px;
+        }
+
+        /* corner decorations */
+        .container::before,
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #8b7355;
+        }
+
+        .container::before {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .container::after {
+            bottom: 20px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 0px;
+            }
+
+            .container::before,
+            .container::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="content"></div>
+    </div>
+    <script type="module" src="./index.tsx"></script>
+</body>
+
+</html>

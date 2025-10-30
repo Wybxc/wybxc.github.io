@@ -1,0 +1,19 @@
+{
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^19.2.2",
+    "buffer": "^5.5.0||^6.0.0",
+    "parcel": "^2.16.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-pdf": "^10.2.0"
+  }
+}
