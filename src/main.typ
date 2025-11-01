@@ -3,7 +3,7 @@
 
 #set text(font: ("MLMRoman12", "FZNewShuSong-Z10"))
 
-#set par(justify: true, justification-limits: (tracking: (min: -0.01em, max: 0.02em)))
+#set par(justify: true, justification-limits: (tracking: (min: -0.01em, max: 0.02em)), first-line-indent: 2em)
 
 // Ornament
 #align(center, move(dy: 0.5cm, [
@@ -39,14 +39,15 @@
 Hello! I am Jiayi Zhuang(庄嘉毅).
 Welcome to my homepage.
 
-I am a PhD student at the #link("https://pl.cs.pku.edu.cn/en/")[Programming Languages Lab] in the School of Computer Science, Peking University.
+I am a first-year PhD student at Peking University's School of Computer Science, affiliated with the #link("https://pl.cs.pku.edu.cn/en/")[Programming Languages Lab] under the supervision of Prof. #link("https://stonebuddha.github.io")[Di Wang(王迪)] and Prof. #link("https://zhenjiang888.github.io/")[Zhenjiang Hu(胡振江)].
 
-My advisor is Prof. #link("https://stonebuddha.github.io")[Di Wang(王迪)].
+My research focuses on *Program Verification* and *Programming Languages*, with the goal of bridging the gap between theoretical foundations and practical applications.
 
-= Research Interests
+My journey into programming languages began with a fascination for the interplay between human logic and machine execution.
+I view language as fundamental to human intelligence, and programming languages as essential tools that enable effective communication with machines.
+I am passionate about enhancing software reliability and efficiency through innovations in programming languages.
 
-- *Programming Languages*: programming language design, type systems, domain-specific languages
-- *Program Verification*: verified programming language, proof engineering
+I welcome new ideas and collaborations. If my work resonates with you, please feel free to get in touch!
 
 = Publications
 
