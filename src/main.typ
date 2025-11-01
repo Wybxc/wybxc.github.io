@@ -55,6 +55,7 @@ I welcome new ideas and collaborations. If my work resonates with you, please fe
 
 #let publication(title: none, url: none, authors: (), pubtype: none, widgets: (), cover: none) = context layout(
   size => {
+    set par(first-line-indent: 0cm)
     let pt-length(len) = measure(line(length: len)).width.to-absolute()
     let cover-width = calc.min(pt-length(12em), size.width * 0.3)
     let cover-height = calc.max(cover-width * 0.67, 35000 / size.width.pt() * 1pt)
@@ -147,7 +148,6 @@ I welcome new ideas and collaborations. If my work resonates with you, please fe
 == Conference Papers
 
 None yet.
-
 I hope I can fill this section soon :)
 
 #v(2cm)
