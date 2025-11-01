@@ -151,8 +151,10 @@ I hope I can fill this section soon :)
 
 #v(2cm)
 #align(center, text(size: 10pt, fill: black.lighten(40%), emph([
+  #set par(spacing: 0.5em)
   This site is powered by #link("https://typst.app")[Typst] and #link("https://mozilla.github.io/pdf.js/")[PDF.js].
-  Source code available at #link("https://github.com/Wybxc/academic")[GitHub].
+
+  Source code available at #link("https://github.com/Wybxc/wybxc.github.io")[GitHub].
 
   Updated on #datetime.today().display().
 ])))
