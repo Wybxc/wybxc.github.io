@@ -1,10 +1,10 @@
 all: src/wide.pdf src/thin.pdf dist/index.html
 
 src/wide.pdf: src/main.typ src/wide.typ
-	typst compile src/wide.typ src/wide.pdf
+	typst compile src/wide.typ src/wide.pdf --ignore-system-fonts --font-path fonts
 
 src/thin.pdf: src/main.typ src/thin.typ
-	typst compile src/thin.typ src/thin.pdf
+	typst compile src/thin.typ src/thin.pdf --ignore-system-fonts --font-path fonts
 
 dist/index.html: src/*
 	bun run build
