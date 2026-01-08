@@ -1,8 +1,8 @@
 #import "../template.typ": *
 #import "@preview/sicons:16.0.0": sicon
 #show: post.with(
-  title: "Hello World",
-  date: datetime(year: 2022, month: 1, day: 1),
+  title: "Jiayi Zhuang",
+  date: datetime.today(),
   hidden: true,
 )
 

@@ -9,7 +9,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource/monaspace-neon": "^5.2.5",
     "@myriaddreamin/typst-ts-node-compiler": "^0.7.0-rc2",
     "@myriaddreamin/typst-ts-renderer": "^0.7.0-rc2",
     "@myriaddreamin/typst.ts": "0.7.0-rc2",

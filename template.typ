@@ -103,7 +103,7 @@
   #show math.equation.where(block: true): it => fallback(
     it,
     render: it => html.p(
-      class: "typst-math",
+      class: "typst-math typst-math-block",
       role: "math",
       html.frame(it),
     ),
@@ -136,5 +136,5 @@
 
   #show math.equation.where(block: false): set math.frac(style: "horizontal")
 
-  #fallback(body, render: body => html.main(html.article(body)))
+  #fallback(body, render: body => html.article(body))
 ]

@@ -16,30 +16,6 @@
     }
 }
 
-@font-face {
-    font-family: "MLModern";
-    src: url("/fonts/mlmodern-regular.woff2") format("woff2");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "MLModern";
-    src: url("/fonts/mlmodern-bold.woff2") format("woff2");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "MLModern";
-    src: url("/fonts/mlmodern-italic.woff2") format("woff2");
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-}
-
 .typst-math,
 .typst-invert {
     @media (prefers-color-scheme: dark) {
@@ -60,7 +36,7 @@ html {
 body {
     background-color: var(--color-base);
     color: var(--color-content);
-    font-family: "MLModern", Georgia, Times, serif;
+    font-family: var(--font-mlmodern);
 }
 
 main {
@@ -107,6 +83,21 @@ span[role="note"] {
     }
 }
 
+nav {
+    width: 100%;
+
+    & ul {
+        display: flex;
+        margin: 0;
+        padding: 1rem;
+        gap: 1rem;
+
+        & li {
+            display: inline-block;
+        }
+    }
+}
+
 section[role="doc-endnotes"],
 section[role="doc-bibliography"] {
     display: none;
@@ -128,11 +119,15 @@ blockquote {
     line-height: 1.5em;
 }
 
+.typst-math-block {
+    text-align: center;
+}
+
 .typst-math-inline {
     display: inline-block;
     margin-bottom: -0.25em;
     margin-top: -0.25em;
-    vertical-align: -1.2em;
+    vertical-align: -1.15em;
     line-height: 0;
 }
 
@@ -143,7 +138,7 @@ a {
 }
 
 code {
-    font-family: "Monaspace Neon", monospace;
+    font-family: var(--font-monaspace-neon);
     font-size: 80%;
 }
 
