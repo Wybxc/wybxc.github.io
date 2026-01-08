@@ -47,6 +47,12 @@
     }
 }
 
+.typst-darken {
+    @media (prefers-color-scheme: dark) {
+        filter: brightness(90%);
+    }
+}
+
 html {
     font-size: 16px;
 }
@@ -146,5 +152,16 @@ blockquote {
         display: block;
         text-align: right;
         font-style: italic;
+    }
+}
+
+.image-content-grid {
+    display: block;
+
+    @media (min-width: 640px) {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+        align-items: center;
     }
 }

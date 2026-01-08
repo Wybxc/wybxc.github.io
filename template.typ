@@ -4,6 +4,8 @@
 
 #let invert(body) = html.span(class: "typst-invert", body)
 
+#let darken(body) = html.span(class: "typst-darken", body)
+
 #let jsx = s => html.elem("script", attrs: ("data-jsx": s))
 
 #let aside(block: false, is-note: false, class: (), body) = {

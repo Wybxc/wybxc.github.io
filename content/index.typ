@@ -69,11 +69,9 @@ I welcome new ideas and collaborations. If my work resonates with you, please fe
   cover: none,
 ) = {
   html.div(
-    class: "compact",
-    style: "display: grid; grid-template-columns: auto 1fr; gap: 1em;
-            align-items: center; position: relative;",
+    class: "compact image-content-grid",
     {
-      render(box(width: 12.35em, height: 10.2em, {
+      darken(render(box(width: 12.35em, height: 10.2em, {
         place(dx: 0.25em, dy: 0.1em, box(
           stroke: 1pt + black.lighten(80%),
           radius: 0.5em,
@@ -88,7 +86,7 @@ I welcome new ideas and collaborations. If my work resonates with you, please fe
           radius: 0.25em,
           text(fill: white, size: 0.8em, weight: "bold", conference),
         ))
-      }))
+      })))
       html.div({
         link(url, strong(title))
         parbreak()
