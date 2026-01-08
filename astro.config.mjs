@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import { typst } from "astro-typst";
-import rehypeSvgo from "rehype-svgo";
 import { visit } from "unist-util-visit";
 
 // https://astro.build/config
@@ -17,22 +16,16 @@ export default defineConfig({
       () =>
         function (tree) {
           // post process: remove the link inside citation
-          visit(tree, "element", (node) => {
-            if (
-              node.tagName === "a" &&
-              node.properties.role === "doc-biblioref"
-            ) {
+          visit(tree, { tagName: "a" }, (node) => {
+            if (node.properties.role === "doc-biblioref") {
               node.tagName = "span";
               // make DOI links open in new tab
-              visit(node, "element", (node) => {
-                if (node.tagName === "a") {
-                  node.properties.target = "_blank";
-                }
+              visit(node, { tagName: "a" }, (node) => {
+                node.properties.target = "_blank";
               });
             }
           });
         },
-      rehypeSvgo,
     ],
   },
 });
