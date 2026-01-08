@@ -1,0 +1,25 @@
+---
+import { Image as AstroImage } from "astro:assets";
+import path from "path";
+type Props = {
+    src: string;
+    alt: string;
+    class?: string;
+    style?: string;
+};
+
+const { src, alt, class: className, style } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    "/content/**/*.{jpeg,jpg,png,gif}",
+);
+const imagePath = path.join("/content/", src);
+if (!images[imagePath])
+    throw new Error(`"${imagePath}" does not exist in ${Object.keys(images)}`);
+---
+
+<AstroImage
+    src={images[imagePath]()}
+    alt={alt}
+    class={className}
+    style={style}
+/>

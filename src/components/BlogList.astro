@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import { format } from "date-fns";
+
+const posts = await getCollection("blog", (post) => !post.data.hidden);
+---
+
+<ul>
+    {
+        posts.map((post) => (
+            <li>
+                <a href={"/" + post.id}>{post.data.title}</a>
+                {format(post.data.date, "yyyy/MM/dd")}
+            </li>
+        ))
+    }
+</ul>

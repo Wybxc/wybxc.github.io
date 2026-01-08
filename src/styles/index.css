@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+:root {
+    --color-base: oklch(99% 0.01 106);
+    --color-content: oklch(21% 0.01 106);
+    --color-primary: oklch(35% 0.132 264);
+    --color-primary-content: oklch(99% 0.132 264);
+    --color-secondary: oklch(55% 0.01 106);
+
+    @media (prefers-color-scheme: dark) {
+        --color-base: oklch(21% 0.01 267);
+        --color-content: oklch(95% 0.01 267);
+        --color-primary: oklch(55% 0.132 264);
+        --color-primary-content: oklch(99% 0.132 264);
+        --color-secondary: oklch(65% 0.01 267);
+    }
+}
+
+@font-face {
+    font-family: "MLModern";
+    src: url("/fonts/mlmodern-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MLModern";
+    src: url("/fonts/mlmodern-bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MLModern";
+    src: url("/fonts/mlmodern-italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+.typst-math,
+.typst-invert {
+    @media (prefers-color-scheme: dark) {
+        filter: invert(95%);
+    }
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--color-base);
+    color: var(--color-content);
+    font-family: "MLModern", Georgia, Times, serif;
+}
+
+main {
+    width: 85%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+article {
+    padding: 5rem 0;
+    max-width: 38rem;
+}
+
+aside,
+span[role="note"] {
+    position: relative;
+    float: right;
+    clear: right;
+    width: 100%;
+    display: flow-root;
+    margin: 1rem 0;
+    padding: 0 1rem;
+    box-sizing: border-box;
+
+    &.note {
+        color: var(--color-secondary);
+        .typst-math {
+            filter: contrast(60%);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        width: 19rem;
+        margin-top: 0;
+        margin-right: -20rem;
+        padding-left: 2rem;
+    }
+
+    &.numbering {
+        display: inline grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.5rem;
+    }
+}
+
+section[role="doc-endnotes"] {
+    display: none;
+}
+
+p {
+    text-wrap: pretty;
+    text-autospace: normal;
+    margin: 1rem 0;
+    line-height: 1.5rem;
+
+    .compact & {
+        line-height: 1rem;
+    }
+}
+
+blockquote {
+    line-height: 1.5em;
+}
+
+.typst-math-inline {
+    display: inline-block;
+    margin-bottom: -0.25em;
+    margin-top: -0.25em;
+    vertical-align: -1.2em;
+    line-height: 0;
+}
+
+a {
+    color: inherit;
+    text-underline-offset: 0.1em;
+    text-decoration-thickness: 0.05em;
+}
+
+code {
+    font-family: "Monaspace Neon", monospace;
+    font-size: 80%;
+}
+
+blockquote {
+    & cite {
+        display: block;
+        text-align: right;
+        font-style: italic;
+    }
+}

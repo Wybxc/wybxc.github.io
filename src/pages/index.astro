@@ -1,16 +1,12 @@
 ---
+import { getEntry, render } from "astro:content";
+import DefaultLayout from "../layouts/DefaultLayout.astro";
 
+const post = await getEntry("blog", "index");
+const title = post?.data?.title ?? "Typst ";
+const { Content } = post ? await render(post) : { Content: () => undefined };
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<DefaultLayout title={title}>
+    <Content />
+</DefaultLayout>
