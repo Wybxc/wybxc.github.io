@@ -79,7 +79,7 @@
           it,
         ))
       }
-      body
+      web(body, render: body => html.span(body))
     },
   )
 }
@@ -87,19 +87,24 @@
 #let post(
   title: "",
   desciption: "",
-  date: datetime.today(),
+  pubDate: datetime.today(),
   hidden: false,
   body,
 ) = [
   #metadata((
     title: title,
     description: desciption,
-    date: date.display("[year]-[month]-[day]"),
+    pubDate: pubDate.display("[year]-[month]-[day]"),
     hidden: hidden,
   ))<frontmatter>
+  #set page(paper: "iso-b5")
   #set text(font: "MLMRoman12")
   #show raw: set text(font: "Monaspace Neon")
 
+  #show link: it => web(
+    it,
+    fallback: underline,
+  )
   #show math.equation.where(block: true): it => web(
     it,
     render: it => html.p(

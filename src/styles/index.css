@@ -64,6 +64,7 @@ span[role="note"] {
 
     &.note {
         color: var(--color-secondary);
+
         .typst-math {
             filter: contrast(60%);
         }
@@ -114,6 +115,11 @@ p {
     }
 }
 
+ul,
+ol {
+    line-height: 1.5rem;
+}
+
 blockquote {
     line-height: 1.5em;
 }
@@ -134,6 +140,11 @@ a {
     color: inherit;
     text-underline-offset: 0.1em;
     text-decoration-thickness: 0.05em;
+}
+
+pre {
+    overflow-x: auto;
+    scrollbar-width: thin;
 }
 
 code {
