@@ -68,9 +68,8 @@ I welcome new ideas and collaborations. If my work resonates with you, please fe
   widgets: (),
   cover: none,
 ) = {
-  html.div(
-    class: "compact image-content-grid",
-    {
+  compact(
+    image-content-grid({
       darken(render(box(width: 12.35em, height: 10.2em, {
         place(dx: 0.25em, dy: 0.1em, box(
           stroke: 1pt + black.lighten(80%),
@@ -87,7 +86,7 @@ I welcome new ideas and collaborations. If my work resonates with you, please fe
           text(fill: white, size: 0.8em, weight: "bold", conference),
         ))
       })))
-      html.div({
+      div({
         link(url, strong(title))
         parbreak()
         let authors = authors.map(author => {
@@ -110,7 +109,7 @@ I welcome new ideas and collaborations. If my work resonates with you, please fe
           widgets
         }
       })
-    },
+    }),
   )
 }
 
