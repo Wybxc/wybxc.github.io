@@ -1,50 +1,50 @@
 #let target = dictionary(std).at("target", default: () => "paged")
 
-#let fallback(body, render: body => body, default: body => body) = context {
+#let web(body, render: body => body, fallback: body => body) = context {
   if target() == "html" {
     render(body)
   } else {
-    default(body)
+    fallback(body)
   }
 }
 
-#let render(body) = fallback(body, render: body => html.frame(body))
+#let render(body) = web(body, render: body => html.frame(body))
 
-#let center(body) = fallback(
+#let center(body) = web(
   body,
   render: body => html.div(style: "text-align: center", body),
-  default: body => align(std.center, body),
+  fallback: body => align(std.center, body),
 )
 
-#let invert(body) = fallback(body, render: body => html.span(
+#let invert(body) = web(body, render: body => html.span(
   class: "typst-invert",
   body,
 ))
 
-#let darken(body) = fallback(body, render: body => html.span(
+#let darken(body) = web(body, render: body => html.span(
   class: "typst-darken",
   body,
 ))
 
-#let div(body, ..args) = fallback(body, render: body => html.div(body, ..args))
+#let div(body, ..args) = web(body, render: body => html.div(body, ..args))
 
-#let compact(body) = fallback(body, render: body => html.span(
+#let compact(body) = web(body, render: body => html.span(
   class: "compact",
   body,
 ))
 
-#let image-content-grid(body) = fallback(body, render: body => html.div(
+#let image-content-grid(body) = web(body, render: body => html.div(
   class: "image-content-grid",
   body,
 ))
 
-#let jsx = s => fallback(
+#let jsx = s => web(
   s,
   render: s => html.elem("script", attrs: ("data-jsx": s)),
-  default: s => text(s),
+  fallback: s => raw(s),
 )
 
-#let aside(block: false, is-note: false, class: (), body) = fallback(
+#let aside(block: false, is-note: false, class: (), body) = web(
   body,
   render: body => {
     let class = class + if is-note { ("note",) } else { ("",) }
@@ -61,6 +61,7 @@
       )
     }
   },
+  fallback: body => box(stroke: 1pt + gray, inset: 0.5em, body),
 )
 
 #let sidenote(number: none, block: false, body) = {
@@ -73,7 +74,7 @@
     is-note: true,
     {
       if number != none {
-        fallback(str(number) + ".", render: it => html.span(
+        web(str(number) + ".", render: it => html.span(
           class: "number",
           it,
         ))
@@ -96,11 +97,10 @@
     date: date.display("[year]-[month]-[day]"),
     hidden: hidden,
   ))<frontmatter>
-  #set page(height: auto)
   #set text(font: "MLMRoman12")
   #show raw: set text(font: "Monaspace Neon")
 
-  #show math.equation.where(block: true): it => fallback(
+  #show math.equation.where(block: true): it => web(
     it,
     render: it => html.p(
       class: "typst-math typst-math-block",
@@ -108,7 +108,7 @@
       html.frame(it),
     ),
   )
-  #show math.equation.where(block: false): it => fallback(
+  #show math.equation.where(block: false): it => web(
     it,
     render: it => html.span(
       class: "typst-math typst-math-inline",
@@ -121,7 +121,7 @@
     sidenote(number: cnt.get().first(), it.body)
   }
   #show footnote.entry: none
-  #show quote.where(block: true): it => fallback(
+  #show quote.where(block: true): it => web(
     it,
     render: it => html.blockquote({
       it.body
@@ -136,5 +136,5 @@
 
   #show math.equation.where(block: false): set math.frac(style: "horizontal")
 
-  #fallback(body, render: body => html.article(body))
+  #web(body, render: body => html.article(body))
 ]

@@ -37,19 +37,15 @@
   ]
 ]
 
-Hello! I am Jiayi Zhuang(庄嘉毅).
-Welcome to my homepage.
+Hello! I am Jiayi Zhuang (庄嘉毅). Welcome to my homepage.
 
-I am a first-year PhD student at Peking University's School of Computer Science, affiliated with the #link("https://pl.cs.pku.edu.cn/en/")[Programming Languages Lab] under the supervision of Prof. #link("https://stonebuddha.github.io")[Di Wang(王迪)] and Prof. #link("https://zhenjiang888.github.io/")[Zhenjiang Hu(胡振江)].
+I am a first-year PhD student at the School of Computer Science, Peking University. I am a member of the #link("https://pl.cs.pku.edu.cn/en/")[Programming Languages Lab], advised by Prof. #link("https://stonebuddha.github.io")[Di Wang (王迪)] and Prof. #link("https://zhenjiang888.github.io/")[Zhenjiang Hu (胡振江)].
 
-My research focuses on *Program Verification*#footnote[Footnote] and *Programming Languages*#footnote[#lorem(50)], with the goal of bridging the gap between theoretical foundations and practical applications.
+My research focuses on *Program Verification* and *Programming Languages*. I am particularly committed to bridging the gap between rigorous theoretical foundations and practical software applications.
 
+My interest in this field stems from a fascination with the interplay between human logic and machine execution. I view programming languages not merely as tools, but as essential mediums that bridge human intelligence and computational power. I am passionate about leveraging these insights to enhance software reliability and efficiency.
 
-My journey into programming languages began with a fascination for the interplay between human logic and machine execution.
-I view language as fundamental to human intelligence, and programming languages as essential tools that enable effective communication with machines.
-I am passionate about enhancing software reliability and efficiency through innovations in programming languages.
-
-I welcome new ideas and collaborations. If my work resonates with you, please feel free to get in touch!
+I am always open to new ideas and collaborations. If you share similar interests, please feel free to reach out!
 
 == Recent Blog Posts
 
