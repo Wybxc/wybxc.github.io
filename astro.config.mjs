@@ -2,6 +2,8 @@
 import { defineConfig } from "astro/config";
 import { typst } from "astro-typst";
 import { visit } from "unist-util-visit";
+// @ts-ignore
+import { rehypeTransformJsxInTypst } from "./node_modules/typstx/lib/core.js";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +13,13 @@ export default defineConfig({
       htmlMode: "hast",
     }),
   ],
+  image: {
+    remotePatterns: [
+      {
+        protocol: "data",
+      }
+    ]
+  },
   markdown: {
     rehypePlugins: [
       () =>
@@ -26,6 +35,29 @@ export default defineConfig({
             }
           });
         },
+      () =>
+        function (tree) {
+          visit(tree, { tagName: "body" }, (node) => {
+            node.children.splice(0, 0, {
+              type: "element",
+              tagName: "script",
+              properties: {
+                "data-jsx": `import { Image as AstroImage } from "astro:assets";`,
+              },
+              children: [],
+            });
+          });
+          visit(tree, { tagName: "img" }, (node) => {
+            if (node.properties.class === "typst-frame") {
+              const src = node.properties.src;
+              node.tagName = "script";
+              node.properties = {
+                "data-jsx": `<AstroImage src="${src}" alt="" format="svg" inferSize />`,
+              };
+            }
+          });
+        },
+      () => rehypeTransformJsxInTypst(),
     ],
   },
 });

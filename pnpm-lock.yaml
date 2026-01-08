@@ -41,12 +41,12 @@ importers:
       postcss-preset-env:
         specifier: ^10.6.0
         version: 10.6.0(postcss@8.5.6)
-      rehype-svgo:
-        specifier: ^2.0.0
-        version: 2.0.0(svgo@4.0.0)
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
+      typstx:
+        specifier: 0.0.1-beta.1
+        version: 0.0.1-beta.1
       unist-util-visit:
         specifier: ^5.0.0
         version: 5.0.0
@@ -1430,12 +1430,6 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  hast-util-from-dom@5.0.1:
-    resolution: {integrity: sha512-N+LqofjR2zuzTjCPzyDUdSshy4Ma6li7p/c3pA78uTwzFgENbgbUrm2ugwsOdcjI1muO+o6Dgzp9p8WHtn/39Q==}
-
-  hast-util-from-html-isomorphic@2.0.0:
-    resolution: {integrity: sha512-zJfpXq44yff2hmE0XmwEOzdWin5xwH+QIhMLOScpX91e/NSGPsAzNCvLQDIEPyO2TXi+lBmU6hjLIhV8MwP2kw==}
-
   hast-util-from-html@2.0.3:
     resolution: {integrity: sha512-CUSRHXyKjzHov8yKsQjGOElXy/3EKpyX56ELnkHH34vDVw1N1XSQ1ZcAvTyAPtGqLTuKP/uxM+aLkSPqF/EtMw==}
 
@@ -2221,12 +2215,6 @@ packages:
 
   rehype-stringify@10.0.1:
     resolution: {integrity: sha512-k9ecfXHmIPuFVI61B9DeLPN0qFHfawM6RsuX48hoqlaKSF61RskNjSm1lI8PhBEM0MRdLxVVm4WmTqJQccH9mA==}
-
-  rehype-svgo@2.0.0:
-    resolution: {integrity: sha512-jQTgvK4x0IgHkwQmfdDwemX+iDZorRoEujJsZvvOasKYxvzXQfRO3aU2mXRN1pUq+Z9WkqxkYMjHRfVhxyC70g==}
-    engines: {node: '>= 22'}
-    peerDependencies:
-      svgo: ^3 || ^4
 
   rehype@13.0.2:
     resolution: {integrity: sha512-j31mdaRFrwFRUIlxGeuPXXKWQxet52RBQRvCmzl5eCefn/KGbomK5GMHNMsOJf55fgo3qw5tST5neDuarDYR2A==}
@@ -4000,19 +3988,6 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  hast-util-from-dom@5.0.1:
-    dependencies:
-      '@types/hast': 3.0.4
-      hastscript: 9.0.1
-      web-namespaces: 2.0.1
-
-  hast-util-from-html-isomorphic@2.0.0:
-    dependencies:
-      '@types/hast': 3.0.4
-      hast-util-from-dom: 5.0.1
-      hast-util-from-html: 2.0.3
-      unist-util-remove-position: 5.0.0
-
   hast-util-from-html@2.0.3:
     dependencies:
       '@types/hast': 3.0.4
@@ -5224,15 +5199,6 @@ snapshots:
       '@types/hast': 3.0.4
       hast-util-to-html: 9.0.5
       unified: 11.0.5
-
-  rehype-svgo@2.0.0(svgo@4.0.0):
-    dependencies:
-      '@types/hast': 3.0.4
-      hast-util-from-html-isomorphic: 2.0.0
-      hast-util-to-html: 9.0.5
-      svgo: 4.0.0
-      unified: 11.0.5
-      unist-util-visit: 5.0.0
 
   rehype@13.0.2:
     dependencies:

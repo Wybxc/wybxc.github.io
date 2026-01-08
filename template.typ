@@ -53,21 +53,6 @@
     hidden: hidden,
   ))<frontmatter>
 
-  #jsx("import Image from '../src/components/Image.astro'")
-  #let img(src, alt: "", class: "", style: "") = {
-    jsx(
-      "<Image src={'"
-        + src
-        + "'} alt={'"
-        + alt
-        + "'} class={'"
-        + class.replace("\n", "")
-        + "'} style={'"
-        + style.replace("\n", "")
-        + "'}/>",
-    )
-  }
-
   #show math.equation.where(block: true): it => html.p(
     class: "typst-math",
     role: "math",
@@ -83,42 +68,6 @@
     sidenote(number: cnt.get().first(), it.body)
   }
   #show footnote.entry: none
-  #show image: it => context {
-    let realtive-to-css = it => {
-      let length = str(it.length.to-absolute().pt()) + "px"
-      let ratio = str(it.ratio / 1%) + "%"
-      if ratio == "0%" {
-        length
-      } else {
-        "calc(" + ratio + " + " + length + ")"
-      }
-    }
-    let width = if it.width == auto {
-      ""
-    } else {
-      "width: " + realtive-to-css(it.width) + ";"
-    }
-    let height = if it.height == auto {
-      ""
-    } else {
-      "height: " + realtive-to-css(it.height) + ";"
-    }
-    let fit = (
-      cover: "object-fit: cover;",
-      contain: "object-fit: contain;",
-      stretch: "object-fit: fill;",
-    ).at(it.fit)
-
-    if target() == "html" and type(it.source) == str {
-      img(
-        it.source,
-        alt: it.alt,
-        style: width + height + fit,
-      )
-    } else {
-      it
-    }
-  }
   #show quote.where(block: true): it => html.blockquote({
     it.body
     if it.attribution != none {

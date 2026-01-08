@@ -107,6 +107,7 @@ section[role="doc-bibliography"] {
 }
 
 p {
+    text-wrap: balance;
     text-wrap: pretty;
     text-autospace: normal;
     margin: 1rem 0;

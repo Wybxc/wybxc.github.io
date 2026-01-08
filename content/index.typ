@@ -73,21 +73,22 @@ I welcome new ideas and collaborations. If my work resonates with you, please fe
     style: "display: grid; grid-template-columns: auto 1fr; gap: 1em;
             align-items: center; position: relative;",
     {
-      html.div(style: "position: relative", {
-        html.abbr(
-          style: "position: absolute; top: 1.5rem; left: -0.25rem;
-                  background-color: var(--color-primary);
-                  color: var(--color-primary-content);
-                  font-size: 0.8rem;
-                  padding: 0.25rem 0.5rem 0;
-                  border-radius: 0.25rem;",
-          conference,
-        )
-        html.div(
-          style: "border-radius: 1rem; border: 1px solid #ccc; font-size: 0; overflow: hidden",
-          image(cover, width: 12em, height: 10em),
-        )
-      })
+      render(box(width: 12.35em, height: 10.2em, {
+        place(dx: 0.25em, dy: 0.1em, box(
+          stroke: 1pt + black.lighten(80%),
+          radius: 0.5em,
+          width: 12em,
+          height: 10em,
+          clip: true,
+          image(cover, width: 100%, height: 100%),
+        ))
+        move(dy: 0.6em, box(
+          fill: blue.darken(20%),
+          inset: 0.4em,
+          radius: 0.25em,
+          text(fill: white, size: 0.8em, weight: "bold", conference),
+        ))
+      }))
       html.div({
         link(url, strong(title))
         parbreak()
