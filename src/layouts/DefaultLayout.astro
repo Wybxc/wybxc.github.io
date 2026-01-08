@@ -1,13 +1,15 @@
 ---
 import "normalize.css";
-import "@fontsource/monaspace-neon";
 import "../styles/index.css";
 import { Font } from "astro:assets";
+import { Rss } from "@lucide/astro";
+import { getYear } from "date-fns";
 
 type Props = {
     title: string;
 };
 const { title } = Astro.props;
+const year = getYear(new Date());
 ---
 
 <html lang="en">
@@ -16,6 +18,12 @@ const { title } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Wybxc’s Blog"
+            href={new URL("rss.xml", Astro.site)}
+        />
         <Font cssVariable="--font-mlmodern" preload />
         <Font cssVariable="--font-monaspace-neon" />
         <title>{title}</title>
@@ -34,9 +42,45 @@ const { title } = Astro.props;
                     <li>
                         <a href="/about">About</a>
                     </li>
+                    <li>
+                        <a href="/rss.xml">
+                            <Rss size="1em" />
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <slot />
+            <footer>
+                <small>
+                    &copy; {year} Jiayi Zhuang. Powered by <a
+                        href="https://astro.build/">Astro</a
+                    > and <a href="https://typst.app/">Typst</a>. Licensed under <a
+                        href="https://creativecommons.org/licenses/by-nc/4.0/"
+                        >CC BY-NC 4.0</a
+                    ><img
+                        src="https://mirrors.creativecommons.org/presskit/icons/cc.svg"
+                        alt=""
+                        class="cc"
+                    /><img
+                        src="https://mirrors.creativecommons.org/presskit/icons/by.svg"
+                        alt=""
+                        class="cc"
+                    /><img
+                        src="https://mirrors.creativecommons.org/presskit/icons/nc.svg"
+                        alt=""
+                        class="cc"
+                    />.
+                </small>
+            </footer>
         </main>
     </body>
 </html>
+
+<style>
+    .cc {
+        max-width: 1em;
+        max-height: 1em;
+        margin-left: 0.2em;
+        vertical-align: -0.1em;
+    }
+</style>

@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.14",
+    "@lucide/astro": "^0.562.0",
     "@myriaddreamin/typst-ts-node-compiler": "^0.7.0-rc2",
     "@myriaddreamin/typst-ts-renderer": "^0.7.0-rc2",
     "@myriaddreamin/typst.ts": "0.7.0-rc2",

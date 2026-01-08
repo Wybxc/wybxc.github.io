@@ -1,7 +1,6 @@
 #import "../../template.typ": *
 #show: post.with(
   title: "Blog Posts",
-  date: datetime.today(),
   hidden: true,
 )
 

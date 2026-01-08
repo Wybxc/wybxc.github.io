@@ -2,7 +2,6 @@
 #import "@preview/sicons:16.0.0": sicon
 #show: post.with(
   title: "Jiayi Zhuang",
-  date: datetime.today(),
   hidden: true,
 )
 

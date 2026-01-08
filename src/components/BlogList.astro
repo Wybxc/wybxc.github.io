@@ -10,7 +10,7 @@ const posts = await getCollection("blog", (post) => !post.data.hidden);
         posts.map((post) => (
             <li>
                 <a href={"/" + post.id}>{post.data.title}</a>
-                {format(post.data.date, "yyyy/MM/dd")}
+                {post.data.pubDate && format(post.data.pubDate, "yyyy/MM/dd")}
             </li>
         ))
     }

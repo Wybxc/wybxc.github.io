@@ -7,6 +7,7 @@ import { rehypeTransformJsxInTypst } from "./node_modules/typstx/lib/core.js";
 
 // https://astro.build/config
 export default defineConfig({
+	site: "https://blog.wybxc.cc",
 	integrations: [
 		typst({
 			target: "html",
