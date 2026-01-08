@@ -79,31 +79,29 @@
     html.frame(box(height: 3em, inset: (y: 1em), it)),
   )
   #show footnote: it => {
-    sidenote(number: counter(footnote).get().first(), it.body)
+    let cnt = counter(footnote)
+    sidenote(number: cnt.get().first(), it.body)
   }
   #show footnote.entry: none
   #show image: it => context {
+    let realtive-to-css = it => {
+      let length = str(it.length.to-absolute().pt()) + "px"
+      let ratio = str(it.ratio / 1%) + "%"
+      if ratio == "0%" {
+        length
+      } else {
+        "calc(" + ratio + " + " + length + ")"
+      }
+    }
     let width = if it.width == auto {
       ""
     } else {
-      let length = str(it.width.length.to-absolute().pt()) + "px"
-      let ratio = str(it.width.ratio / 1%) + "%"
-      if ratio == "0%" {
-        "width: " + length + ";"
-      } else {
-        "width: calc(" + ratio + " + " + length + ");"
-      }
+      "width: " + realtive-to-css(it.width) + ";"
     }
     let height = if it.height == auto {
       ""
     } else {
-      let length = str(it.height.length.to-absolute().pt()) + "px"
-      let ratio = str(it.height.ratio / 1%) + "%"
-      if ratio == "0%" {
-        "height: " + length + ";"
-      } else {
-        "height: calc(" + ratio + " + " + length + ");"
-      }
+      "height: " + realtive-to-css(it.height) + ";"
     }
     let fit = (
       cover: "object-fit: cover;",
@@ -127,7 +125,11 @@
       html.cite([-- #it.attribution])
     }
   })
+  #set cite(form: "full")
+  #show cite: footnote
+  #set bibliography(style: "chicago-notes")
 
   #show math.equation.where(block: false): set math.frac(style: "horizontal")
+
   #html.main(html.article(body))
 ]

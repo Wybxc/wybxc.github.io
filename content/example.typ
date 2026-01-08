@@ -54,6 +54,13 @@ Inline math: $limits(sum)_(i=1)^n i^2 = (n^2+n)(2n+1)/6$
 $sum_(i=1)^n i^2 = (n^2+n)(2n+1)/6$
 #lorem(20)
 
+#lorem(
+  20,
+) @dunfieldBidirectionalTyping2022 @ayounHybridApproachSemiautomated2025
+#footnote[111]
+
 #quote(block: true, attribution: "Someone")[
   #lorem(50)
 ]
+
+#bibliography("example.bib", style: "chicago-notes")

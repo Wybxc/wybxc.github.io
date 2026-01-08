@@ -101,7 +101,8 @@ span[role="note"] {
     }
 }
 
-section[role="doc-endnotes"] {
+section[role="doc-endnotes"],
+section[role="doc-bibliography"] {
     display: none;
 }
 
