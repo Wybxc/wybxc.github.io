@@ -3,6 +3,7 @@
 #show: post.with(
   title: "About",
   hidden: true,
+  toc: false,
 )
 
 = About the Site

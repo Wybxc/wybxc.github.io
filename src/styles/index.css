@@ -193,3 +193,11 @@ h6 {
         }
     }
 }
+
+nav[role="doc-toc"] {
+
+    &>ol,
+    &>ul {
+        padding-left: 0;
+    }
+}

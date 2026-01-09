@@ -1,8 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import { format } from "date-fns";
+import { format, compareDesc } from "date-fns";
 
-const posts = await getCollection("blog", (post) => !post.data.hidden);
+const posts = (await getCollection("blog", (post) => !post.data.hidden)).sort(
+    (a, b) =>
+        compareDesc(a.data.pubDate ?? new Date(), b.data.pubDate ?? new Date()),
+);
 ---
 
 <ul>
@@ -10,7 +13,7 @@ const posts = await getCollection("blog", (post) => !post.data.hidden);
         posts.map((post) => (
             <li>
                 <a href={"/" + post.id}>{post.data.title}</a>
-                {post.data.pubDate && format(post.data.pubDate, "yyyy/MM/dd")}
+                {post.data.pubDate && format(post.data.pubDate, "MMM dd, yyyy")}
             </li>
         ))
     }

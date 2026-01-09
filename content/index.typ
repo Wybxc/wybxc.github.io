@@ -3,6 +3,7 @@
 #show: post.with(
   title: "Jiayi Zhuang",
   hidden: true,
+  toc: false,
 )
 
 #aside(block: true)[

@@ -2,6 +2,7 @@
 #show: post.with(
   title: "Blog Posts",
   hidden: true,
+  toc: false,
 )
 
 = Blog Posts

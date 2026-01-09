@@ -1,3 +1,5 @@
+#import "@preview/wordometer:0.1.5": word-count, total-words
+
 #let target = dictionary(std).at("target", default: () => "paged")
 
 #let web(body, render: body => body, fallback: body => body) = context {
@@ -89,6 +91,7 @@
   desciption: "",
   pubDate: datetime.today(),
   hidden: false,
+  toc: true,
   body,
 ) = [
   #metadata((
@@ -137,9 +140,30 @@
   )
   #set cite(form: "full")
   #show cite: footnote
-  #set bibliography(style: "chicago-notes")
+  #set bibliography(style: "chicago-notes", title: none)
 
   #show math.equation.where(block: false): set math.frac(style: "horizontal")
 
-  #web(body, render: body => html.article(body))
+  #web(
+    {
+      if toc {
+        aside(block: true, [
+          #pubDate.display("[month repr:short] [day], [year]")\
+          #context {
+            let time = calc.round(state("wordometer").final().words / 150)
+            if time <= 1 {
+              "1 min read"
+            } else {
+              str(time) + " mins read"
+            }
+          }
+
+          *Table of Contents*
+          #outline(title: none)
+        ])
+      }
+      word-count(body)
+    },
+    render: body => html.article(body),
+  )
 ]
