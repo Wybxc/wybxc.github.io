@@ -61,6 +61,7 @@ span[role="note"] {
     margin: 1rem 0;
     padding: 0 1rem;
     box-sizing: border-box;
+    z-index: 1;
 
     &.note {
         color: var(--color-secondary);
@@ -145,6 +146,7 @@ a {
 pre {
     overflow-x: auto;
     scrollbar-width: thin;
+    width: 100%;
 }
 
 code {
@@ -195,9 +197,8 @@ h6 {
 }
 
 nav[role="doc-toc"] {
-
-    &>ol,
-    &>ul {
+    & > ol,
+    & > ul {
         padding-left: 0;
     }
 }
