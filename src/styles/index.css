@@ -170,3 +170,26 @@ blockquote {
         align-items: center;
     }
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    scroll-margin-top: 4rem;
+    scroll-snap-margin: 4rem;
+    scroll-snap-stop: always;
+
+    & .heading-anchor {
+        vertical-align: middle;
+        position: absolute;
+        left: -1.5rem;
+        color: var(--color-secondary);
+
+        &:hover {
+            color: var(--color-content);
+        }
+    }
+}
