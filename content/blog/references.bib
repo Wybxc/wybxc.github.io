@@ -1,3 +1,53 @@
+@article{chitilPrettyPrintingLazy2005,
+  title = {Pretty Printing with Lazy Dequeues},
+  author = {Chitil, Olaf},
+  date = {2005-01},
+  journaltitle = {ACM Transactions on Programming Languages and Systems},
+  shortjournal = {ACM Trans. Program. Lang. Syst.},
+  volume = {27},
+  number = {1},
+  pages = {163--184},
+  issn = {0164-0925, 1558-4593},
+  doi = {10.1145/1053468.1053473},
+  abstract = {There are several purely functional libraries for converting tree structured data into indented text, but they all make use of some backtracking. Over twenty years ago, Oppen published a more efficient imperative implementation of a pretty printer. This article shows that the same efficiency is also obtainable without destructive updates by developing a similar but purely functional Haskell implementation with the same complexity bounds. At its heart lie two lazy double ended queues.},
+  langid = {english},
+  annotation = {GSCC: 0000026 2026-01-09T14:46:12.667Z 0.02},
+  file = {/Users/wybxc/Zotero/storage/U9YAXRB3/Chitil - 2005 - Pretty printing with lazy dequeues.pdf}
+}
+
+@incollection{hughesDesignPrettyprintingLibrary1995,
+  title = {The Design of a Pretty-Printing Library},
+  booktitle = {Advanced Functional Programming},
+  author = {Hughes, John},
+  editor = {Jeuring, Johan and Meijer, Erik},
+  editora = {Goos, Gerhard and Hartmanis, Juris and Leeuwen, Jan},
+  editoratype = {redactor},
+  date = {1995},
+  volume = {925},
+  pages = {53--96},
+  publisher = {Springer Berlin Heidelberg},
+  location = {Berlin, Heidelberg},
+  doi = {10.1007/3-540-59451-5_3},
+  isbn = {978-3-540-59451-2 978-3-540-49270-2},
+  langid = {english}
+}
+
+@article{huHowFunctionalProgramming2015,
+  title = {How Functional Programming Mattered},
+  author = {Hu, Zhenjiang and Hughes, John and Wang, Meng},
+  date = {2015-09-01},
+  journaltitle = {National Science Review},
+  shortjournal = {Natl. Sci. Rev.},
+  volume = {2},
+  number = {3},
+  pages = {349--370},
+  issn = {2053-714X, 2095-5138},
+  doi = {10.1093/nsr/nwv042},
+  abstract = {Abstract             In 1989 when functional programming was still considered a niche topic, Hughes wrote a visionary paper arguing convincingly ‘why functional programming matters’. More than two decades have passed. Has functional programming really mattered? Our answer is a resounding ‘Yes!’. Functional programming is now at the forefront of a new generation of programming technologies, and enjoying increasing popularity and influence. In this paper, we review the impact of functional programming, focusing on how it has changed the way we may construct programs, the way we may verify programs, and fundamentally the way we may think about programs.},
+  langid = {english},
+  file = {/Users/wybxc/Zotero/storage/JPXBKJYN/Hu 等 - 2015 - How functional programming mattered.pdf;/Users/wybxc/Zotero/storage/R2VSQNAE/1427872.html}
+}
+
 @article{oppenPrettyprinting1980,
   title = {Prettyprinting},
   author = {Oppen, Dereck C.},
@@ -10,7 +60,24 @@
   issn = {0164-0925},
   doi = {10.1145/357114.357115},
   abstract = {An algorithm for prettyprinting is given. For an input stream of length n and an output device with linewidth m, the algorithm requires time O(n) and space O(m). The algorithm is described in terms of two parallel processes: the first scans the input stream to determine the space required to print logical blocks of tokens; the second uses this information to decide where to break lines of text; the two processes communicate by means of a buffer of size O(m). The algorithm does not wait for the entire stream to be input, but begins printing as soon as it has received a full line of input. The algorithm is easily implemented.},
-  langid = {english}
+  langid = {english},
+  file = {/Users/wybxc/Zotero/storage/8XJY4CQI/Oppen - 1980 - Prettyprinting.pdf}
+}
+
+@article{swierstraLinearBoundedFunctional2009,
+  title = {Linear, Bounded, Functional Pretty-Printing},
+  author = {Swierstra, S. Doaitse and Chitil, Olaf},
+  date = {2009-01},
+  journaltitle = {Journal of Functional Programming},
+  shortjournal = {J. Funct. Program.},
+  volume = {19},
+  number = {1},
+  pages = {1--16},
+  issn = {0956-7968, 1469-7653},
+  doi = {10.1017/S0956796808006990},
+  abstract = {We present two implementations of Oppen’s pretty-printing algorithm in Haskell that meet the efficiency of Oppen’s imperative solution but have a simpler and a clear structure. We start with an implementation that uses lazy evaluation to simulate two co-operating processes. Then we present an implementation that uses higher-order functions for delimited continuations to simulate co-routines with explicit scheduling.},
+  langid = {english},
+  file = {/Users/wybxc/Zotero/storage/69MCURCA/Swierstra和Chitil - 2009 - Linear, bounded, functional pretty-printing.pdf}
 }
 
 @incollection{wadlerPrettierPrinter2003,

@@ -1,4 +1,4 @@
-#import "@preview/wordometer:0.1.5": word-count, total-words
+#import "@preview/wordometer:0.1.5": total-words, word-count
 
 #let target = dictionary(std).at("target", default: () => "paged")
 
@@ -66,43 +66,54 @@
   fallback: body => box(stroke: 1pt + gray, inset: 0.5em, body),
 )
 
-#let sidenote(number: none, block: false, body) = {
-  if number != none {
-    super(str(number))
-  }
+#let sidenote(block: false, body) = context {
+  let cnt = counter("sidenote")
+  cnt.step()
+  super(cnt.display("1"))
   aside(
     block: block,
-    class: if number != none { ("numbering",) } else { ("",) },
+    class: ("numbering",),
     is-note: true,
     {
-      if number != none {
-        web(str(number) + ".", render: it => html.span(
-          class: "number",
-          it,
-        ))
-      }
-      web(body, render: body => html.span(body))
+      web(cnt.display("1."), render: it => html.span(
+        class: "number",
+        it,
+      ))
+      web(body, render: body => if block { html.div(body) } else { html.span(body) })
     },
   )
 }
 
 #let post(
+  body,
   title: "",
-  desciption: "",
+  description: "",
   pubDate: datetime.today(),
   hidden: false,
+  draft: false,
   toc: true,
-  body,
+  ..args,
 ) = [
   #metadata((
     title: title,
-    description: desciption,
+    description: description,
     pubDate: pubDate.display("[year]-[month]-[day]"),
     hidden: hidden,
+    draft: draft,
+    ..args.named(),
   ))<frontmatter>
-  #set page(paper: "iso-b5")
+  #set page(width: 17cm, height: auto, margin: 1cm)
   #set text(font: "MLMRoman12")
-  #show raw: set text(font: "Monaspace Neon")
+  #show raw: set text(font: "Monaspace Neon", features: (
+    "calt",
+    "liga",
+    "ss01",
+    "ss02",
+    "ss03",
+    "ss05",
+    "ss07",
+    "ss09",
+  ))
 
   #show link: it => web(
     it,
@@ -125,8 +136,7 @@
     ),
   )
   #show footnote: it => {
-    let cnt = counter(footnote)
-    sidenote(number: cnt.get().first(), it.body)
+    sidenote(it.body)
   }
   #show footnote.entry: none
   #show quote.where(block: true): it => web(
@@ -140,10 +150,12 @@
   )
   #set cite(form: "full")
   #show cite: footnote
-  #set bibliography(style: "chicago-notes", title: none)
+  #set bibliography(style: "src/assets/ieee-no-number.csl", title: none)
+  #show bibliography: set text(fill: color.rgb(0, 0, 0, 0))
 
   #show math.equation.where(block: false): set math.frac(style: "horizontal")
 
+  #counter("sidenote").update(1)
   #web(
     {
       if toc {

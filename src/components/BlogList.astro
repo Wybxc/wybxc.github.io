@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import { format, compareDesc } from "date-fns";
 
-const posts = (await getCollection("blog", (post) => !post.data.hidden)).sort(
+const posts = (await getCollection("blog", (post) => !post.data.hidden && !post.data.draft)).sort(
     (a, b) =>
         compareDesc(a.data.pubDate ?? new Date(), b.data.pubDate ?? new Date()),
 );

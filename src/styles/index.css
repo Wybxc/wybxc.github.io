@@ -29,6 +29,14 @@
     }
 }
 
+code {
+    & span {
+        @media (prefers-color-scheme: dark) {
+            filter: saturate(50%) brightness(200%);
+        }
+    }
+}
+
 html {
     font-size: 16px;
 }
@@ -69,6 +77,14 @@ span[role="note"] {
         .typst-math {
             filter: contrast(60%);
         }
+
+        & pre {
+            color: var(--color-content);
+        }
+    }
+
+    & pre {
+        max-width: 75vw;
     }
 
     @media (min-width: 1024px) {
@@ -76,6 +92,10 @@ span[role="note"] {
         margin-top: 0;
         margin-right: -20rem;
         padding-left: 2rem;
+
+        & pre {
+            max-width: 20rem;
+        }
     }
 
     &.numbering {
@@ -105,7 +125,6 @@ section[role="doc-bibliography"] {
 }
 
 p {
-    text-wrap: balance;
     text-wrap: pretty;
     text-autospace: normal;
     margin: 1rem 0;
@@ -151,6 +170,7 @@ pre {
 
 code {
     font-family: var(--font-monaspace-neon);
+    font-feature-settings: 'calt', 'liga', 'ss01', 'ss02', 'ss03', 'ss05', 'ss07', 'ss09';
     font-size: 80%;
 }
 
@@ -197,8 +217,9 @@ h6 {
 }
 
 nav[role="doc-toc"] {
-    & > ol,
-    & > ul {
+
+    &>ol,
+    &>ul {
         padding-left: 0;
     }
 }

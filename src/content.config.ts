@@ -7,6 +7,7 @@ const blog = defineCollection({
 	loader: glob({ pattern: "**/*.typ", base: "./content" }),
 	schema: rssSchema.extend({
 		hidden: z.boolean(),
+		draft: z.boolean(),
 	}),
 });
 
