@@ -35,6 +35,11 @@
   body,
 ))
 
+#let fullwidth(body) = web(body, render: body => html.div(
+  class: "fullwidth",
+  body,
+))
+
 #let image-content-grid(body) = web(body, render: body => html.div(
   class: "image-content-grid",
   body,

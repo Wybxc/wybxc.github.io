@@ -223,3 +223,18 @@ nav[role="doc-toc"] {
         padding-left: 0;
     }
 }
+
+.fullwidth {
+    @media (min-width: 1024px) {
+        width: 55rem;
+    }
+
+    @media (min-width: 1280px) {
+        width: 65rem;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
