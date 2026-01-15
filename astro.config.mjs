@@ -78,11 +78,12 @@ export default defineConfig({
       },
       () => (tree) => {
         visit(tree, { tagName: "img" }, (node) => {
-          if (node.properties.class === "typst-frame") {
-            const src = node.properties.src;
+          const src = node.properties.src?.toString();
+          if (src && src.startsWith("data:") && src.length >= 100) {
+            const format = /data:image\/([a-zA-Z0-9]+)/.exec(src)?.[1] || "svg";
             node.tagName = "script";
             node.properties = {
-              "data-jsx": `<AstroImage src="${src}" alt="" format="svg" inferSize />`,
+              "data-jsx": `<AstroImage src="${src}" alt="" format="${format}" inferSize />`,
             };
           }
         });
