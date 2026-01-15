@@ -3,7 +3,7 @@ import rss, { type RSSFeedItem } from "@astrojs/rss";
 import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async (context) => {
-	const posts = await getCollection("blog", (post) => !post.data.hidden);
+	const posts = await getCollection("blog", (post) => !post.data.hidden && !post.data.draft);
 	return rss({
 		title: "Jiayi Zhuang’s Blog",
 		description: "Jiayi Zhuang’s personal blog and academic portfolio.",
