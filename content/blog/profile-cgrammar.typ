@@ -87,6 +87,7 @@ Since the lexer and parser states utilize different structures, I adopted two di
 For the lexer, the only field utilizing `Rc` was the filename. I decided to replace this with a "global string pool". Well, to be honest, I simply _leak_ the filename strings to obtain a `&'static str`, which implements `Copy`.
 
 Don't panic at the mention of memory leaks! If data is stored in a pool that persists for the entire program's duration, it is effectively leaked memory anyway. Since the number of source files is practically bounded and small, this is an acceptable trade-off to completely bypass reference counting.
+#footnote[UPDATE: After some discussion #link("https://www.reddit.com/r/rust/comments/1qdeko7/i_profiled_my_parser_and_found_rcclone_to_be_the/")[on Reddit], I realized that it is better to use something like #link("https://crates.io/crates/yoke")[yoke] to attach the source input to the parser's output, making filenames simply references into the input data. This way, *no memory is leaked* and no global state is needed.]
 
 The parser state is much larger and more complex, so it can't simply implement `Copy`. Instead, I used a slab allocator to manage snapshots of the parser state.
 
