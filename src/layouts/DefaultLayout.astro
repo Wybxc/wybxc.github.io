@@ -1,6 +1,7 @@
 ---
 import "normalize.css";
 import "../styles/index.css";
+import "../styles/mathyml.css";
 import { Font } from "astro:assets";
 import { Rss } from "@lucide/astro";
 import { getYear } from "date-fns";
@@ -26,6 +27,7 @@ const year = getYear(new Date());
         />
         <Font cssVariable="--font-mlmodern" preload />
         <Font cssVariable="--font-monaspace-neon" />
+        <Font cssVariable="--font-new-computer-modern-math" />
         <title>{title}</title>
     </head>
     <body>

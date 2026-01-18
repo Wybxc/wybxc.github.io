@@ -1,0 +1,25 @@
+.mathyml-block-center {
+    text-align: center;
+}
+
+.mathyml-inline-span {
+    display: inline-block;
+}
+
+.mathyml-align-right {
+    text-align: right;
+    padding-left: 0em;
+    padding-right: 0em;
+}
+
+.mathyml-align-left {
+    text-align: left;
+    padding-left: 0em;
+    padding-right: 0em;
+}
+
+math {
+    font-family: var(--font-new-computer-modern-math);
+    font-variant-alternates: stylistic(calligraphic);
+    font-feature-settings: "ss01";
+}

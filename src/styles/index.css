@@ -16,7 +16,6 @@
     }
 }
 
-.typst-math,
 .typst-invert {
     @media (prefers-color-scheme: dark) {
         filter: invert(95%);
@@ -144,18 +143,6 @@ blockquote {
     line-height: 1.5em;
 }
 
-.typst-math-block {
-    text-align: center;
-}
-
-.typst-math-inline {
-    display: inline-block;
-    margin-bottom: -0.25em;
-    margin-top: -0.25em;
-    vertical-align: -1.15em;
-    line-height: 0;
-}
-
 a {
     color: inherit;
     text-underline-offset: 0.1em;
@@ -170,7 +157,8 @@ pre {
 
 code {
     font-family: var(--font-monaspace-neon);
-    font-feature-settings: 'calt', 'liga', 'ss01', 'ss02', 'ss03', 'ss05', 'ss07', 'ss09';
+    font-feature-settings:
+        "calt", "liga", "ss01", "ss02", "ss03", "ss05", "ss07", "ss09";
     font-size: 80%;
 }
 
@@ -217,9 +205,8 @@ h6 {
 }
 
 nav[role="doc-toc"] {
-
-    &>ol,
-    &>ul {
+    & > ol,
+    & > ul {
         padding-left: 0;
     }
 }

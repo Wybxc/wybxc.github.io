@@ -1,4 +1,5 @@
 #import "@preview/wordometer:0.1.5": total-words, word-count
+#import "./mathyml/src/lib.typ": try-to-mathml
 
 #let target = dictionary(std).at("target", default: () => "paged")
 
@@ -84,7 +85,9 @@
         class: "number",
         it,
       ))
-      web(body, render: body => if block { html.div(body) } else { html.span(body) })
+      web(body, render: body => if block { html.div(body) } else {
+        html.span(body)
+      })
     },
   )
 }
@@ -124,22 +127,7 @@
     it,
     fallback: underline,
   )
-  #show math.equation.where(block: true): it => web(
-    it,
-    render: it => html.p(
-      class: "typst-math typst-math-block",
-      role: "math",
-      html.frame(it),
-    ),
-  )
-  #show math.equation.where(block: false): it => web(
-    it,
-    render: it => html.span(
-      class: "typst-math typst-math-inline",
-      role: "math",
-      html.frame(box(height: 3em, inset: (y: 1em), it)),
-    ),
-  )
+  #show math.equation: try-to-mathml
   #show footnote: it => {
     sidenote(it.body)
   }
