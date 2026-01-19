@@ -8,7 +8,6 @@ export const GET: APIRoute = async (context) => {
 		title: "Jiayi Zhuang’s Blog",
 		description: "Jiayi Zhuang’s personal blog and academic portfolio.",
 		site: context.site ?? "https://example.com",
-		stylesheet: "/pretty-feed-v3.xsl",
 		items: posts.map(
 			(post) =>
 				({
