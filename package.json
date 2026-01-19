@@ -20,11 +20,13 @@
     "autoprefixer": "^10.4.23",
     "cssnano": "^7.1.2",
     "date-fns": "^4.1.0",
+    "hast-util-to-text": "^4.0.2",
     "normalize.css": "^8.0.1",
     "postcss-preset-env": "^10.6.1",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "sharp": "^0.34.5",
+    "shiki": "^3.21.0",
     "typstx": "0.0.1-beta.1",
     "unist-util-visit": "^5.0.0"
   }

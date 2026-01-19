@@ -8,8 +8,8 @@
     --color-secondary: oklch(55% 0.01 106);
 
     @media (prefers-color-scheme: dark) {
-        --color-base: oklch(21% 0.01 267);
-        --color-content: oklch(95% 0.01 267);
+        --color-base: oklch(26% 0.01 267);
+        --color-content: oklch(90% 0.01 267);
         --color-primary: oklch(55% 0.132 264);
         --color-primary-content: oklch(99% 0.132 264);
         --color-secondary: oklch(65% 0.01 267);
@@ -25,14 +25,6 @@
 .typst-darken {
     @media (prefers-color-scheme: dark) {
         filter: brightness(90%);
-    }
-}
-
-code {
-    & span {
-        @media (prefers-color-scheme: dark) {
-            filter: saturate(50%) brightness(200%);
-        }
     }
 }
 

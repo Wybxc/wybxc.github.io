@@ -1,8 +1,15 @@
 // @ts-check
+
 import { defineConfig, fontProviders } from "astro/config";
 import { typst } from "astro-typst";
+import { toText } from "hast-util-to-text";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
+import {
+	bundledLanguages,
+	bundledThemes,
+	getSingletonHighlighter,
+} from "shiki";
 import { visit } from "unist-util-visit";
 // @ts-expect-error
 import { rehypeTransformJsxInTypst } from "./node_modules/typstx/lib/core.js";
@@ -120,6 +127,31 @@ export default defineConfig({
 						visit(node, { tagName: "a" }, (node) => {
 							node.properties.target = "_blank";
 						});
+					}
+				});
+			},
+			() => async (tree) => {
+				// post process: re-highlight code with shiki
+				const highlighter = await getSingletonHighlighter({
+					themes: Object.keys(bundledThemes),
+					langs: Object.keys(bundledLanguages),
+				});
+				visit(tree, { tagName: "code" }, (node, idx, parent) => {
+					const lang = node.properties["data-lang"];
+					if (typeof lang === "string" && parent && idx !== undefined) {
+						const pre = highlighter.codeToHast(
+							toText(node, { whitespace: "pre" }),
+							{
+								lang,
+								themes: {
+									light: "github-light",
+									dark: "github-dark-dimmed",
+								},
+							},
+						).children[0];
+						if (pre.type === "element") {
+							parent.children[idx] = pre.children[0];
+						}
 					}
 				});
 			},
