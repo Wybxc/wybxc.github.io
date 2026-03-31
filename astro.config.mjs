@@ -31,18 +31,18 @@ export default defineConfig({
 			htmlMode: "hast",
 		}),
 	],
-	experimental: {
-		fonts: [
-			{
-				provider: fontProviders.fontsource(),
-				name: "Monaspace Neon",
-				cssVariable: "--font-monaspace-neon",
-				fallbacks: ["Georgia", "Times", "serif"],
-			},
-			{
-				provider: "local",
-				name: "MLModern",
-				cssVariable: "--font-mlmodern",
+	fonts: [
+		{
+			provider: fontProviders.fontsource(),
+			name: "Monaspace Neon",
+			cssVariable: "--font-monaspace-neon",
+			fallbacks: ["Georgia", "Times", "serif"],
+		},
+		{
+			provider: fontProviders.local(),
+			name: "MLModern",
+			cssVariable: "--font-mlmodern",
+			options: {
 				variants: [
 					{
 						weight: 400,
@@ -60,20 +60,22 @@ export default defineConfig({
 						src: ["./src/assets/fonts/mlmodern-bold.woff2"],
 					},
 				],
-				fallbacks: ["monaspace"],
 			},
-			{
-				provider: "local",
-				name: "NewComputerModernMath",
-				cssVariable: "--font-new-computer-modern-math",
+			fallbacks: ["monaspace"],
+		},
+		{
+			provider: fontProviders.local(),
+			name: "NewComputerModernMath",
+			cssVariable: "--font-new-computer-modern-math",
+			options: {
 				variants: [
 					{
 						src: ["./src/assets/fonts/NewCMMath-Book.woff2"],
 					},
 				],
 			},
-		],
-	},
+		},
+	],
 	image: {
 		remotePatterns: [
 			{
