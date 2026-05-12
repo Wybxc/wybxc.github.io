@@ -35,7 +35,7 @@ html {
 body {
     background-color: var(--color-base);
     color: var(--color-content);
-    font-family: var(--font-mlmodern);
+    font-family: var(--font-mlmodern), serif;
 }
 
 main {
@@ -148,7 +148,7 @@ pre {
 }
 
 code {
-    font-family: var(--font-monaspace-neon);
+    font-family: var(--font-monaspace-neon), monospace;
     font-feature-settings:
         "calt", "liga", "ss01", "ss02", "ss03", "ss05", "ss07", "ss09";
     font-size: 80%;

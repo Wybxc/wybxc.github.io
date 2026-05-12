@@ -36,7 +36,7 @@ export default defineConfig({
 			provider: fontProviders.fontsource(),
 			name: "Monaspace Neon",
 			cssVariable: "--font-monaspace-neon",
-			fallbacks: ["Georgia", "Times", "serif"],
+			fallbacks: ['Cascadia Code', 'Source Code Pro', 'Menlo', 'Consolas', 'DejaVu Sans Mono'],
 		},
 		{
 			provider: fontProviders.local(),
@@ -61,7 +61,7 @@ export default defineConfig({
 					},
 				],
 			},
-			fallbacks: ["monaspace"],
+			fallbacks: ['Superclarendon', 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', 'Georgia'],
 		},
 		{
 			provider: fontProviders.local(),
