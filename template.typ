@@ -1,5 +1,4 @@
 #import "@preview/wordometer:0.1.5": total-words, word-count
-#import "./mathyml/src/lib.typ": try-to-mathml
 
 #let target = dictionary(std).at("target", default: () => "paged")
 
@@ -127,7 +126,6 @@
     it,
     fallback: underline,
   )
-  #show math.equation: try-to-mathml
   #show footnote: it => {
     sidenote(it.body)
   }

@@ -2,6 +2,10 @@ onlyBuiltDependencies:
   - esbuild
   - sharp
 autoInstallPeers: true
+overrides:
+  "@myriaddreamin/typst-ts-node-compiler": "npm:@wybxc/typst-ts-node-compiler@0.7.0"
+  "@myriaddreamin/typst-ts-renderer": "npm:@wybxc/typst-ts-renderer@0.7.0"
+  "@myriaddreamin/typst.ts": "npm:@wybxc/typst.ts@0.7.0"
 allowBuilds:
   esbuild: true
   sharp: true
