@@ -2,6 +2,7 @@
 #show: post.with(
   title: "Stop Using Theme Toggle Buttons",
   pubDate: datetime(year: 2026, month: 1, day: 22),
+  hidden: true,
 )
 
 = Stop Using Theme Toggle Buttons
