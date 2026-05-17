@@ -5,9 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@myriaddreamin/typst-ts-node-compiler': npm:@wybxc/typst-ts-node-compiler@0.7.0
-  '@myriaddreamin/typst-ts-renderer': npm:@wybxc/typst-ts-renderer@0.7.0
-  '@myriaddreamin/typst.ts': npm:@wybxc/typst.ts@0.7.0
+  '@myriaddreamin/typst-ts-node-compiler': npm:@wybxc/typst-ts-node-compiler@0.7.1
+  '@myriaddreamin/typst-ts-renderer': npm:@wybxc/typst-ts-renderer@0.7.1
+  '@myriaddreamin/typst.ts': npm:@wybxc/typst.ts@0.7.1
 
 importers:
 
@@ -20,14 +20,14 @@ importers:
         specifier: ^0.562.0
         version: 0.562.0(astro@6.1.2(rollup@4.60.1))
       '@myriaddreamin/typst-ts-node-compiler':
-        specifier: npm:@wybxc/typst-ts-node-compiler@0.7.0
-        version: '@wybxc/typst-ts-node-compiler@0.7.0'
+        specifier: npm:@wybxc/typst-ts-node-compiler@0.7.1
+        version: '@wybxc/typst-ts-node-compiler@0.7.1'
       '@myriaddreamin/typst-ts-renderer':
-        specifier: npm:@wybxc/typst-ts-renderer@0.7.0
-        version: '@wybxc/typst-ts-renderer@0.7.0'
+        specifier: npm:@wybxc/typst-ts-renderer@0.7.1
+        version: '@wybxc/typst-ts-renderer@0.7.1'
       '@myriaddreamin/typst.ts':
-        specifier: npm:@wybxc/typst.ts@0.7.0
-        version: '@wybxc/typst.ts@0.7.0(@wybxc/typst-ts-renderer@0.7.0)'
+        specifier: npm:@wybxc/typst.ts@0.7.1
+        version: '@wybxc/typst.ts@0.7.1(@wybxc/typst-ts-renderer@0.7.1)'
       '@types/hast':
         specifier: ^3.0.4
         version: 3.0.4
@@ -36,7 +36,7 @@ importers:
         version: 6.1.2(rollup@4.60.1)
       astro-typst:
         specifier: ^0.12.3
-        version: 0.12.3(@wybxc/typst-ts-node-compiler@0.7.0)(@wybxc/typst-ts-renderer@0.7.0)(@wybxc/typst.ts@0.7.0(@wybxc/typst-ts-renderer@0.7.0))(astro@6.1.2(rollup@4.60.1))(cheerio@1.1.2)(rollup@4.60.1)
+        version: 0.12.3(@wybxc/typst-ts-node-compiler@0.7.1)(@wybxc/typst-ts-renderer@0.7.1)(@wybxc/typst.ts@0.7.1(@wybxc/typst-ts-renderer@0.7.1))(astro@6.1.2(rollup@4.60.1))(cheerio@1.1.2)(rollup@4.60.1)
       autoprefixer:
         specifier: ^10.4.27
         version: 10.4.27(postcss@8.5.8)
@@ -990,17 +990,15 @@ packages:
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
-  '@wybxc/typst-ts-node-compiler@0.7.0':
-    resolution: {integrity: sha512-FOn388ET6puc7I0UzUJsBBQ1sflWQC1/Btlc7iYLL49KSFUm+cNRXBVd8XM12PH78c1nWFv5vDvWXvaOXfpQDA==}
+  '@wybxc/typst-ts-node-compiler@0.7.1':
+    resolution: {integrity: sha512-IjTbmyAMxtEdtjDIVHoD6V8Q2+5yEJaoPl31g5+TPQEYUj0RXERRJ7qX0P7gRD4eHZib4ghn8PhfHaUz754pwg==}
     engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [darwin]
 
-  '@wybxc/typst-ts-renderer@0.7.0':
-    resolution: {integrity: sha512-KuhT3FONYFYYBhgfC8+lwdYTBGznx2roMWTCMH3WUWhE4RJcH3jYMvdZGQnFqkWeDVoEFGjafug/pWInJQHFGQ==}
+  '@wybxc/typst-ts-renderer@0.7.1':
+    resolution: {integrity: sha512-Gc9ZXhwGLiNqYgANM1bAGX//GGDFEzaW8vgYfyzcwWvE4O142YjHO6BZO5o4KXvywRtqUWK0o7GIK/2dwgArmw==}
 
-  '@wybxc/typst.ts@0.7.0':
-    resolution: {integrity: sha512-m4dQQyyUNuEL4a++ybIqcgOJejHtHd0QAd5YLbWJHgHcwipVOp4AzQUDPHSJWAm1sxOItkI7drMbEuPnAx1Y5A==}
+  '@wybxc/typst.ts@0.7.1':
+    resolution: {integrity: sha512-G27s6oOr/jEjQ6+WzkZn2dc12w9kqBNb+DyuGJKzVp1m51NltkWuwkSdHQMJgC3am4ymyRoETgEpvvgVg8G+ww==}
     peerDependencies:
       '@wybxc/typst-ts-renderer': ^0.7.0
       '@wybxc/typst-ts-web-compiler': ^0.7.0
@@ -3323,15 +3321,15 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@wybxc/typst-ts-node-compiler@0.7.0': {}
+  '@wybxc/typst-ts-node-compiler@0.7.1': {}
 
-  '@wybxc/typst-ts-renderer@0.7.0': {}
+  '@wybxc/typst-ts-renderer@0.7.1': {}
 
-  '@wybxc/typst.ts@0.7.0(@wybxc/typst-ts-renderer@0.7.0)':
+  '@wybxc/typst.ts@0.7.1(@wybxc/typst-ts-renderer@0.7.1)':
     dependencies:
       idb: 7.1.1
     optionalDependencies:
-      '@wybxc/typst-ts-renderer': 0.7.0
+      '@wybxc/typst-ts-renderer': 0.7.1
 
   acorn-jsx@5.3.2(acorn@8.16.0):
     dependencies:
@@ -3357,11 +3355,11 @@ snapshots:
       astro: 6.1.2(rollup@4.60.1)
       pathe: 1.1.2
 
-  astro-typst@0.12.3(@wybxc/typst-ts-node-compiler@0.7.0)(@wybxc/typst-ts-renderer@0.7.0)(@wybxc/typst.ts@0.7.0(@wybxc/typst-ts-renderer@0.7.0))(astro@6.1.2(rollup@4.60.1))(cheerio@1.1.2)(rollup@4.60.1):
+  astro-typst@0.12.3(@wybxc/typst-ts-node-compiler@0.7.1)(@wybxc/typst-ts-renderer@0.7.1)(@wybxc/typst.ts@0.7.1(@wybxc/typst-ts-renderer@0.7.1))(astro@6.1.2(rollup@4.60.1))(cheerio@1.1.2)(rollup@4.60.1):
     dependencies:
-      '@myriaddreamin/typst-ts-node-compiler': '@wybxc/typst-ts-node-compiler@0.7.0'
-      '@myriaddreamin/typst-ts-renderer': '@wybxc/typst-ts-renderer@0.7.0'
-      '@myriaddreamin/typst.ts': '@wybxc/typst.ts@0.7.0(@wybxc/typst-ts-renderer@0.7.0)'
+      '@myriaddreamin/typst-ts-node-compiler': '@wybxc/typst-ts-node-compiler@0.7.1'
+      '@myriaddreamin/typst-ts-renderer': '@wybxc/typst-ts-renderer@0.7.1'
+      '@myriaddreamin/typst.ts': '@wybxc/typst.ts@0.7.1(@wybxc/typst-ts-renderer@0.7.1)'
       '@rollup/plugin-node-resolve': 16.0.3(rollup@4.60.1)
       astro: 6.1.2(rollup@4.60.1)
       astro-integration-kit: 0.19.1(astro@6.1.2(rollup@4.60.1))
