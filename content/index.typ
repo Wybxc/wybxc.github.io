@@ -83,7 +83,11 @@ I am always open to new ideas and collaborations. If you share similar interests
         ))
       })))
       div({
-        link(url, strong(title))
+        if url != none {
+          link(url, strong(title))
+        } else {
+          strong(title)
+        }
         parbreak()
         let authors = authors.map(author => {
           if author == "Jiayi Zhuang" {
@@ -101,13 +105,27 @@ I am always open to new ideas and collaborations. If you share similar interests
             widget
             " "
           }
-        } else {
-          widgets
         }
       })
     }),
   )
 }
+
+#publication(
+  title: [A HOL Theorem Proving Interface for C],
+  url: none,
+  conference: [TASE 2026],
+  cover: "images/hol1.png",
+  authors: (
+    "Yiyuan Cao",
+    "Jiayi Zhuang",
+    "Jinkai Fan",
+    "Di Wang",
+    "Zhenjiang Hu",
+  ),
+  pubtype: "Conference paper (to appear)",
+  widgets: (),
+)
 
 #publication(
   title: [C$star$: Unifying Programming and Verification in C],
