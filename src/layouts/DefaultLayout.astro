@@ -1,7 +1,7 @@
 ---
 import "normalize.css";
 import "../styles/index.css";
-import "../styles/mathyml.css";
+import "../styles/mathml.css";
 import "../styles/shiki.css";
 import { Font } from "astro:assets";
 import { Rss } from "@lucide/astro";
@@ -29,6 +29,7 @@ const year = getYear(new Date());
         <Font cssVariable="--font-mlmodern" preload />
         <Font cssVariable="--font-monaspace-neon" />
         <Font cssVariable="--font-new-computer-modern-math" />
+        <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/mml-chtml.js"></script>
         <title>{title}</title>
     </head>
     <body>

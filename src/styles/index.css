@@ -118,6 +118,7 @@ section[role="doc-bibliography"] {
 p {
     text-wrap: pretty;
     text-autospace: normal;
+    hyphens: auto;
     margin: 1rem 0;
     line-height: 1.5rem;
 

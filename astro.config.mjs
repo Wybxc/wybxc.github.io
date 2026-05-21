@@ -157,6 +157,20 @@ export default defineConfig({
 					}
 				});
 			},
+			() => (tree) => {
+				// post process: align mtable
+				visit(tree, { tagName: "mtable" }, (node) => {
+					let colCount = 0;
+					node.children.forEach((row) => {
+						if (row.type === "element" && row.tagName === "mtr") {
+							colCount = Math.max(colCount, row.children.length);
+						}
+					});
+					if (colCount > 1) {
+						node.properties.columnalign = "right left".repeat(Math.ceil(colCount / 2));
+					}
+				});
+			}
 		],
 	},
 });

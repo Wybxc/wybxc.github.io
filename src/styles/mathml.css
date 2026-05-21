@@ -1,0 +1,17 @@
+math {
+  font-family: var(--font-new-computer-modern-math);
+  font-variant-alternates: stylistic(calligraphic);
+  font-feature-settings: "ss01";
+}
+
+mtr > mtd {
+  text-align: center;
+}
+
+mtr > mtd:nth-of-type(odd):not(:only-of-type) {
+  text-align: right;
+}
+
+mtr > mtd:nth-of-type(even) {
+  text-align: left;
+}
