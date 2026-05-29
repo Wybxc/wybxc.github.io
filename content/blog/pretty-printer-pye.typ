@@ -177,4 +177,22 @@ On these tasks, pye's performance is generally on par with pretty and elegance, 
   #image("images/bench_summary.svg")
 ]
 
+*Updated:*
+
+I added new experiments with more performance comparisons, including:
+- An implementation using the design proposed in this post, but implementing the same greedy algorithm as the pretty crate (referred to below as pretty2);
+- The pretty crate, but using an arena allocator (referred to below as p-arena).
+
+The experimental results are shown below:
+
+#fullwidth[
+  #image("images/bench_summary_2.svg")
+]
+
+Several more interesting findings can be observed:
+1. p-arena outperforms pretty, confirming that memory management is indeed a performance bottleneck in pretty printer implementations.
+2. pretty2 is faster than all other implementations, and on some tasks it achieves more than a 10x gap over pretty and p-arena (comparable to the performance gap between pye and pe) demonstrating that the design proposed in this post can indeed deliver significant performance improvements.
+3. pye is consistently slower than pretty2. This shows that while the proposed design can improve performance, the choice of algorithm (globally optimal vs. greedy) has an even greater impact on performance.
+4. The streaming-based elegance shows no performance advantage over pretty2 and p-arena. This may be due to the benchmark design: non-streaming algorithms only measure the time spent on the layout task, excluding document tree construction; whereas in streaming algorithms the two are interleaved, so both are included in the measured time.
+
 #bibliography("references.bib")
