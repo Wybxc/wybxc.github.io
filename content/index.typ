@@ -40,7 +40,7 @@
 
 Hello! I am Jiayi Zhuang (庄嘉毅). Welcome to my homepage.
 
-I am a first-year PhD student at the School of Computer Science, Peking University. I am a member of the #link("https://pl.cs.pku.edu.cn/en/")[Programming Languages Lab], advised by Prof. #link("https://stonebuddha.github.io")[Di Wang (王迪)] and Prof. #link("https://zhenjiang888.github.io/")[Zhenjiang Hu (胡振江)].
+I am a 2nd-year PhD student at the School of Computer Science, Peking University. I am a member of the #link("https://pl.cs.pku.edu.cn/en/")[Programming Languages Lab], advised by Prof. #link("https://stonebuddha.github.io")[Di Wang (王迪)] and Prof. #link("https://zhenjiang888.github.io/")[Zhenjiang Hu (胡振江)].
 
 My research focuses on *Program Verification* and *Programming Languages*. I am particularly committed to bridging the gap between rigorous theoretical foundations and practical software applications.
 
