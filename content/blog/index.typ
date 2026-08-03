@@ -7,5 +7,4 @@
 
 = Blog Posts
 
-#jsx("import BlogList from '../../src/components/BlogList.astro'")
-#jsx("<BlogList />")
+#blog-list()

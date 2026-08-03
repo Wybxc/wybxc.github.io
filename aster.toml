@@ -1,0 +1,19 @@
+[project]
+name = "wybxc-blog"
+
+[site]
+title = "Jiayi Zhuang’s Blog"
+description = "Jiayi Zhuang’s personal blog and academic portfolio."
+url = "https://blog.wybxc.cc/"
+language = "en"
+
+[assets]
+image-inline-threshold = 0
+
+[typst.fonts]
+paths = ["assets/fonts"]
+system = true
+
+[highlight.themes]
+light = "InspiredGitHub"
+dark = "base16-eighties.dark"

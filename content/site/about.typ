@@ -1,4 +1,4 @@
-#import "../template.typ": *
+#import "../../template.typ": *
 #import "@preview/sicons:16.0.0": sicon
 #show: post.with(
   title: "About",
@@ -10,7 +10,7 @@
 
 Welcome to my personal site. This serves as both my personal blog and academic portfolio, documenting my thoughts, experiences, and ongoing projects.
 
-This site is built with #link("https://typst.app/")[Typst], a simple yet elegant typesetting system, #footnote[Markdown is too limited in typesetting for me, while LaTeX is overly cumbersome. Typst strikes a perfect balance.] and #link("https://astro.build/")[Astro], a powerful, flexible static site generator.
+This site is built with #link("https://typst.app/")[Typst], a simple yet elegant typesetting system, #footnote[Markdown is too limited in typesetting for me, while LaTeX is overly cumbersome. Typst strikes a perfect balance.] and #link("https://github.com/Wybxc/aster")[Aster], a Typst-native static site generator.
 
 The aesthetic design pays homage to #link("https://edwardtufte.github.io/tufte-css/")[Edward Tufte]'s style, characterized by the use of side notes. However, I haven't strictly followed all the rules; to better suit my personal preferences, I've made some adjustments, such as using the #link("https://ctan.org/pkg/mlmodern")[MLModern] font.
 

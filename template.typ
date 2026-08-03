@@ -1,4 +1,5 @@
-#import "@preview/wordometer:0.1.5": total-words, word-count
+#import "@preview/wordometer:0.1.5": word-count
+#import "/lib/aster/content.typ": get-collection
 
 #let target = dictionary(std).at("target", default: () => "paged")
 
@@ -45,12 +46,6 @@
   body,
 ))
 
-#let jsx = s => web(
-  s,
-  render: s => html.elem("script", attrs: ("data-jsx": s)),
-  fallback: s => raw(s),
-)
-
 #let aside(block: false, is-note: false, class: (), body) = web(
   body,
   render: body => {
@@ -91,6 +86,53 @@
   )
 }
 
+#let heading-link-icon = html.elem("svg", attrs: (
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "16",
+  height: "16",
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  "stroke-width": "2",
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+))[
+  #html.elem("path", attrs: (
+    d: "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71",
+  ))
+  #html.elem("path", attrs: (
+    d: "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71",
+  ))
+]
+
+#let anchored-heading(it) = {
+  let tag = if it.level < 6 { "h" + str(it.level + 1) } else { "div" }
+  let attrs = if it.level < 6 {
+    (:)
+  } else {
+    (role: "heading", "aria-level": str(it.level + 1))
+  }
+  let anchor = html.span(class: "heading-anchor", link(it.location(), [
+    #heading-link-icon
+    #html.span(class: "visually-hidden", [Link to this section])
+  ]))
+  html.elem(tag, attrs: attrs)[#anchor#it.body]
+}
+
+#let citation-footnote(it) = {
+  show link: link => {
+    if type(link.dest) == str {
+      html.elem("a", attrs: (
+        href: link.dest,
+        target: "_blank",
+      ))[#link.body]
+    } else {
+      html.elem("span")[#link.body]
+    }
+  }
+  footnote(it)
+}
+
 #let post(
   body,
   title: "",
@@ -109,7 +151,6 @@
     draft: draft,
     ..args.named(),
   ))<frontmatter>
-  #set page(width: 17cm, height: auto, margin: 1cm)
   #set text(font: "MLMRoman12")
   #show raw: set text(font: "Monaspace Neon", features: (
     "calt",
@@ -126,6 +167,7 @@
     it,
     fallback: underline,
   )
+  #show heading: anchored-heading
   #show footnote: it => {
     sidenote(it.body)
   }
@@ -140,11 +182,14 @@
     }),
   )
   #set cite(form: "full")
-  #show cite: footnote
-  #set bibliography(style: "src/assets/ieee-no-number.csl", title: none)
+  #show cite: citation-footnote
+  #set bibliography(style: "/assets/ieee-no-number.csl", title: none)
   #show bibliography: set text(fill: color.rgb(0, 0, 0, 0))
 
   #show math.equation.where(block: false): set math.frac(style: "horizontal")
+  #show html.elem.where(tag: "mtable"): set html.elem(attrs: (
+    columnalign: "right left",
+  ))
 
   #counter("sidenote").update(1)
   #web(
@@ -170,3 +215,23 @@
     render: body => html.article(body),
   )
 ]
+
+#let _blog-posts() = {
+  get-collection("blog")
+    .filter(entry => entry.id != "index")
+    .map(entry => (entry: entry, metadata: entry.metadata()))
+    .filter(item => item.metadata.hidden == false and item.metadata.draft == false)
+    .sorted(key: item => item.metadata.pubDate)
+    .rev()
+}
+
+#let _display-date(value) = {
+  let (year, month, day) = value.split("-").map(int)
+  datetime(year: year, month: month, day: day).display(
+    "[month repr:short] [day padding:zero], [year]",
+  )
+}
+
+#let blog-list() = list(.._blog-posts().map(item => [
+  #link("/blog/" + item.entry.id)[#item.metadata.title] #_display-date(item.metadata.pubDate)
+]))

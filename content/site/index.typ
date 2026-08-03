@@ -1,4 +1,4 @@
-#import "../template.typ": *
+#import "../../template.typ": *
 #import "@preview/sicons:16.0.0": sicon
 #show: post.with(
   title: "Jiayi Zhuang",
@@ -50,8 +50,7 @@ I am always open to new ideas and collaborations. If you share similar interests
 
 == Recent Blog Posts
 
-#jsx("import BlogList from '../src/components/BlogList.astro'")
-#jsx("<BlogList />")
+#blog-list()
 
 == Publications
 
