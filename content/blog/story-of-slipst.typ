@@ -1,4 +1,5 @@
-#import "../../template.typ": *
+#import "/components/web.typ": fullwidth, sidenote
+#import "/templates/post.typ": post
 #show: post.with(
   title: "The Story of Slipst",
   pubDate: datetime(year: 2026, month: 3, day: 30),

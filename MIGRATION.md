@@ -5,13 +5,14 @@ the Typst articles as the source of truth.
 
 ## Project layout
 
-- `pages/` defines the home, about, blog, dynamic post, and RSS routes.
-- `content/site/` and `content/blog/` contain the Typst entries.
-- `site.typ` owns the shared HTML document, navigation, and footer.
-- `template.typ` owns post metadata and project-specific Typst components.
+- `pages/` contains the home and about pages and defines the blog, dynamic
+  post, and RSS routes.
+- `content/blog/` contains the reusable Typst blog entries.
+- `lib.typ` owns the content protocol and other non-rendering helpers.
+- `components/` contains reusable content-rendering functions.
+- `templates/` contains the shared HTML document and post template.
 - `styles/`, `assets/`, and `public/` contain processed styles, source assets,
   and files copied verbatim, respectively.
-- `lib/aster/content.typ` is the Aster content protocol helper used by pages.
 
 The dynamic blog route still publishes hidden and draft entries when addressed
 directly. The blog list and RSS feed filter them out, matching the Astro site.

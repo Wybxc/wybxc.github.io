@@ -1,5 +1,5 @@
-#import "/lib/aster/content.typ": get-collection-ids, get-entry
-#import "/site.typ": site
+#import "/lib.typ": get-collection-ids, get-entry
+#import "/templates/site.typ": site
 
 #metadata(
   get-collection-ids("blog")

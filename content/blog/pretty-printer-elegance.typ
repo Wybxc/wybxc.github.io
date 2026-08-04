@@ -1,4 +1,5 @@
-#import "../../template.typ": *
+#import "/components/web.typ": sidenote
+#import "/templates/post.typ": post
 #show: post.with(
   title: "Translating a Haskell Pretty Printer to Rust",
   pubDate: datetime(year: 2026, month: 1, day: 9),

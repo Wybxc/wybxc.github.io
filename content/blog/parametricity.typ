@@ -1,4 +1,5 @@
-#import "../../template.typ": *
+#import "/components/web.typ": center, invert, render
+#import "/templates/post.typ": post
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 #show: post.with(
   title: "Church Encoding, Parametricity, and the Yoneda Lemma",

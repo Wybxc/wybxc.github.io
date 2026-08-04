@@ -1,5 +1,5 @@
 #import "@preview/exemel:0.1.0": to-xml
-#import "/lib/aster/content.typ": get-collection
+#import "/lib.typ": get-collection
 
 #let rss-date(value) = {
   let (year, month, day) = value.split("-").map(int)

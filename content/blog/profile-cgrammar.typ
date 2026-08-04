@@ -1,4 +1,5 @@
-#import "../../template.typ": *
+#import "/components/web.typ": fullwidth
+#import "/templates/post.typ": post
 #show: post.with(
   title: "Profile a Parser Implementation in Rust",
   pubDate: datetime(year: 2026, month: 1, day: 14),

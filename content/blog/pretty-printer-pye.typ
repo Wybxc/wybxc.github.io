@@ -1,4 +1,5 @@
-#import "../../template.typ": *
+#import "/components/web.typ": fullwidth
+#import "/templates/post.typ": post
 #show: post.with(
   title: "A New Design for Pretty Printer Implementations in Rust",
   pubDate: datetime(year: 2026, month: 5, day: 28),

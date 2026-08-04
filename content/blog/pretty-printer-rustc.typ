@@ -1,4 +1,4 @@
-#import "../../template.typ": *
+#import "/templates/post.typ": post
 #show: post.with(
   title: "Pretty Printer in Rustc",
   pubDate: datetime(year: 2024, month: 7, day: 28),

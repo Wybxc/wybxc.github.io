@@ -1,0 +1,5 @@
+{
+    "tinymist.typstExtraArgs": [
+        "--features=html"
+    ]
+}

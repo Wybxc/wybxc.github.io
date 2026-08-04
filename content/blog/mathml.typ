@@ -1,4 +1,4 @@
-#import "../../template.typ": *
+#import "/templates/post.typ": post
 #import "@preview/mitex:0.2.7": *
 #show: post.with(
   title: "Native Typst to MathML in My Blog",

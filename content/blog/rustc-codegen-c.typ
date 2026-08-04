@@ -1,4 +1,4 @@
-#import "../../template.typ": *
+#import "/templates/post.typ": post
 #show: post.with(
   title: "Rustc Codegen C",
   pubDate: datetime(year: 2024, month: 6, day: 30),

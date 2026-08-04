@@ -1,6 +1,6 @@
-#let settings = sys.inputs
+#import "/lib.typ": settings
 
-#let rss-icon = html.elem("svg", attrs: (
+#let _rss-icon = html.elem("svg", attrs: (
   xmlns: "http://www.w3.org/2000/svg",
   width: "1em",
   height: "1em",
@@ -49,8 +49,11 @@
             #html.li[#link("/blog")[Blog]]
             #html.li[#link("/about")[About]]
             #html.li[
-              #html.elem("a", attrs: (href: "/rss.xml", "aria-label": "RSS Feed"))[
-                #rss-icon
+              #html.elem("a", attrs: (
+                href: "/rss.xml",
+                "aria-label": "RSS Feed",
+              ))[
+                #_rss-icon
               ]
             ]
           ]
@@ -61,7 +64,9 @@
             © #datetime.today().display("[year]") Jiayi Zhuang. Powered by
             #link("https://github.com/Wybxc/aster")[Aster] and
             #link("https://typst.app/")[Typst]. Licensed under
-            #link("https://creativecommons.org/licenses/by-nc/4.0/")[CC BY-NC 4.0]
+            #link(
+              "https://creativecommons.org/licenses/by-nc/4.0/",
+            )[CC BY-NC 4.0]
             #html.elem("img", attrs: (
               src: "https://mirrors.creativecommons.org/presskit/icons/cc.svg",
               alt: "",
