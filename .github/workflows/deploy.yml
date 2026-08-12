@@ -21,7 +21,7 @@ jobs:
       - name: Install aster from git
         uses: baptiste0928/cargo-install@v3
         with:
-          crate: aster
+          crate: aster-ssg
           git: https://github.com/Wybxc/aster.git
           commit: fbde4f577f7ef0cd2c173aa20d1f61aad56f8d66
       - name: Build
