@@ -76,7 +76,7 @@ This post will propose a new design for pretty printer implementations in Rust, 
 
 The inspiration for this implementation comes from a concept in functional programming:
 a data type can be equivalently represented by the ways you consume it.#footnote[
-  See my other blog post #link("https://blog.wybxc.cc/blog/parametricity")[Church Encoding, Parametricity, and the Yoneda Lemma].
+  See my other blog post #link("https://blog.wybxc.cc/blog/parametricity/")[Church Encoding, Parametricity, and the Yoneda Lemma].
 ]
 We are not really interested in the concrete structure of the document tree, but rather in how to use it to produce output.
 

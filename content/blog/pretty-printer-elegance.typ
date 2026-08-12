@@ -10,7 +10,7 @@
 
 In this post, I talk about the story in building my crate #link("https://crates.io/crates/elegance")[elegance], a language-independent pretty printer implemented in Rust. It features an Oppen-style streaming API that takes sources in and produces formatted text without constructing an intermediate representation of the entire document.
 
-I first encountered Oppen's algorithm in rustc's internal pretty printer.#footnote[Check out my #link("/blog/pretty-printer-rustc")[previous blog post] for more.] Surprised to find no standalone crate for it, I decided to build one myself.
+I first encountered Oppen's algorithm in rustc's internal pretty printer.#footnote[Check out my #link("/blog/pretty-printer-rustc/")[previous blog post] for more.] Surprised to find no standalone crate for it, I decided to build one myself.
 After researching several implementations and papers on pretty printing, I settled on translating a Haskell implementation into Rust.
 
 Just a quick note: basic knowledge of Haskell#footnote[Don't worry; just a little familiarity will do. I won't talk about those "monads" non-sense.] and Rust will help you follow along.

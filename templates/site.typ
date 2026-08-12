@@ -1,6 +1,6 @@
-#import "/lib.typ": settings
+#import "/lib.typ": aster-version, settings
 
-#let _rss-icon = html.elem("svg", attrs: (
+#let _feed-icon = html.elem("svg", attrs: (
   xmlns: "http://www.w3.org/2000/svg",
   width: "1em",
   height: "1em",
@@ -17,28 +17,31 @@
 ]
 
 #let site(title: settings.site.title, body) = {
+  let generator = if aster-version == none { "Aster" } else {
+    "Aster " + aster-version
+  }
   html.html(lang: settings.site.language)[
     #html.head[
       #html.meta(charset: "utf-8")
-      #html.elem("link", attrs: (
+      #html.link(
         rel: "icon",
         type: "image/svg+xml",
-        href: "/favicon.svg",
-      ))
+        href: "/assets/favicon.svg",
+      )
       #html.meta(name: "viewport", content: "width=device-width")
-      #html.meta(name: "generator", content: "Aster 0.1.0")
-      #html.elem("link", attrs: (
+      #html.meta(name: "generator", content: generator)
+      #html.link(
         rel: "alternate",
-        type: "application/rss+xml",
+        type: "application/atom+xml",
         title: "Wybxc’s Blog",
-        href: settings.site.url + "rss.xml",
-      ))
-      #html.elem("script", attrs: (
-        defer: "",
+        href: settings.site.url + "atom.xml",
+      )
+      #html.script(
+        defer: true,
         src: "https://cdn.jsdelivr.net/npm/mathjax@4/mml-chtml.js",
-      ))
+      )
       #html.title(title)
-      #html.elem("link", attrs: (rel: "css", href: "/styles/site.css"))
+      #html.link(rel: "stylesheet", href: "/styles/site.css")
     ]
     #html.body[
       #html.main[
@@ -46,14 +49,14 @@
           #html.ul[
             #html.li(style: "flex: 1;")[]
             #html.li[#link("/")[Home]]
-            #html.li[#link("/blog")[Blog]]
-            #html.li[#link("/about")[About]]
+            #html.li[#link("/blog/")[Blog]]
+            #html.li[#link("/about/")[About]]
             #html.li[
               #html.elem("a", attrs: (
-                href: "/rss.xml",
-                "aria-label": "RSS Feed",
+                href: "/atom.xml",
+                "aria-label": "Atom Feed",
               ))[
-                #_rss-icon
+                #_feed-icon
               ]
             ]
           ]

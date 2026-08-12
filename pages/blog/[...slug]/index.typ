@@ -1,13 +1,13 @@
-#import "/lib.typ": get-collection-ids, get-entry
+#import "/lib.typ": get-collection-ids, get-entry, route-params
 #import "/templates/site.typ": site
 
 #metadata(
   get-collection-ids("blog")
     .filter(id => id != "index")
     .map(slug => (slug: slug))
-) <route>
+) <aster-route>
 
-#let slug = sys.inputs.at("slug", default: "")
+#let slug = route-params.at("slug", default: "")
 #let entry = get-entry("blog", slug)
 
 #if entry != none [

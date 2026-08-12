@@ -6,14 +6,18 @@ title = "Jiayi Zhuang’s Blog"
 description = "Jiayi Zhuang’s personal blog and academic portfolio."
 url = "https://blog.wybxc.cc/"
 language = "en"
+author = "Jiayi Zhuang"
 
 [assets]
 image-inline-threshold = 0
+
+[assets.images]
+frame-density = 2
 
 [typst.fonts]
 paths = ["assets/fonts"]
 system = true
 
-[highlight.themes]
-light = "InspiredGitHub"
-dark = "base16-eighties.dark"
+# [highlight.themes]
+# light = "InspiredGitHub"
+# dark = "base16-eighties.dark"
