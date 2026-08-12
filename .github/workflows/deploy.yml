@@ -18,8 +18,12 @@ jobs:
         uses: actions/checkout@v6
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
-      - name: Install Aster
-        run: cargo install --git https://github.com/Wybxc/aster.git --rev fbde4f577f7ef0cd2c173aa20d1f61aad56f8d66 --locked
+      - name: Install aster from git
+        uses: baptiste0928/cargo-install@v3
+        with:
+          crate: aster
+          git: https://github.com/Wybxc/aster.git
+          commit: fbde4f577f7ef0cd2c173aa20d1f61aad56f8d66
       - name: Build
         run: aster build
       - name: Upload site
