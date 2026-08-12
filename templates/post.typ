@@ -21,7 +21,6 @@
     ..args.named(),
   )) <aster-frontmatter>
   #set text(font: "MLMRoman12")
-  #show math.equation: set text(font: "New Computer Modern Math")
   #show raw: set text(font: "Monaspace Neon", features: (
     "calt",
     "liga",

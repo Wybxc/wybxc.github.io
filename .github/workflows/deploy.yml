@@ -19,7 +19,7 @@ jobs:
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
       - name: Install Aster
-        run: cargo install --git https://github.com/Wybxc/aster.git --rev baf8ca769c4d734c001fdaa0970ad8d0222040f9 --locked
+        run: cargo install --git https://github.com/Wybxc/aster.git --rev fbde4f577f7ef0cd2c173aa20d1f61aad56f8d66 --locked
       - name: Build
         run: aster build
       - name: Upload site
