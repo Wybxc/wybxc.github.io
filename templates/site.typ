@@ -2,8 +2,6 @@
 #import "/components/icons.typ": icon, provide-site-icons
 #import "/components/theme-toggle.typ": theme-toggle
 
-#let _feed-icon = icon("lucide:rss")
-
 #let site(title: settings.site.title, body) = {
   let generator = if aster-version == none { "Aster" } else {
     "Aster " + aster-version
@@ -40,7 +38,7 @@
             #html.li[#link("/")[Home]]
             #html.li[#link("/blog/")[Blog]]
             #html.li[#link("/about/")[About]]
-            #html.li[#html.a(href: "/atom.xml", aria-label: "Atom Feed", _feed-icon)]
+            #html.li[#html.a(href: "/atom.xml", aria-label: "Atom Feed", icon("lucide:rss"))]
             #html.li[#theme-toggle]
           ]
         ]

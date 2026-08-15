@@ -1,16 +1,5 @@
 #import "/components/icons.typ": icon
 
-#let _init-js = "(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})()"
-
-#let _sun-icon = icon("lucide:sun", class: "theme-icon theme-icon-sun")
-
-#let _moon-icon = icon("lucide:moon", class: "theme-icon theme-icon-moon")
-
-#let _monitor-icon = icon(
-  "lucide:monitor",
-  class: "theme-icon theme-icon-monitor",
-)
-
 #let theme-toggle = [
   #metadata(
     ```css
@@ -36,7 +25,7 @@
     .theme-toggle[data-current="system"] .theme-icon-monitor {
       display: block;
     }
-    ```
+    ```,
   ) <aster-style>
   #metadata(
     ```js
@@ -87,16 +76,18 @@
 
       toggle.addEventListener("click", cycle);
     })();
-    ```
+    ```,
   ) <aster-script>
-  #html.script(_init-js)
-  // #html.elem("button", attrs: (
-  //   type: "button",
-  //   class: "theme-toggle",
-  //   "aria-label": "Theme",
-  // ))[#_sun-icon#_moon-icon#_monitor-icon]
+  #html.script(
+    "(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})()",
+  )
   #html.a(
     class: "theme-toggle",
-    aria-label: "Theme"
-  )[#_sun-icon#_moon-icon#_monitor-icon]
+    aria-label: "Theme",
+    {
+      icon("lucide:sun", class: "theme-icon theme-icon-sun")
+      icon("lucide:moon", class: "theme-icon theme-icon-moon")
+      icon("lucide:monitor", class: "theme-icon theme-icon-monitor")
+    },
+  )
 ]

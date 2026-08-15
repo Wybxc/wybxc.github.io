@@ -27,8 +27,11 @@
 // - name (str): icon name in `collection:name` form, e.g. `"lucide:rss"`.
 // - size (str): HTML size for the `width`/`height` attributes, e.g. `"1em"`.
 // - class (str): value for the `class` attribute.
-#let icon(name, size: "1em", class: none) = context {
-  let svg = icon-svg(name).replace(text.fill.to-hex(), "currentColor")
+// - color (color): fill color baked into the SVG; `none` keeps
+//   `currentColor`, following the CSS text color.
+#let icon(name, size: "1em", class: none, color: none) = context {
+  let fill = if color == none { "currentColor" } else { color.to-hex() }
+  let svg = icon-svg(name).replace(text.fill.to-hex(), fill)
   let root = xml(bytes(svg)).first()
   // Normalize the camel-cased attribute names dropped by the XML parser,
   // and swap width/height back: iconify emits them reversed, which breaks

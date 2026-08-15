@@ -32,11 +32,11 @@
 
     #link(
       "https://scholar.google.com/citations?user=PG5aLyIAAAAJ",
-      text(fill: rgb("#4285f4"))[#icon("fa6-brands:google-scholar")],
+      icon("fa6-brands:google-scholar", color: rgb("#4285f4")),
     )
     #link(
       "https://github.com/Wybxc",
-      invert(icon("fa6-brands:github")),
+      icon("fa6-brands:github"),
     )
   ]
 ]
