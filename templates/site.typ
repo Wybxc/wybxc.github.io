@@ -1,4 +1,5 @@
 #import "/lib.typ": aster-version, settings
+#import "/components/theme-toggle.typ": theme-toggle
 
 #let _feed-icon = html.elem("svg", attrs: (
   xmlns: "http://www.w3.org/2000/svg",
@@ -51,14 +52,8 @@
             #html.li[#link("/")[Home]]
             #html.li[#link("/blog/")[Blog]]
             #html.li[#link("/about/")[About]]
-            #html.li[
-              #html.elem("a", attrs: (
-                href: "/atom.xml",
-                "aria-label": "Atom Feed",
-              ))[
-                #_feed-icon
-              ]
-            ]
+            #html.li[#html.a(href: "/atom.xml", aria-label: "Atom Feed", _feed-icon)]
+            #html.li[#theme-toggle]
           ]
         ]
         #body
