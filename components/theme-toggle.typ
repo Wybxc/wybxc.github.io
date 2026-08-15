@@ -1,38 +1,15 @@
+#import "/components/icons.typ": icon
+
 #let _init-js = "(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})()"
 
-#let _svg-attrs = (
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "1em",
-  height: "1em",
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  "stroke-width": "2",
-  "stroke-linecap": "round",
-  "stroke-linejoin": "round",
+#let _sun-icon = icon("lucide:sun", class: "theme-icon theme-icon-sun")
+
+#let _moon-icon = icon("lucide:moon", class: "theme-icon theme-icon-moon")
+
+#let _monitor-icon = icon(
+  "lucide:monitor",
+  class: "theme-icon theme-icon-monitor",
 )
-
-#let _sun-icon = html.elem("svg", attrs: _svg-attrs + (class: "theme-icon theme-icon-sun"))[
-  #html.elem("circle", attrs: (cx: "12", cy: "12", r: "4"))
-  #html.elem("path", attrs: (d: "M12 2v2"))
-  #html.elem("path", attrs: (d: "M12 20v2"))
-  #html.elem("path", attrs: (d: "m4.93 4.93 1.41 1.41"))
-  #html.elem("path", attrs: (d: "m17.66 17.66 1.41 1.41"))
-  #html.elem("path", attrs: (d: "M2 12h2"))
-  #html.elem("path", attrs: (d: "M20 12h2"))
-  #html.elem("path", attrs: (d: "m6.34 17.66-1.41 1.41"))
-  #html.elem("path", attrs: (d: "m19.07 4.93-1.41 1.41"))
-]
-
-#let _moon-icon = html.elem("svg", attrs: _svg-attrs + (class: "theme-icon theme-icon-moon"))[
-  #html.elem("path", attrs: (d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"))
-]
-
-#let _monitor-icon = html.elem("svg", attrs: _svg-attrs + (class: "theme-icon theme-icon-monitor"))[
-  #html.elem("rect", attrs: (x: "2", y: "3", width: "20", height: "14", rx: "2"))
-  #html.elem("path", attrs: (d: "M8 21h8"))
-  #html.elem("path", attrs: (d: "M12 17v4"))
-]
 
 #let theme-toggle = [
   #metadata(

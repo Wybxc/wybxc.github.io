@@ -1,7 +1,7 @@
 #import "/components/blog.typ": blog-list
+#import "/components/icons.typ": icon
 #import "/components/web.typ": *
 #import "/templates/post.typ": post
-#import "@preview/sicons:16.0.0": sicon
 #show: post.with(title: "Jiayi Zhuang", toc: false)
 
 #aside(block: true)[
@@ -32,11 +32,11 @@
 
     #link(
       "https://scholar.google.com/citations?user=PG5aLyIAAAAJ",
-      box(sicon(slug: "googlescholar", size: 1em)),
+      text(fill: rgb("#4285f4"))[#icon("simple-icons:googlescholar")],
     )
     #link(
       "https://github.com/Wybxc",
-      invert(box(sicon(slug: "github", size: 1em))),
+      invert(icon("simple-icons:github")),
     )
   ]
 ]
