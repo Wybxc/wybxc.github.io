@@ -1,12 +1,5 @@
 #import "/templates/post.typ": post
-#import "/templates/site.typ": site
-#import "@preview/sicons:16.0.0": sicon
-#show: site.with(title: "About")
-#show: post.with(
-  title: "About",
-  hidden: true,
-  toc: false,
-)
+#show: post.with(title: "About")
 
 = About the Site
 

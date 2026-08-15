@@ -1,6 +1,7 @@
 #import "@preview/wordometer:0.1.5": word-count
 #import "/components/headings.typ": anchored-heading, citation-footnote
 #import "/components/web.typ": aside, sidenote, web
+#import "site.typ": site
 
 #let post(
   body,
@@ -12,6 +13,7 @@
   toc: true,
   ..args,
 ) = [
+  #show: site.with(title: title)
   #metadata((
     title: title,
     description: description,

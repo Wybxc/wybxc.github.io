@@ -2,9 +2,7 @@
 #import "/templates/site.typ": site
 
 #metadata(
-  get-collection-ids("blog")
-    .filter(id => id != "index")
-    .map(slug => (slug: slug))
+  get-collection-ids("blog").filter(id => id != "index").map(slug => (slug: slug)),
 ) <aster-route>
 
 #let slug = route-params.at("slug", default: "")

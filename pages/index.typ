@@ -1,14 +1,8 @@
 #import "/components/blog.typ": blog-list
-#import "/components/web.typ": aside, center, compact, darken, div, image-content-grid, invert, render
+#import "/components/web.typ": *
 #import "/templates/post.typ": post
-#import "/templates/site.typ": site
 #import "@preview/sicons:16.0.0": sicon
-#show: site.with(title: "Jiayi Zhuang")
-#show: post.with(
-  title: "Jiayi Zhuang",
-  hidden: true,
-  toc: false,
-)
+#show: post.with(title: "Jiayi Zhuang", toc: false)
 
 #aside(block: true)[
   #center[

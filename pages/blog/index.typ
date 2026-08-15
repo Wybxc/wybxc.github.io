@@ -1,9 +1,9 @@
 #import "/lib.typ": get-entry
-#import "/templates/site.typ": site
+#import "/components/blog.typ": blog-list
+#import "/templates/post.typ": post
 
-#let entry = get-entry("blog", "index")
-#let metadata = entry.metadata()
+#show: post.with(title: "Blog Posts", toc: false)
 
-#show: site.with(title: metadata.title)
+= Blog Posts
 
-#entry.render()
+#blog-list()
