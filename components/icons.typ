@@ -4,7 +4,7 @@
 // document flow before any icon is rendered.
 #let provide-site-icons() = provide-icons(
   json("/assets/icons/lucide.json"),
-  json("/assets/icons/simple-icons.json"),
+  json("/assets/icons/fa6-brands.json"),
 )
 
 // Rebuild a parsed SVG node as an inline HTML element.
@@ -30,11 +30,18 @@
 #let icon(name, size: "1em", class: none) = context {
   let svg = icon-svg(name).replace(text.fill.to-hex(), "currentColor")
   let root = xml(bytes(svg)).first()
-  // Normalize the camel-cased attribute names dropped by the XML parser.
+  // Normalize the camel-cased attribute names dropped by the XML parser,
+  // and swap width/height back: iconify emits them reversed, which breaks
+  // the viewBox of non-square icons such as `fa6-brands:github`.
   let attrs = root.attrs + (width: size, height: size)
   let attrs = if "viewbox" in attrs {
     let viewbox = attrs.remove("viewbox")
-    attrs + (viewBox: viewbox)
+    let parts = viewbox.split(" ").map(float)
+    let fixed = (
+      str(parts.at(0)) + " " + str(parts.at(1)) + " "
+        + str(parts.at(3)) + " " + str(parts.at(2))
+    )
+    attrs + (viewBox: fixed)
   } else {
     attrs
   }
