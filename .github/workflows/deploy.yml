@@ -21,7 +21,8 @@ jobs:
       - name: Install aster
         uses: baptiste0928/cargo-install@v3
         with:
-          crate: aster-ssg@0.2.0
+          crate: aster-ssg
+          version: 0.2.0
       - name: Build
         run: aster build
       - name: Upload site
