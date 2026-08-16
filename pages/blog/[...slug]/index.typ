@@ -10,5 +10,6 @@
 
 #if entry != none [
   #let metadata = entry.metadata()
+  #show: site.with(title: metadata.title)
   #entry.render()
 ]

@@ -2,7 +2,8 @@
 #import "/components/icons.typ": icon
 #import "/components/web.typ": *
 #import "/templates/post.typ": post
-#show: post.with(title: "Jiayi Zhuang", toc: false)
+#import "/templates/site.typ": site
+#show: site.with(title: "Jiayi Zhuang")
 
 #aside(block: true)[
   #center[

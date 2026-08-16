@@ -1,5 +1,7 @@
 #import "/templates/post.typ": post
-#show: post.with(title: "About")
+#import "/templates/site.typ": site
+#show: site.with(title: "About")
+#show: post.with(title: "About", pubDate: none)
 
 = About the Site
 

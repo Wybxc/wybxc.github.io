@@ -42,7 +42,7 @@
             #html.li[#theme-toggle]
           ]
         ]
-        #body
+        #html.article(body) <aster-content>
         #html.footer[
           #html.small[
             © #datetime.today().display("[year]") Jiayi Zhuang. Powered by

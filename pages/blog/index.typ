@@ -1,8 +1,8 @@
 #import "/lib.typ": get-entry
 #import "/components/blog.typ": blog-list
-#import "/templates/post.typ": post
+#import "/templates/site.typ": site
 
-#show: post.with(title: "Blog Posts", toc: false)
+#show: site.with(title: "Blog Posts")
 
 = Blog Posts
 

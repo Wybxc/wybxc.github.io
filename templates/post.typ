@@ -13,11 +13,10 @@
   toc: true,
   ..args,
 ) = [
-  #show: site.with(title: title)
   #metadata((
     title: title,
     description: description,
-    pubDate: pubDate.display("[year]-[month]-[day]"),
+    pubDate: if pubDate != none { pubDate.display("[year]-[month]-[day]") } else { "" },
     hidden: hidden,
     draft: draft,
     ..args.named(),
@@ -63,26 +62,24 @@
   ))
 
   #counter("sidenote").update(1)
-  #web(
-    {
-      if toc {
-        aside(block: true, [
-          #pubDate.display("[month repr:short] [day], [year]")\
-          #context {
-            let time = calc.round(state("wordometer").final().words / 150)
-            if time <= 1 {
-              "1 min read"
-            } else {
-              str(time) + " mins read"
-            }
-          }
 
-          *Table of Contents*
-          #outline(title: none)
-        ])
+  #if toc {
+    aside(block: true, [
+      #if pubDate != none [
+        #pubDate.display("[month repr:short] [day], [year]")\
+      ]
+      #context {
+        let time = calc.round(state("wordometer").final().words / 150)
+        if time <= 1 {
+          "1 min read"
+        } else {
+          str(time) + " mins read"
+        }
       }
-      word-count(body)
-    },
-    render: body => [#html.article(body) <aster-content>],
-  )
+
+      *Table of Contents*
+      #outline(title: none)
+    ])
+  }
+  #word-count(body)
 ]
