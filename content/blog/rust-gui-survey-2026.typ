@@ -1353,6 +1353,25 @@ column![
 ]
 ```
 
+#quote(block: true)[
+  _Edit 2026-08-23:_
+
+  Reddit user throwing_in_silence pointed out that an `Option<impl Into<Element>>` can be used directly in a widget list, so the above code can be changed to the following realistic version:
+
+  ```rust
+  column![
+      text("Enter text to generate QR code:"),
+      text_input("https://example.com", &state.text).on_input(Message::SetText),
+      state.qr.as_ref().map(|qr| image(qr.clone()))
+  ]
+  ```
+
+  This simplifies the code, but how would a user know? They'd have to notice in the `Element` docs that `Element` implements `From<Option<T>>`, but someone writing an optional component is unlikely to look there. Even knowing the answer, I first checked `Widget` trait and found nothing, then the `column!` macro revealed it accepts `Into<Element>`, which led me to `Element`.
+
+  This reminds me of something interesting I encountered later while exploring Xilem.
+  Similarly in Xilem, I didn't realize `Option<T>` could go directly in the component list. My first attempt used a branch of two- and three-element versions, requiring type erasure to `AnyWidgetView` (`dyn AnyView`). The `AnyWidgetView` docs then noted that I can insert an `Option` into a `ViewSequence`.  This is surprising since there is no obvious connection between `AnyWidgetView` and `ViewSequence`. It's likely that someone hit this, discovered `Option`, and asked the author to add that note.
+]
+
 Another point is that iced's documentation discoverability is not great. Because many of its widgets (like `image`) are generic, and when creating them you need to pass a generic type parameter. You have to dig into the docs to find the default implementation of that generic to know how to construct that parameter.
 
 #details(summary: "Full Code", fullwidth[
