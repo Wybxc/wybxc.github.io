@@ -18,8 +18,14 @@
   )
 }
 
-#let blog-list() = list(.._blog-posts().map(item => [
-  #link("/blog/" + item.entry.id + "/")[#item.metadata.title] #_display-date(
-    item.metadata.pubDate,
-  )
-]))
+#let blog-list(limit: none) = {
+  let posts = _blog-posts().map(item => [
+    #link("/blog/" + item.entry.id + "/")[#item.metadata.title] #_display-date(
+      item.metadata.pubDate,
+    )
+  ])
+  if limit != none {
+    posts = posts.slice(0, limit)
+  }
+  list(..posts)
+}

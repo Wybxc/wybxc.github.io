@@ -54,7 +54,7 @@ I am always open to new ideas and collaborations. If you share similar interests
 
 == Recent Blog Posts
 
-#blog-list()
+#blog-list(limit: 5)
 
 == Publications
 
