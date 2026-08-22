@@ -9,6 +9,7 @@
 
 It has been more than one year since boringcactus's #link("https://www.boringcactus.com/2025/04/13/2025-survey-of-rust-gui-libraries.html")[A 2025 Survey of Rust GUI Libraries].
 That was indeed a very interesting blog; so interesting that I wanted to try it myself.
+So I will be testing and reviewing each of the libraries listed on the #link("https://areweguiyet.com")[Are We GUI Yet?] website.
 
 The task I chose is a QR Code Generator. The interface has a text box; when text is entered, the Rust backend calculates the corresponding QR Code based on the text and displays it below the text box.
 
