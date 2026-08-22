@@ -655,7 +655,9 @@ Recently, Dioxus's development pace seems to have slowed down. There are reports
 
 But regardless, this can be seen as a step for Dioxus to move away from WebView and toward a more native approach.
 
-Incidentally, the niche of native rendering for Dioxus was originally occupied by Freya#footnote[We'll see it later.]. But now Freya has changed course, breaking away from Dioxus and adopting its own GUI model, so at the moment there isn't really a native-rendering Dioxus anymore.
+Incidentally, the niche of native rendering for Dioxus was originally occupied by Freya#footnote[We'll see it later.]. But now Freya has changed course, breaking away from Dioxus and adopting its own GUI model, so at the moment there isn't really a native-rendering Dioxus anymore#footnote[
+  As noted in Reddit comments, Dioxus already includes experimental native rendering support (powered by Blitz) in version 0.7, with further improvements expected in the upcoming 0.8 release.
+].
 
 #image("images/gui-survey-2026/dioxus.png", width: 25em)
 
