@@ -1530,8 +1530,6 @@ Leptos doesn't provide a mode for packaging applications as desktop apps like Di
 
 == Lvgl
 
-Lvgl is a Rust binding for a GUI library developed for embedded devices. It certainly occupies a different niche, and that alone might be enough to make it stand out on Are We GUI Yet? As far as I know, another GUI framework capable of running in embedded environments is Slint. However, I don't have an embedded development board on hand, and the scope of this survey is basically limited to desktop environments, so I can't pit them against each other in an embedded scenario.
-
 Lvgl is a Rust binding for a GUI library developed for embedded devices. That's certainly a distinctive niche, and perhaps that alone is enough to make it stand out on Are We GUI Yet?. As far as I know, another GUI framework that can run in embedded environments is Slint. However, I don't have a usable embedded development board on hand, and this survey's scope is basically limited to desktop environments, so I can't pit them against each other in an embedded setting.
 
 Lvgl can also run in desktop mode, simulating the peripherals of an embedded device. In that case, it uses SDL as the rendering backend. This mode sounds like it's mainly meant for developers to debug their programs before flashing them onto a board, so I find it hard to have high expectations for its performance as a desktop GUI.
