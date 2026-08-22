@@ -12,7 +12,7 @@
 
 #let center(body) = web(
   body,
-  render: body => html.div(style: "text-align: center", body),
+  render: body => html.div(class: "typst-center", body),
   fallback: body => align(std.center, body),
 )
 
@@ -82,3 +82,19 @@
     },
   )
 }
+
+#let details(summary: none, body) = web(
+  body,
+  render: it => html.details({
+    if summary != none {
+      html.summary(summary)
+    }
+    body
+  }),
+)
+
+#let crossref(label, body) = web(
+  body,
+  render: it => html.a(href: "#" + str(label), it),
+  fallback: it => underline(it),
+)

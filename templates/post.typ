@@ -69,7 +69,9 @@
         #pubDate.display("[month repr:short] [day], [year]")\
       ]
       #context {
-        let time = calc.round(state("wordometer").final().words / 150)
+        let words = state("wordometer").final().words
+        let speed = 150 + 100 * words / (words + 2500)
+        let time = calc.round(state("wordometer").final().words / speed)
         if time <= 1 {
           "1 min read"
         } else {
@@ -81,5 +83,5 @@
       #outline(title: none)
     ])
   }
-  #word-count(body)
+  #word-count(body, exclude: raw)
 ]
