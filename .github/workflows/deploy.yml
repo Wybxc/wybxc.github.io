@@ -23,6 +23,13 @@ jobs:
         with:
           crate: aster-ssg
           version: 0.2.0
+      - name: Cache Lumis syntax files
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/aster/lumis
+          key: ${{ runner.os }}-aster-lumis-${{ hashFiles('aster.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-aster-lumis-
       - name: Build
         run: aster build
       - name: Upload site
