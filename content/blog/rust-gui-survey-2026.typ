@@ -1166,6 +1166,97 @@ GPUI also has another example that integrates AccessKit. Perhaps following that 
   ),
 ))
 
+== GPUI Component
+
+_Edit on 2026-08-23:_
+
+After this blog post was published, there was considerable discussion in the community about GPUI Component. Many said it could completely transform the GPUI development experience, and is the only proper way to use GPUI for non-Zed developers.
+I therefore decided to add a section here to explore what using GPUI Component feels like.
+
+#image("images/gui-survey-2026/gpui-component.png")
+
+IME input works correctly, and screen readers are functional as well. However, to make text in the UI accessible to screen readers, I need to use GPUI's `text!` macro. If text is placed directly in the interface, or via the `Label` component from GPUI Component, that text will not be recognized by screen readers.
+
+With the code simplifications enabled by GPUI Component, I can finally get a clear picture of how GPUI manages state. GPUI organizes the UI into a component tree and a render tree. The component tree is responsible for managing state and event subscriptions. Each time the view is redrawn, the component tree derives a render tree. This is somewhat reminiscent of React before functional components were introduced, but by leveraging Rust's RAII mechanism, GPUI can manage the lifecycle of the component tree more naturally.
+
+I briefly looked through the GPUI Component codebase, and its repository size seems comparable to that of GPUI itself. Many thanks to the GPUI Component developers.
+
+#details(summary: "Full Code", fullwidth[
+  ```rust
+  use gpui::*;
+  use gpui_component::{
+      Root, StyledExt,
+      input::{Input, InputEvent, InputState},
+  };
+  use std::sync::Arc;
+
+  pub fn qr_encode(text: &str) -> anyhow::Result<Arc<Image>> {
+      let code = qrcode::QrCode::new(text.as_bytes())?;
+      let img = code.render::<image::Luma<u8>>().build();
+      let mut buf = Vec::new();
+      img.write_to(&mut std::io::Cursor::new(&mut buf), image::ImageFormat::Png)?;
+      Ok(Arc::new(Image::from_bytes(ImageFormat::Png, buf)))
+  }
+
+  pub struct HelloWorld {
+      input: Entity<InputState>,
+      qr: Option<Arc<Image>>,
+      _subscription: Subscription,
+  }
+
+  impl HelloWorld {
+      pub fn new(window: &mut Window, cx: &mut Context<Self>) -> Self {
+          let input = cx.new(|cx| InputState::new(window, cx));
+          let subscription = cx.subscribe_in(&input, window, |view, state, event, _, cx| {
+              if let InputEvent::Change = event {
+                  let text = state.read(cx).value();
+                  view.qr = qr_encode(&text).ok();
+              }
+          });
+
+          Self {
+              input,
+              qr: None,
+              _subscription: subscription,
+          }
+      }
+  }
+
+  impl Render for HelloWorld {
+      fn render(&mut self, _: &mut Window, _: &mut Context<Self>) -> impl IntoElement {
+          div()
+              .v_flex()
+              .gap_2()
+              .child(text!("Enter text to generate QR code:"))
+              .child(Input::new(&self.input))
+              .child(if let Some(qr) = &self.qr {
+                  img(qr.clone()).size_48().into_any_element()
+              } else {
+                  div().size_48().into_any_element()
+              })
+      }
+  }
+
+  fn main() {
+      let app = gpui_platform::application().with_assets(gpui_component_assets::Assets);
+
+      app.run(move |cx| {
+          gpui_component::init(cx);
+
+          cx.spawn(async move |cx| {
+              cx.open_window(WindowOptions::default(), |window, cx| {
+                  window.set_window_title("QR Code Generator");
+                  let view = cx.new(|cx| HelloWorld::new(window, cx));
+                  cx.new(|cx| Root::new(view, window, cx))
+              })
+              .expect("Failed to open window");
+          })
+          .detach();
+      });
+  }
+  ```
+])
+
 == GTK 3
 
 #quote[UNMAINTAINED Rust bindings for the GTK+ 3 library (use gtk4 instead).]
@@ -3281,6 +3372,7 @@ I may also have made mistakes in this survey due to personal oversights. If you 
   [Fui], [no macOS support], [], [],
   [gemgui], [✅ OK (pywebview)], [✅ OK], [✅ OK],
   [GPUI], [🟡 no text input widget], [❌ I don't know how to get it work], [🟡 crash],
+  [GPUI Component], [✅ OK], [✅ OK], [✅ OK],
   [GTK 3], [🟡 use specific commit], [❌ No], [❌ No],
   [GTK 4], [✅ OK], [❌ No], [✅ OK],
   [iced], [✅ OK], [❌ No], [✅ OK],
