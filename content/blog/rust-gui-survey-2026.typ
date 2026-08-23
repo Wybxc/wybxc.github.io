@@ -128,7 +128,7 @@ Cacao's recommended programming model is event-driven. Components in the inner l
 
 #image("images/gui-survey-2026/cacao.png", width: 30em)
 
-Since it uses native macOS text input boxes, IME support is excellent. What surprised me, though, is that the screen reader didn't work properly. It seems some setting might need to be enabled, but I don't want to spend more effort digging through the docs to find it.
+Since it uses native macOS text input boxes, IME support is excellent.#strike[What surprised me, though, is that the screen reader didn't work properly. It seems some setting might need to be enabled, but I don't want to spend more effort digging through the docs to find it.] Screen reader also works properly.
 
 #details(summary: "Full Code", fullwidth[
   ```rust
@@ -3266,7 +3266,7 @@ I may also have made mistakes in this survey due to personal oversights. If you 
   [*Library*], [*Usability*], [*Accessibility*], [*IME Support*],
   [Azul], [😭 cannot read fonts], [], [],
   [blinc], [🟡 API friction], [❌ No], [🟡 composer position bad; CJK fonts unsupported],
-  [cacao], [✅ OK (macOS only)], [❌ No], [✅ OK],
+  [cacao], [✅ OK (macOS only)], [✅ OK], [✅ OK],
   [Core Foundation], [😭 low-level API], [], [],
   [Crux], [✅ OK (SwiftUI)], [✅ OK], [✅ OK],
   [cushy], [✅ OK], [❌ No], [🟡 composer hidden],
