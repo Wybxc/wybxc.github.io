@@ -3283,7 +3283,7 @@ Like the underlying Masonry, IME and screen reader are both available. However, 
 
 Well, it is time to bring this long journey to a close and, in doing so, single out the winners of this survey, or, to put it more modestly, the frameworks I would be willing to use.
 
-In the winners' circle are slint and egui. Beyond having APIs free of obvious friction or pitfalls, they also provide solid support for IME and accessibility. They respectively occupy the two thrones of retained-mode UI and immediate-mode UI.
+In the winners' circle are slint and egui (_Edit 2026-08-25: and GPUI Component_). Beyond having APIs free of obvious friction or pitfalls, they also provide solid support for IME and accessibility. They respectively occupy the two thrones of retained-mode UI and immediate-mode UI.
 
 There are also frameworks that appeal to me in certain niche areas. For example, Crux paired with SwiftUI, and rinf paired with Flutter. And if I were willing to adopt a WebView, Dioxus or Tauri + `tauri-spectra` would be reasonable choices.
 
