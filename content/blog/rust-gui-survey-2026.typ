@@ -45,7 +45,7 @@ That alone is almost enough to rule out using Azul for this purpose. Not wanting
 
 == Blinc
 
-Blinc is a very new framework. It only released its first version in early 2026. Like many Rust GUI frameworks, Blinc uses wgpu as its rendering backend and adopts a reactive programming model. With rapid iteration, some examples in its official documentation are already outdated.
+#link("https://project-blinc.github.io/Blinc")[Blinc] is a very new framework. It only released its first version in early 2026. Like many Rust GUI frameworks, Blinc uses wgpu as its rendering backend and adopts a reactive programming model. With rapid iteration, some examples in its official documentation are already outdated.
 
 #image("images/gui-survey-2026/blinc.png", width: 30em)
 
@@ -122,7 +122,7 @@ macOS's accessibility features don't work either; screen readers can't read out 
 
 == Cacao
 
-Cacao is a Rust binding for macOS AppKit. Honestly, I'd never tried this crate before. I expected it to be full of unspeakable unsafe things interacting with low-level Objective-C code. But after actually using it, I found its API surprisingly clean.
+#link("https://docs.rs/cacao/latest/cacao/")[Cacao] is a Rust binding for macOS AppKit. Honestly, I'd never tried this crate before. I expected it to be full of unspeakable unsafe things interacting with low-level Objective-C code. But after actually using it, I found its API surprisingly clean.
 
 Cacao's recommended programming model is event-driven. Components in the inner layers can send events to the top level, where an event dispatcher modifies the state based on the information carried by the events. This is somewhat similar to the Elm architecture, but not as purely functional.
 
@@ -272,13 +272,13 @@ Since it uses native macOS text input boxes, IME support is excellent.#strike[Wh
 
 == Core-Foundation
 
-Strictly speaking, Core Foundation is not really a GUI library; it just provides some bindings to macOS system APIs. So I don't think it's reasonable for it to be listed on "Are We GUI Yet?". In the same repository, there is a `cocoa` crate that does provide bindings to the AppKit GUI library, but its underlying dependencies are outdated and it's very unidiomatic Rust#footnote[
+Strictly speaking, #link("https://docs.rs/core-foundation/latest/core_foundation/")[Core Foundation] is not really a GUI library; it just provides some bindings to macOS system APIs. So I don't think it's reasonable for it to be listed on "Are We GUI Yet?". In the same repository, there is a `cocoa` crate that does provide bindings to the AppKit GUI library, but its underlying dependencies are outdated and it's very unidiomatic Rust#footnote[
   which is what I meant by "unspeakable unsafe things interacting with low-level Objective-C code"
 ], so I'll skip it for now.
 
 == Crux
 
-Boringcactus gave Crux a positive review in hir evaluation last year, but since ze said Crux only had mobile bindings and no desktop bindings, ze didn't actually test its functionality. Today, while checking the documentation, I found that Crux now has macOS bindings, so I decided to actually pull it out and compare it here.
+Boringcactus gave #link("https://redbadger.github.io/crux/")[Crux] a positive review in hir evaluation last year, but since ze said Crux only had mobile bindings and no desktop bindings, ze didn't actually test its functionality. Today, while checking the documentation, I found that Crux now has macOS bindings, so I decided to actually pull it out and compare it here.
 
 I followed Crux's documentation to set up the project scaffold. Since Crux itself doesn't provide a GUI but rather an interface from the Rust core to various GUI shells, setting up the scaffold is slightly more complex than the previous projects, but still within a reasonable level of complexity. Once the setup was complete, it was easy to change the functionality from the Counter example to this survey's QR code generator.
 
@@ -457,7 +457,7 @@ On macOS, Crux uses SwiftUI for the interface. Since our evaluation criteria bas
 
 == Cushy
 
-Cushy doesn't seem to have changed much compared to a year ago. Even the comment in the README that doesn't match the actual code hasn't been fixed.
+#link("https://docs.rs/cushy/latest/cushy/")[Cushy] doesn't seem to have changed much compared to a year ago. Even the comment in the README that doesn't match the actual code hasn't been fixed.
 
 ```rust
 // Create a dynamic usize.
@@ -515,7 +515,7 @@ Qt is indeed a framework that inspires both love and hate. On the one hand, Qt i
 
 For myself, I probably wouldn't choose to use Rust with Qt. But for the purpose of this survey, let's take a look at this Rust binding for Qt.
 
-When it comes to anything C++-related, environment setup is always the biggest headache. I didn't want to spend time wrestling with Qt's environment configuration, so I just installed Qt via Nix. Then I tried running the CXX-Qt example code -- oh, compile errors.
+When it comes to anything C++-related, environment setup is always the biggest headache. I didn't want to spend time wrestling with Qt's environment configuration, so I just installed Qt via Nix. Then I tried running the #link("https://kdab.github.io/cxx-qt/book/")[CXX-Qt] example code -- oh, compile errors.
 
 Because the error report was a jumble of errors from Rust, C++, and various other places, I decided to stop thinking and hand the problem over to Codex.
 
@@ -649,7 +649,7 @@ Images can only be passed between Rust and Qt via data URLs, which I'm not very 
 
 == Dioxus
 
-Dioxus is basically React in Rust. According to their description, on desktop they use the Wry framework to run a WebView and display the UI inside it, which is essentially what Tauri does.
+#link("https://docs.rs/dioxus/latest/dioxus/")[Dioxus] is basically React in Rust. According to their description, on desktop they use the Wry framework to run a WebView and display the UI inside it, which is essentially what Tauri does.
 
 Recently, Dioxus's development pace seems to have slowed down. There are reports that the team has shifted its focus to #link("https://github.com/DioxusLabs/blitz")[Blitz], a self-developed HTML/CSS rendering engine. The reason for this shift seems to be that AI agents nowadays need something that can render HTML more than they need a UI framework.
 
@@ -711,11 +711,11 @@ IME and screen reader both work fine.
 
 == Dominator
 
-Dominator is a web-oriented framework, and its situation hasn't changed since 2025; it still doesn't natively provide desktop support.
+#link("https://docs.rs/dominator/latest/dominator/")[Dominator] is a web-oriented framework, and its situation hasn't changed since 2025; it still doesn't natively provide desktop support.
 
 == Egui
 
-Egui is a well-known immediate mode#footnote[If you're curious about what immediate mode is, check out #link("https://www.boringcactus.com/2025/04/13/2025-survey-of-rust-gui-libraries.html#egui")[boringcactus's 2025 survey].] GUI library in Rust. It supports multiple rendering backends, which allows it to be embedded in various game engines. Eframe is egui's desktop integration. Last year, eframe still used glow as the default rendering backend. In version 0.34 released this year, Eframe's default rendering backend has switched to egui-wgpu.
+#link("https://docs.rs/egui/latest/egui/")[Egui] is a well-known immediate mode#footnote[If you're curious about what immediate mode is, check out #link("https://www.boringcactus.com/2025/04/13/2025-survey-of-rust-gui-libraries.html#egui")[boringcactus's 2025 survey].] GUI library in Rust. It supports multiple rendering backends, which allows it to be embedded in various game engines. Eframe is egui's desktop integration. Last year, eframe still used glow as the default rendering backend. In version 0.34 released this year, Eframe's default rendering backend has switched to egui-wgpu.
 It seems wgpu is becoming the de facto standard for Rust graphics rendering, and the ecosystem is unifying, which is great to see.
 
 #image("images/gui-survey-2026/egui.png", width: 25em)
@@ -805,7 +805,7 @@ Among GUI frameworks that use wgpu for rendering, egui is the first to offer goo
 
 == Floem
 
-Floem is the UI framework used by Lapce, a code editor written in Rust. As a code editor with a similar positioning, Lapce seems to have stagnated in development compared to the thriving Zed. The last commit in its repository was 4 months ago, and its last release was 7 months ago. As for Floem, its UI framework, it hasn't had a new release in nearly two years.
+#link("https://docs.rs/floem/latest/floem/")[Floem] is the UI framework used by Lapce, a code editor written in Rust. As a code editor with a similar positioning, Lapce seems to have stagnated in development compared to the thriving Zed. The last commit in its repository was 4 months ago, and its last release was 7 months ago. As for Floem, its UI framework, it hasn't had a new release in nearly two years.
 
 Floem's code is also quite concise to write, reminding me of Cushy earlier. Here as well, a single `RwSignal` type handles almost all reactive operations. In Floem, each component takes a closure that returns its display content. If you often deal with this kind of code in Rust, the moment you see a closure, you might feel a bit uneasy, because Rust's ergonomics for capturing closures are still not great. Although there has been some discussion in the community, there doesn't seem to be a stabilizable solution yet. But thank goodness, Floem's `RwSignal` type is actually `Copy`, which means I don't have to worry about how to copy it into each closure while writing code.
 
@@ -849,7 +849,7 @@ Unfortunately, IME doesn't work properly -- I can't even switch input methods in
 
 == FLTK
 
-#quote[Rust bindings for the FLTK 1.4 Graphical User Interface library.]
+#quote[Rust bindings for the #link("https://docs.rs/fltk")[FLTK] 1.4 Graphical User Interface library.]
 
 The name FLTK sounds like something from the same era as Tcl, and you get the feeling that its widgets would be full of that last‑century style.
 
@@ -910,7 +910,7 @@ IME works fine in the text box, and after enabling `fltk_accesskit`#footnote[Bor
 
 == Flutter Rust Bridge
 
-Flutter Rust Bridge is more of an FFI library between Rust and Flutter/Dart than a GUI library. From that perspective, it's probably a bit more similar to Crux mentioned above.
+#link("https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/")[Flutter Rust Bridge] is more of an FFI library between Rust and Flutter/Dart than a GUI library. From that perspective, it's probably a bit more similar to Crux mentioned above.
 
 I've tried some development with Flutter before, but perhaps my projects weren't complex enough to need a Rust backend. I felt that keeping all the logic in Dart was actually sufficient. But since this library shows up on Are We GUI Yet?, let's give it a try and see what the development experience is like when embedding Rust into Flutter.
 
@@ -996,7 +996,7 @@ Since the interface is Flutter, basic IME and screen reader functionality work f
 
 == Freya
 
-Freya was once a framework I had high expectations for. It had the ambitious goal of bringing Dioxus to native desktop rendering. But later, Freya felt that Dioxus was limiting its design, so it pivoted to developing its own GUI interface. Let's try out the new Freya and see; hoping its developer interface is as easy to use as Dioxus.
+#link("https://docs.rs/freya/latest/freya/")[Freya] was once a framework I had high expectations for. It had the ambitious goal of bringing Dioxus to native desktop rendering. But later, Freya felt that Dioxus was limiting its design, so it pivoted to developing its own GUI interface. Let's try out the new Freya and see; hoping its developer interface is as easy to use as Dioxus.
 
 #image("images/gui-survey-2026/freya.png", width: 25em)
 
@@ -1055,7 +1055,7 @@ IME works properly in Freya, but the screen reader cannot recognize the content.
 
 == Fui
 
-Fui is an MVVM-style GUI framework. Its API design struck me as a bit novel because it actually requires using async to create windows and run the application.
+#link("https://github.com/marek-g/rust-fui/blob/master/doc/SUMMARY.md")[Fui] is an MVVM-style GUI framework. Its API design struck me as a bit novel because it actually requires using async to create windows and run the application.
 
 Combining GUI with async/await is a fascinating idea. But so far, I haven't seen any framework that really does this well.
 
@@ -1063,7 +1063,7 @@ Fui's README doesn't mention macOS support. I tried it and found that it indeed 
 
 == Gemgui
 
-Gemgui seems a bit mysterious. Its description is just one sentence: "Graphics User Interface library."
+#link("https://docs.rs/gemgui/latest/gemgui/")[Gemgui] seems a bit mysterious. Its description is just one sentence: "Graphics User Interface library."
 
 After carefully reading the documentation, I found that gemgui is actually a framework written for Rust to integrate Web UIs. To make it seem comparable to other GUI frameworks, gemgui provides an option to run the Web UI using pywebview. This option requires you to download the pywebview library from PyPI. Using pywebview to pretend to be a native program is something I've done myself, but making a Rust program carry a Python runtime feels a bit top-heavy.
 
@@ -1141,7 +1141,7 @@ If I can overlook the unexpectedly inefficient implementations in gemgui (such a
 
 == GPUI
 
-GPUI is the UI framework that powers Zed. Lately, it feels like every so often I see someone on Reddit claiming they built some software's UI with GPUI. As the name suggests, GPU rendering is its selling point. So what's the user experience like as a UI framework? Let's give it a try.
+#link("https://www.gpui.rs/")[GPUI] is the UI framework that powers Zed. Lately, it feels like every so often I see someone on Reddit claiming they built some software's UI with GPUI. As the name suggests, GPU rendering is its selling point. So what's the user experience like as a UI framework? Let's give it a try.
 
 As of 2026, GPUI still doesn't ship with a built-in text input component. I had to copy its 780-line text input example and build on top of it.
 
@@ -1170,7 +1170,7 @@ GPUI also has another example that integrates AccessKit. Perhaps following that 
 
 _Edit on 2026-08-23:_
 
-After this blog post was published, there was considerable discussion in the community about GPUI Component. Many said it could completely transform the GPUI development experience, and is the only proper way to use GPUI for non-Zed developers.
+After this blog post was published, there was considerable discussion in the community about #link("https://longbridge.github.io/gpui-component/")[GPUI Component]. Many said it could completely transform the GPUI development experience, and is the only proper way to use GPUI for non-Zed developers.
 I therefore decided to add a section here to explore what using GPUI Component feels like.
 
 #image("images/gui-survey-2026/gpui-component.png")
@@ -1259,7 +1259,7 @@ I briefly looked through the GPUI Component codebase, and its repository size se
 
 == GTK 3
 
-#quote[UNMAINTAINED Rust bindings for the GTK+ 3 library (use gtk4 instead).]
+#quote[UNMAINTAINED Rust bindings for the #link("https://gtk-rs.org/gtk3-rs/stable/latest/docs/gtk/")[GTK+ 3] library (use gtk4 instead).]
 
 That's what Are We GUI Yet? and crates.io say. But when I went and checked their GitHub repository, it had actually been updated as recently as yesterday (2026-08-18), and quite frequently at that. However, they indeed haven't released a new version in nearly three years or more. I'm a bit curious what's going on here, so why not give their GitHub version a try?
 
@@ -1342,7 +1342,7 @@ I noticed that the GTK 3 repository has bindings for ATK (Accessibility Toolkit)
 
 == GTK 4
 
-GTK 4 overall feels quite similar to GTK 3. I was able to take the code I had in GTK 3, make a few small changes, and run it on GTK 4.
+#link("https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4")[GTK 4] overall feels quite similar to GTK 3. I was able to take the code I had in GTK 3, make a few small changes, and run it on GTK 4.
 
 #image("images/gui-survey-2026/gtk4.png", width: 25em)
 
@@ -1419,7 +1419,7 @@ Unlike on Windows, GTK on macOS doesn't use its client-side window decorations; 
 
 == Iced
 
-Iced is a GUI framework that uses the Elm Architecture as its model. The so-called Elm Architecture originates from the frontend framework Elm and is a way of writing GUIs using functional programming. It requires centralizing all program state in one place and treating it as the single source of truth. The program's interface can be determined by computing from the state, and GUI inputs are represented as transitions from the current state to a new state.
+#link("https://docs.rs/iced/latest/iced/")[Iced] is a GUI framework that uses the Elm Architecture as its model. The so-called Elm Architecture originates from the frontend framework Elm and is a way of writing GUIs using functional programming. It requires centralizing all program state in one place and treating it as the single source of truth. The program's interface can be determined by computing from the state, and GUI inputs are represented as transitions from the current state to a new state.
 #footnote[
   If you want a more functional programming-style explanation, the Elm Architecture decomposes a GUI program into a reader monad and a state monad. Although this perspective does no help with writing programs.
 ]
@@ -1526,7 +1526,7 @@ Another point is that iced's documentation discoverability is not great. Because
 
 == Imgui
 
-Imgui is a Rust binding for Dear ImGui, a C++ immediate-mode GUI library. My main impression of Dear ImGui is its distinctive style: it always renders at a low resolution no matter what screen it's on.
+#link("https://docs.rs/imgui")[Imgui] is a Rust binding for Dear ImGui, a C++ immediate-mode GUI library. My main impression of Dear ImGui is its distinctive style: it always renders at a low resolution no matter what screen it's on.
 
 Imgui doesn't seem very active. Its last release was two years ago, though the GitHub repo still sees occasional updates every month or two.
 
@@ -1551,7 +1551,7 @@ For comparison, I feel that imgui's API design is a bit cleaner than egui's. But
 
 == KAS
 
-KAS is a Rust GUI framework that pursues simplicity.
+#link("https://docs.rs/kas/")[KAS] is a Rust GUI framework that pursues simplicity.
 
 KAS's repository links to their tutorial and their blog. I really like open-source projects that maintain a blog, because the thought processes and the principles and rationale behind the project design recorded by the developers are often worth learning from, even for people who don't use the project. In KAS's blog, there is also a #link("https://kas-gui.github.io/blog/state-of-GUI-2022.html")[State of GUI 2022] that can be compared with the current state of things.
 
@@ -1634,16 +1634,16 @@ As expected, when trying to compose components with different states, KAS's API 
 
 == Kittest
 
-Kittest is a UI automation testing framework based on AccessKit, and it currently provides egui integration. Clearly, it's not a framework for building GUIs, so let's move on to the next one.
+#link("https://docs.rs/kittest/latest/kittest/")[Kittest] is a UI automation testing framework based on AccessKit, and it currently provides egui integration. Clearly, it's not a framework for building GUIs, so let's move on to the next one.
 
 == Leptos
 
-Leptos is a Rust framework for building full-stack web apps. On the UI side, it adopts a fine-grained reactive model.
+#link("https://docs.rs/leptos/latest/leptos/")[Leptos] is a Rust framework for building full-stack web apps. On the UI side, it adopts a fine-grained reactive model.
 Leptos doesn't provide a mode for packaging applications as desktop apps like Dioxus does; their focus is clearly more on the web domain.
 
 == Lvgl
 
-Lvgl is a Rust binding for a GUI library developed for embedded devices. That's certainly a distinctive niche, and perhaps that alone is enough to make it stand out on Are We GUI Yet?. As far as I know, another GUI framework that can run in embedded environments is Slint. However, I don't have a usable embedded development board on hand, and this survey's scope is basically limited to desktop environments, so I can't pit them against each other in an embedded setting.
+#link("https://docs.rs/lvgl/latest/lvgl/")[Lvgl] is a Rust binding for a GUI library developed for embedded devices. That's certainly a distinctive niche, and perhaps that alone is enough to make it stand out on Are We GUI Yet?. As far as I know, another GUI framework that can run in embedded environments is Slint. However, I don't have a usable embedded development board on hand, and this survey's scope is basically limited to desktop environments, so I can't pit them against each other in an embedded setting.
 
 Lvgl can also run in desktop mode, simulating the peripherals of an embedded device. In that case, it uses SDL as the rendering backend. This mode sounds like it's mainly meant for developers to debug their programs before flashing them onto a board, so I find it hard to have high expectations for its performance as a desktop GUI.
 
@@ -1793,7 +1793,7 @@ Despite all this time, lvgl's Rust bindings still seem to be in an unfinished st
 
 == Makepad
 
-#quote[Makepad is an AI-accelerated application and game development environment for Rust.]
+#quote[#link("https://github.com/makepad/makepad")[Makepad] is an AI-accelerated application and game development environment for Rust.]
 
 I remember a year ago they weren't saying that.
 
@@ -1889,7 +1889,7 @@ It seems their carefully designed DSL is intended for some kind of live editor, 
 
 == Masonry
 
-Masonry is a foundational framework for building GUI libraries in Rust.
+#link("https://docs.rs/masonry/latest/masonry/")[Masonry] is a foundational framework for building GUI libraries in Rust.
 Its goal is not to be a user-facing GUI framework, but rather to serve as a low-level framework for building GUI frameworks.
 They provide a widget tree and the means to render it. Frameworks built on masonry are free to choose their state management model, such as immediate mode, the Elm Architecture, or reactive programming.
 // Honestly, I have some doubts about this idea. Because many state management models are strongly tied to how components are organized. Once you've settled on a particular widget tree model, state management isn't something you can switch around freely.
@@ -2014,13 +2014,13 @@ Masonry's API feels very low-level indeed, but also very flexible. If the day ev
 
 == Maycoon
 
-#quote[Maycoon is shutting down!]
+#quote[#link("https://crates.io/crates/maycoon")[Maycoon] is shutting down!]
 
 A few months ago, the author of Maycoon announced that Maycoon had been deprecated and deleted its GitHub repository. According to the author, "Rust simply is not a good fit to make a UI framework." Let's take a moment of silence for Maycoon, then move on to the next framework.
 
 == Pane UI
 
-Pane UI is a GUI framework that defines UIs in RON, renders them with wgpu, and supports hot reloading.
+#link("https://docs.rs/pane_ui")[Pane UI] is a GUI framework that defines UIs in RON, renders them with wgpu, and supports hot reloading.
 
 It does not adopt a reactive design; the RON data files used to define the UI are completely static. If you want to create dynamic content, you need to modify the UI through code at runtime. This is not really a bad idea, because before reactive programming was invented, this is how everyone did it, for example, Win32 UI and VCL.
 // I would say that before many frameworks that claim to be reactive have even figured out what reactive actually means, choosing a traditional model like Pane UI is a prudent approach.
@@ -2036,13 +2036,13 @@ Perhaps there is also a hacky workaround: leveraging Pane UI's hot reload mechan
 
 == Pax
 
-Pax is a GUI framework that emphasizes "designability", combining a Figma-like designer with the program's GUI. This sounds like a great idea, if it can actually work.
+#link("https://www.pax.dev")[Pax] is a GUI framework that emphasizes "designability", combining a Figma-like designer with the program's GUI. This sounds like a great idea, if it can actually work.
 
 Pax's desktop support is macOS only, and it is still in alpha. In my attempt, its macOS version failed to compile due to an internal parameter mismatch error. Given that Pax has not been updated for two years, I decided not to waste any more time on it.
 
 == Ply
 
-Ply is also a newcomer to the Rust GUI framework scene this year. Its author published a #link("https://plyx.iz.rs/blog/introducing-ply/")[post] on the Are We GUI Yet? blog list titled "building apps in Rust shouldn't be this hard". That's certainly a good way to draw attention to a new project.
+#link("https://plyx.iz.rs/docs/getting-started/")[Ply] is also a newcomer to the Rust GUI framework scene this year. Its author published a #link("https://plyx.iz.rs/blog/introducing-ply/")[post] on the Are We GUI Yet? blog list titled "building apps in Rust shouldn't be this hard". That's certainly a good way to draw attention to a new project.
 
 #image("images/gui-survey-2026/ply.png", width: 25em)
 
@@ -2144,7 +2144,7 @@ Overall, ply is probably still a ways away from the goal it claims of "shouldn't
 
 == QMetaObject
 
-QMetaObject is another Rust binding for Qt. Compared with CXX-Qt, this library is somewhat less active, and its documentation is relatively insufficient. It uses a more customized macro approach to create subclasses of QObject in Rust and allows them to be used in QML. In this simple example, the experience in terms of complexity is roughly similar to CXX-Qt.
+#link("https://docs.rs/qmetaobject/latest/qmetaobject/")[QMetaObject] is another Rust binding for Qt. Compared with CXX-Qt, this library is somewhat less active, and its documentation is relatively insufficient. It uses a more customized macro approach to create subclasses of QObject in Rust and allows them to be used in QML. In this simple example, the experience in terms of complexity is roughly similar to CXX-Qt.
 
 Since the UI is built entirely with Qt, the final result is identical to the CXX-Qt one, so there is no need to show screenshots here.
 
@@ -2226,7 +2226,7 @@ Since the UI is built entirely with Qt, the final result is identical to the CXX
 
 == Relm
 
-Relm is a GUI framework based on GTK that uses the Elm Architecture as its programming model.
+#link("https://docs.rs/relm/")[Relm] is a GUI framework based on GTK that uses the Elm Architecture as its programming model.
 
 Relm uses GTK 3, which is said to be deprecated. But as I found in my earlier investigation, the GTK 3 library is still being quietly updated, and relm itself is also being quietly updated. It released a new version this year, upgrading to Rust 2024 Edition, but there were no significant changes in functionality.
 
@@ -2305,7 +2305,7 @@ Since the UI part is essentially GTK, there is no need to include screenshots fo
 
 == Relm4
 
-Relm4 is the GTK 4 version of Relm. Apart from that, there doesn't seem to be much to say. Developing applications with it is just as enjoyable as with Relm.
+#link("https://docs.rs/relm4/")[Relm4] is the GTK 4 version of Relm. Apart from that, there doesn't seem to be much to say. Developing applications with it is just as enjoyable as with Relm.
 
 #details(summary: "Full Code", fullwidth[
   ```rust
@@ -2385,7 +2385,7 @@ Relm4 is the GTK 4 version of Relm. Apart from that, there doesn't seem to be mu
 
 == Ribir
 
-Ribir is a reactive Rust GUI framework that claims to adopt a "non-intrusive declarative programming model." By this they mean you can first develop the data model for your application, and then adapt the UI to it. In this process, you do not need to make any modifications to the already designed data model. Although I really don't understand why this would actually be a problem, I feel that any well-designed GUI framework should be able to do this.
+#link("https://ribir.org/docs/introduction")[Ribir] is a reactive Rust GUI framework that claims to adopt a "non-intrusive declarative programming model." By this they mean you can first develop the data model for your application, and then adapt the UI to it. In this process, you do not need to make any modifications to the already designed data model. Although I really don't understand why this would actually be a problem, I feel that any well-designed GUI framework should be able to do this.
 // Perhaps they think MVVM is too cumbersome, but in reality not that many frameworks actually adopt the MVVM model.
 
 Since Ribir released version 0.3 in 2024, over the past two years it has prepared more than 60 alpha versions for 0.4. I don't know what exactly has allowed the developers to hold off for such a long time, but it has also piqued my interest in its new version somewhat.
@@ -2448,7 +2448,7 @@ Although I have been criticizing how cryptic its macro syntax is, that is from t
 
 == Rinf
 
-Rinf is another framework that uses Flutter as the interface for Rust programs.
+#link("https://cunarist.github.io/rinf/")[Rinf] is another framework that uses Flutter as the interface for Rust programs.
 I first learned about Rinf because of the #link("https://www.reddit.com/r/rust/comments/191b2to/comment/kgvgspl/")[plagiarism controversy] between it and Flutter Rust Bridge a few years ago.
 But now that the controversy has settled down, we can take a good look at this library.
 
@@ -2550,7 +2550,7 @@ Since the UI is the same as the Flutter Rust Bridge version, screenshots aren't 
 
 == Rosin
 
-Rosin is also a GUI framework that emerged in 2026. Like the Elm Architecture, it centralizes all state at the top of the program. However, unlike Elm, it uses fine-grained reactivity to handle state updates. In addition, it supports styling programs with CSS, which is indeed a novel approach for a GUI library that draws its own widgets.
+#link("https://docs.rs/rosin/latest/rosin/")[Rosin] is also a GUI framework that emerged in 2026. Like the Elm Architecture, it centralizes all state at the top of the program. However, unlike Elm, it uses fine-grained reactivity to handle state updates. In addition, it supports styling programs with CSS, which is indeed a novel approach for a GUI library that draws its own widgets.
 
 I originally thought rosin could not accomplish this task, because it has no image widget and does not support loading images in CSS background-image either. But when I tried the next framework, rui, which requires manual drawing on a canvas, I was inspired. So I went back and re-examined rosin's API. I discovered that rosin provides an `on_canvas` method for each component node, which exposes the vello context used for drawing that node, so I can manually draw images in it.
 
@@ -2637,7 +2637,7 @@ However, rosin still has a ways to go. The current model allows for highly flexi
 
 == Rui
 
-Rui is an "experimental declarative UI library."
+#link("https://docs.rs/rui/latest/rui/")[Rui] is an "experimental declarative UI library."
 It has been over three years since rui's last release, and it is a pity to see it still in an experimental state. However, I noticed that rui's GitHub repository became active again last year, and perhaps we will see its next version soon.
 
 Rui's design is inspired by SwiftUI and adopts a reactive programming model. Rui was created by the author to port their music workstation Audulus to Rust. Although Audulus is not open source, I cannot know its specific implementation. However, based on the fact that it is available on the App Store, as well as other discussions in the rui documentation, I infer that Audulus was developed with SwiftUI.
@@ -2694,13 +2694,13 @@ For such a simple task, rui's code is extremely concise. I feel that if rui coul
 
 == SDL3
 
-The sdl3 crate is a Rust binding for the well-known graphics library SDL3. It is a bit strange to include this crate in Are We GUI Yet?, because it can hardly be considered a GUI framework. It merely provides a canvas on which you can draw freely. Although you can draw the widgets you want in it, you need to implement layout, event handling, state management, and other functionality yourself, none of which SDL3 can provide for you.
+The #link("https://docs.rs/sdl3/latest/sdl3/")[sdl3] crate is a Rust binding for the well-known graphics library SDL3. It is a bit strange to include this crate in Are We GUI Yet?, because it can hardly be considered a GUI framework. It merely provides a canvas on which you can draw freely. Although you can draw the widgets you want in it, you need to implement layout, event handling, state management, and other functionality yourself, none of which SDL3 can provide for you.
 
 Rather than Are We GUI Yet?, SDL3 should appear in Are We Game Yet? #footnote[It #link("https://arewegameyet.rs/ecosystem/2drendering/")[indeed is].] instead.
 
 == Slint
 
-Slint is a GUI framework that I have always been very fond of; it can basically be considered the Rust version of Qt. It supports multiple platforms such as desktop, mobile, embedded, and Web, and provides bindings for C++, Rust, Node.js, and Python.
+#link("https://slint.dev/docs")[Slint] is a GUI framework that I have always been very fond of; it can basically be considered the Rust version of Qt. It supports multiple platforms such as desktop, mobile, embedded, and Web, and provides bindings for C++, Rust, Node.js, and Python.
 
 Slint uses a dedicated language also called slint as a DSL for writing UIs, which is almost identical to QML in this respect. It also adopts a reactive model based on two-way bindings.
 Designing a dedicated language to describe GUIs has both advantages and disadvantages compared with keeping all the logic in the host language. The advantage is that you can have syntax and semantics that are better suited to describing GUIs.
@@ -2774,7 +2774,7 @@ In community discussions on Reddit, slint is not as popular as iced or egui. Con
 
 == Tauri
 
-People often describe Tauri as a lightweight Electron written in Rust.
+People often describe #link("https://tauri.app/")[Tauri] as a lightweight Electron written in Rust.
 
 Tauri emerged around the same time as Windows WebView2. Its original goal was to solve the problem of Electron apps bundling an entire Chrome browser and taking up a large amount of disk space. Because Tauri uses the system WebView directly, Tauri apps can be kept very small.
 
@@ -2880,7 +2880,7 @@ The way tauri-specta works is simpler than expected. It collects every function 
 
 == Tessera
 
-#quote[Tessera is a declarative, immediate-mode UI framework for Rust that emphasizes performance, flexibility, and extensibility through a functional approach and pluggable shader system.]
+#quote[#link("https://docs.rs/tessera-ui/latest/tessera_ui/")[Tessera] is a declarative, immediate-mode UI framework for Rust that emphasizes performance, flexibility, and extensibility through a functional approach and pluggable shader system.]
 
 Tessera is also a very new UI framework. Its first version was released in July 2025, and it has now reached version 2.5.0. According to a #link("https://tessera-ui.github.io/blog/positional-memoization-via-proc-macros.html")[blog post] included in its documentation, Tessera is working on implementing Material Design as a milestone for version 3.0.
 From that blog post, I get the impression that Tessera has some unique insights into state management for immediate mode GUIs.
@@ -2889,13 +2889,13 @@ However, when I tried it, Tessera could not run on macOS, encountering some erro
 
 == Tinyfiledialogs
 
-Tinyfiledialogs provides a Rust binding for a C library that offers various small dialogs. It cannot be considered a complete GUI framework, but it does provide some GUI functionality. Its features are not sufficient to accomplish today's task.
+#link("https://docs.rs/tinyfiledialogs/latest/tinyfiledialogs/")[Tinyfiledialogs] provides a Rust binding for a C library that offers various small dialogs. It cannot be considered a complete GUI framework, but it does provide some GUI functionality. Its features are not sufficient to accomplish today's task.
 
 A crate with a similar positioning is #link("https://docs.rs/rfd/latest/rfd/")[rfd], but it is not included on Are We GUI Yet?.
 
 == Tk
 
-Tk is the Rust binding for Tcl/Tk. I suspect most people's first exposure to Tcl/Tk comes from the rather idiosyncratic tkinter module in Python's standard library.
+#link("https://docs.rs/tk/latest/tk/")[Tk] is the Rust binding for Tcl/Tk. I suspect most people's first exposure to Tcl/Tk comes from the rather idiosyncratic tkinter module in Python's standard library.
 
 Although Python's standard library bundles Tk 8.6, using the Tk crate requires having Tk 8.6 installed on your system beforehand. If the version is mismatched -- for instance, on my first attempt, the system Tk on macOS was 8.5, which led to some strange compilation errors.
 
@@ -2954,13 +2954,13 @@ As for the development experience with the Tk crate, despite the author's thorou
 
 == Undoredo
 
-Undoredo is not a GUI library. It provides incremental updates, snapshots, and rollback capabilities for various container data structures.
+#link("https://docs.rs/undoredo")[Undoredo] is not a GUI library. It provides incremental updates, snapshots, and rollback capabilities for various container data structures.
 
 I suspect it is listed on Are We GUI Yet? because it can be used to implement state management in GUI applications. However, placing it alongside other GUI libraries still feels somewhat out of place. Are We GUI Yet? should seriously consider categorizing the crates on its site, similar to how Are We Game Yet? does.
 
 == Vizia
 
-Vizia is a declarative Rust GUI framework built on a fine-grained reactivity model, with skia as its rendering backend.
+#link("https://docs.rs/vizia/latest/vizia/")[Vizia] is a declarative Rust GUI framework built on a fine-grained reactivity model, with skia as its rendering backend.
 
 I ran into a few hurdles while implementing today's task with Vizia. Vizia does provide an `Image` widget, but it is not fully implemented. Although `Image` accepts a `Signal` as a parameter, it is not reactive; it only reads the state once at creation. Moreover, while the documentation states that `Image` can load URLs, examining the implementation revealed that data URLs are not supported. As a result, I had to use the SVG widget to render the QR code instead. Unfortunately, the SVG widget has the same reactivity limitation, so I had to wrap the entire widget in a `Binding` to make it respond to `Signal` changes and trigger redraws.
 
@@ -3017,20 +3017,20 @@ This looks like a catch-22. If you handle the state correctly, the screen reader
 
 == WebRender
 
-WebRender is the rendering engine behind Mozilla Firefox and Servo, the browser written in Rust. Its documentation on docs.rs is severely outdated and gives little sense of the library's actual state. I can't help but wonder how the Servo developers manage to work under such conditions.
+#link("https://docs.rs/webrender/latest/webrender/")[WebRender] is the rendering engine behind Mozilla Firefox and Servo, the browser written in Rust. Its documentation on docs.rs is severely outdated and gives little sense of the library's actual state. I can't help but wonder how the Servo developers manage to work under such conditions.
 
 WebRender provides only drawing APIs, and as its wiki notes, these are specialized for browser use cases, which makes it difficult to use the library as a general-purpose GUI framework.
 
 == Windows
 
-Rust for Windows is a highly ambitious project. Microsoft aims to provide comprehensive Rust bindings for the entire Windows API surface. By using the `windows` crate, and the `windows-sys` crate as supplementary, you can call any Windows API directly from Rust. This naturally includes the various GUI frameworks available on Windows, such as Win32 UI and Composition UI.
+#link("https://microsoft.github.io/windows-docs-rs/")[Rust for Windows] is a highly ambitious project. Microsoft aims to provide comprehensive Rust bindings for the entire Windows API surface. By using the `windows` crate, and the `windows-sys` crate as supplementary, you can call any Windows API directly from Rust. This naturally includes the various GUI frameworks available on Windows, such as Win32 UI and Composition UI.
 
 Calling Windows APIs directly to create GUI interfaces is far too tedious. Even a decade or more ago, nobody would have done such a thing. However, the Rust for Windows repository recently gained a new framework called `windows-reactor`, which provides a reactive programming layer on top of WinUI 3, making it as convenient to develop with as other Rust GUI frameworks.
 I'm somewhat curious about it, so let me spin up a Windows VM and see what the development experience with `windows-reactor` is like.
 
 == Windows Reactor
 
-Though Windows Reactor is not listed on Are We GUI Yet?, I decided to try it anyway, both for the reasons above and out of curiosity.
+Though #link("https://github.com/microsoft/windows-rs/tree/master/crates/libs/reactor")[Windows Reactor] is not listed on Are We GUI Yet?, I decided to try it anyway, both for the reasons above and out of curiosity.
 
 Windows Reactor's state management model is nearly identical to React's. It replicates hooks like `useState` and `useRef`, and, like React, it stores hook data according to call order. Since Dioxus, another React-inspired library, has moved toward a signal-based reactivity model, Windows Reactor is arguably now the Rust GUI library that most closely resembles React.
 
@@ -3086,7 +3086,7 @@ IME input works as expected. Windows Narrator can read the contents of text boxe
 
 == WinSafe
 
-WinSafe is a Rust binding for the Win32 API, and it offers a high-level, idiomatic abstraction layer for Win32 GUI programming.
+#link("https://docs.rs/winsafe/latest/winsafe/")[WinSafe] is a Rust binding for the Win32 API, and it offers a high-level, idiomatic abstraction layer for Win32 GUI programming.
 Interestingly, this library has no dependencies, not even the `windows` crate, since WinSafe's history predates it.
 
 Now that I have a Rust development environment set up in the Windows VM, let’s give this library a try as well.
@@ -3171,7 +3171,7 @@ While most of WinSafe's API can be used from safe Rust, a few features still lac
 
 == WxDragon
 
-WxDragon is a Rust binding for wxWidgets, a widely used GUI toolkit. Considering wxWidgets' prominence in the Python ecosystem, it is somewhat surprising that a Rust binding did not appear until 2025.
+#link("https://docs.rs/wxdragon/latest/wxdragon/")[WxDragon] is a Rust binding for wxWidgets, a widely used GUI toolkit. Considering wxWidgets' prominence in the Python ecosystem, it is somewhat surprising that a Rust binding did not appear until 2025.
 
 #image("images/gui-survey-2026/wxdragon.png")
 
@@ -3225,7 +3225,7 @@ Apart from wxWidgets' somewhat idiosyncratic widget naming conventions, there is
 
 Finally, we are almost at the tail end of this list.
 
-Xilem is a reactive Rust GUI framework built on the previously mentioned Masonry, and it provides a reactive user-interface layer on top of it.
+#link("https://docs.rs/xilem/latest/xilem/")[Xilem] is a reactive Rust GUI framework built on the previously mentioned Masonry, and it provides a reactive user-interface layer on top of it.
 
 Xilem has a #link("https://raphlinus.github.io/rust/gui/2022/05/07/ui-architecture.html")[blog post] explaining their understanding of implementing reactive GUI interfaces in Rust.
 It is an excellent article and is very helpful for understanding reactive GUI frameworks, as well as why many Rust GUI frameworks are designed the way they are. After reading it, I did see traces of the ideas proposed by Xilem in some of the frameworks I encountered in this survey, such as how blinc and KAS handle stateful components.
@@ -3277,7 +3277,7 @@ Like the underlying Masonry, IME and screen reader are both available. However, 
 
 == Yew
 
-Yew is a React-style framework for developing web apps, and like Leptos, it does not have native desktop GUI support.
+#link("https://docs.rs/yew/")[Yew] is a React-style framework for developing web apps, and like Leptos, it does not have native desktop GUI support.
 
 == Conclusion <conclusion>
 
@@ -3357,58 +3357,58 @@ _Edit on 2026-08-25: Added extra dependencies column._
 #fullwidth(table(
   columns: 5,
   [*Library*], [*Usability*], [*Extra Deps*], [*Accessibility*], [*IME Support*],
-  [Azul], [😭 cannot read fonts], [], [], [],
-  [blinc], [🟡 API friction], [], [❌ No], [🟡 composer position bad; CJK fonts unsupported],
-  [cacao], [✅ OK], [macOS only], [✅ OK], [✅ OK],
-  [Core Foundation], [😭 low-level API], [], [], [],
-  [Crux], [✅ OK], [SwiftUI], [✅ OK], [✅ OK],
-  [cushy], [✅ OK], [], [❌ No], [🟡 composer hidden],
-  [CXX-Qt], [🟡 Nix compatibility], [Qt], [✅ OK], [✅ OK],
-  [Dioxus], [✅ OK], [WebView], [✅ OK], [✅ OK],
-  [dominator], [web only], [], [], [],
-  [egui], [✅ OK], [], [✅ OK], [🟡 CJK font setup],
-  [floem], [✅ OK], [], [❌ No], [❌ No],
-  [FLTK], [✅ OK], [FLTK (bundled)], [✅ OK (with extra setup)], [✅ OK],
-  [Flutter Rust Bridge], [✅ OK], [Flutter], [✅ OK], [✅ OK],
-  [Freya], [✅ OK], [], [❌ No], [✅ OK],
-  [Fui], [no macOS support], [], [], [],
-  [gemgui], [✅ OK], [Python & pywebview], [✅ OK], [✅ OK],
-  [GPUI], [🟡 no text input widget], [], [❌ I don't know how to get it work], [🟡 crash],
-  [GPUI Component], [✅ OK], [], [✅ OK], [✅ OK],
-  [GTK 3], [🟡 use specific commit], [GTK3], [❌ No], [❌ No],
-  [GTK 4], [✅ OK], [GTK4], [❌ No], [✅ OK],
-  [iced], [✅ OK], [], [❌ No], [✅ OK],
-  [imgui], [🟡 boilerplate], [], [❌ No], [❌ No],
-  [KAS], [🟡 API friction], [], [❌ No], [❌ No],
-  [kittest], [not a GUI framework], [], [], [],
-  [Leptos], [web only], [], [], [],
-  [lvgl], [🟡 embedded only], [], [❌ No], [❌ No],
-  [Makepad], [🟡 poor documentation], [], [❌ No], [🟡 composer hidden],
-  [masonry], [🟡 low-level], [], [✅ OK], [✅ OK],
-  [Maycoon], [deprecated], [], [], [],
-  [Pane UI], [😭 cannot load images], [], [], [],
-  [Pax], [😭 failed to compile], [], [], [],
-  [ply], [🟡 odd default values], [], [✅ OK (with extra setup)], [❌ No],
-  [QMetaObject], [🟡 Nix compatibility], [Qt], [✅ OK], [✅ OK],
-  [Relm], [✅ OK], [GTK3], [❌ No], [❌ No],
-  [Relm4], [✅ OK], [GTK4], [❌ No], [✅ OK],
-  [Ribir], [🟡 cryptic macros], [], [❌ No], [✅ OK],
-  [rinf], [✅ OK], [Flutter], [✅ OK], [✅ OK],
-  [rosin], [🟡 poor widgets library], [], [✅ OK (with extra setup)], [✅ OK],
-  [rui], [🟡 poor widgets library], [], [❌ No], [❌ No],
-  [SDL3], [not a GUI framework], [], [], [],
-  [slint], [✅ OK], [], [✅ OK], [✅ OK],
-  [Tauri], [✅ OK], [WebView], [✅ OK], [✅ OK],
-  [Tessera], [no macOS support], [], [], [],
-  [tinyfiledialogs], [not a GUI framework], [], [], [],
-  [Tk], [🟡 API friction], [Tcl/Tk], [❌ No], [✅ OK],
-  [undoredo], [not a GUI framework], [], [], [],
-  [Vizia], [✅ OK], [], [❌ crash], [✅ OK],
-  [WebRender], [not a GUI framework], [], [], [],
-  [Windows], [😭 low-level API], [], [], [],
-  [Windows Reactor], [🟡 API friction], [Windows App SDK (bundled)], [🟡 text boxes only], [✅ OK],
-  [WinSafe], [✅ OK], [Windows only], [✅ OK], [✅ OK],
-  [WxDragon], [✅ OK], [wxWidgets (bundled)], [✅ OK], [✅ OK],
-  [Xilem], [✅ OK], [], [✅ OK], [🟡 CJK fonts unsupported],
-  [Yew], [web only], [], [], [],
+  [#link("https://azul.rs")[Azul]], [😭 cannot read fonts], [], [], [],
+  [#link("https://project-blinc.github.io/Blinc")[blinc]], [🟡 API friction], [], [❌ No], [🟡 composer position bad; CJK fonts unsupported],
+  [#link("https://docs.rs/cacao/latest/cacao/")[cacao]], [✅ OK], [macOS only], [✅ OK], [✅ OK],
+  [#link("https://docs.rs/core-foundation/latest/core_foundation/")[Core Foundation]], [😭 low-level API], [], [], [],
+  [#link("https://redbadger.github.io/crux/")[Crux]], [✅ OK], [SwiftUI], [✅ OK], [✅ OK],
+  [#link("https://docs.rs/cushy/latest/cushy/")[cushy]], [✅ OK], [], [❌ No], [🟡 composer hidden],
+  [#link("https://kdab.github.io/cxx-qt/book/")[CXX-Qt]], [🟡 Nix compatibility], [Qt], [✅ OK], [✅ OK],
+  [#link("https://docs.rs/dioxus/latest/dioxus/")[Dioxus]], [✅ OK], [WebView], [✅ OK], [✅ OK],
+  [#link("https://docs.rs/dominator/latest/dominator/")[dominator]], [web only], [], [], [],
+  [#link("https://docs.rs/egui/latest/egui/")[egui]], [✅ OK], [], [✅ OK], [🟡 CJK font setup],
+  [#link("https://docs.rs/floem/latest/floem/")[floem]], [✅ OK], [], [❌ No], [❌ No],
+  [#link("https://docs.rs/fltk")[FLTK]], [✅ OK], [FLTK (bundled)], [✅ OK (with extra setup)], [✅ OK],
+  [#link("https://docs.rs/flutter_rust_bridge/latest/flutter_rust_bridge/")[Flutter Rust Bridge]], [✅ OK], [Flutter], [✅ OK], [✅ OK],
+  [#link("https://docs.rs/freya/latest/freya/")[Freya]], [✅ OK], [], [❌ No], [✅ OK],
+  [#link("https://github.com/marek-g/rust-fui/blob/master/doc/SUMMARY.md")[Fui]], [no macOS support], [], [], [],
+  [#link("https://docs.rs/gemgui/latest/gemgui/")[gemgui]], [✅ OK], [Python & pywebview], [✅ OK], [✅ OK],
+  [#link("https://www.gpui.rs/")[GPUI]], [🟡 no text input widget], [], [❌ I don't know how to get it work], [🟡 crash],
+  [#link("https://longbridge.github.io/gpui-component/")[GPUI Component]], [✅ OK], [], [✅ OK], [✅ OK],
+  [#link("https://gtk-rs.org/gtk3-rs/stable/latest/docs/gtk/")[GTK 3]], [🟡 use specific commit], [GTK3], [❌ No], [❌ No],
+  [#link("https://gtk-rs.org/gtk4-rs/stable/latest/docs/gtk4")[GTK 4]], [✅ OK], [GTK4], [❌ No], [✅ OK],
+  [#link("https://docs.rs/iced/latest/iced/")[iced]], [✅ OK], [], [❌ No], [✅ OK],
+  [#link("https://docs.rs/imgui")[imgui]], [🟡 boilerplate], [], [❌ No], [❌ No],
+  [#link("https://docs.rs/kas/")[KAS]], [🟡 API friction], [], [❌ No], [❌ No],
+  [#link("https://docs.rs/kittest/latest/kittest/")[kittest]], [not a GUI framework], [], [], [],
+  [#link("https://docs.rs/leptos/latest/leptos/")[Leptos]], [web only], [], [], [],
+  [#link("https://docs.rs/lvgl/latest/lvgl/")[lvgl]], [🟡 embedded only], [], [❌ No], [❌ No],
+  [#link("https://github.com/makepad/makepad")[Makepad]], [🟡 poor documentation], [], [❌ No], [🟡 composer hidden],
+  [#link("https://docs.rs/masonry/latest/masonry/")[masonry]], [🟡 low-level], [], [✅ OK], [✅ OK],
+  [#link("https://crates.io/crates/maycoon")[Maycoon]], [deprecated], [], [], [],
+  [#link("https://docs.rs/pane_ui")[Pane UI]], [😭 cannot load images], [], [], [],
+  [#link("https://www.pax.dev")[Pax]], [😭 failed to compile], [], [], [],
+  [#link("https://plyx.iz.rs/docs/getting-started/")[ply]], [🟡 odd default values], [], [✅ OK (with extra setup)], [❌ No],
+  [#link("https://docs.rs/qmetaobject/latest/qmetaobject/")[QMetaObject]], [🟡 Nix compatibility], [Qt], [✅ OK], [✅ OK],
+  [#link("https://docs.rs/relm/")[Relm]], [✅ OK], [GTK3], [❌ No], [❌ No],
+  [#link("https://docs.rs/relm4/")[Relm4]], [✅ OK], [GTK4], [❌ No], [✅ OK],
+  [#link("https://ribir.org/docs/introduction")[Ribir]], [🟡 cryptic macros], [], [❌ No], [✅ OK],
+  [#link("https://cunarist.github.io/rinf/")[rinf]], [✅ OK], [Flutter], [✅ OK], [✅ OK],
+  [#link("https://docs.rs/rosin/latest/rosin/")[rosin]], [🟡 poor widgets library], [], [✅ OK (with extra setup)], [✅ OK],
+  [#link("https://docs.rs/rui/latest/rui/")[rui]], [🟡 poor widgets library], [], [❌ No], [❌ No],
+  [#link("https://docs.rs/sdl3/latest/sdl3/")[SDL3]], [not a GUI framework], [], [], [],
+  [#link("https://slint.dev/docs")[slint]], [✅ OK], [], [✅ OK], [✅ OK],
+  [#link("https://tauri.app/")[Tauri]], [✅ OK], [WebView], [✅ OK], [✅ OK],
+  [#link("https://docs.rs/tessera-ui/latest/tessera_ui/")[Tessera]], [no macOS support], [], [], [],
+  [#link("https://docs.rs/tinyfiledialogs/latest/tinyfiledialogs/")[tinyfiledialogs]], [not a GUI framework], [], [], [],
+  [#link("https://docs.rs/tk/latest/tk/")[Tk]], [🟡 API friction], [Tcl/Tk], [❌ No], [✅ OK],
+  [#link("https://docs.rs/undoredo")[undoredo]], [not a GUI framework], [], [], [],
+  [#link("https://docs.rs/vizia/latest/vizia/")[Vizia]], [✅ OK], [], [❌ crash], [✅ OK],
+  [#link("https://docs.rs/webrender/latest/webrender/")[WebRender]], [not a GUI framework], [], [], [],
+  [#link("https://microsoft.github.io/windows-docs-rs/")[Windows]], [😭 low-level API], [], [], [],
+  [#link("https://github.com/microsoft/windows-rs/tree/master/crates/libs/reactor")[Windows Reactor]], [🟡 API friction], [Windows App SDK (bundled)], [🟡 text boxes only], [✅ OK],
+  [#link("https://docs.rs/winsafe/latest/winsafe/")[WinSafe]], [✅ OK], [Windows only], [✅ OK], [✅ OK],
+  [#link("https://docs.rs/wxdragon/latest/wxdragon/")[WxDragon]], [✅ OK], [wxWidgets (bundled)], [✅ OK], [✅ OK],
+  [#link("https://docs.rs/xilem/latest/xilem/")[Xilem]], [✅ OK], [], [✅ OK], [🟡 CJK fonts unsupported],
+  [#link("https://docs.rs/yew/")[Yew]], [web only], [], [], [],
 ))
