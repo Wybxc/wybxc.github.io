@@ -2960,7 +2960,7 @@ I suspect it is listed on Are We GUI Yet? because it can be used to implement st
 
 == Vizia
 
-#link("https://docs.rs/vizia/latest/vizia/")[Vizia] is a declarative Rust GUI framework built on a fine-grained reactivity model, with skia as its rendering backend.
+#link("https://docs.vizia.dev/vizia/")[Vizia] is a declarative Rust GUI framework built on a fine-grained reactivity model, with skia as its rendering backend.
 
 I ran into a few hurdles while implementing today's task with Vizia. Vizia does provide an `Image` widget, but it is not fully implemented. Although `Image` accepts a `Signal` as a parameter, it is not reactive; it only reads the state once at creation. Moreover, while the documentation states that `Image` can load URLs, examining the implementation revealed that data URLs are not supported. As a result, I had to use the SVG widget to render the QR code instead. Unfortunately, the SVG widget has the same reactivity limitation, so I had to wrap the entire widget in a `Binding` to make it respond to `Signal` changes and trigger redraws.
 
@@ -3403,7 +3403,7 @@ _Edit on 2026-08-25: Added extra dependencies column._
   [#link("https://docs.rs/tinyfiledialogs/latest/tinyfiledialogs/")[tinyfiledialogs]], [not a GUI framework], [], [], [],
   [#link("https://docs.rs/tk/latest/tk/")[Tk]], [🟡 API friction], [Tcl/Tk], [❌ No], [✅ OK],
   [#link("https://docs.rs/undoredo")[undoredo]], [not a GUI framework], [], [], [],
-  [#link("https://docs.rs/vizia/latest/vizia/")[Vizia]], [✅ OK], [], [❌ crash], [✅ OK],
+  [#link("https://docs.vizia.dev/vizia/")[Vizia]], [🟡 poor widgets library], [], [❌ crash], [✅ OK],
   [#link("https://docs.rs/webrender/latest/webrender/")[WebRender]], [not a GUI framework], [], [], [],
   [#link("https://microsoft.github.io/windows-docs-rs/")[Windows]], [😭 low-level API], [], [], [],
   [#link("https://github.com/microsoft/windows-rs/tree/master/crates/libs/reactor")[Windows Reactor]], [🟡 API friction], [Windows App SDK (bundled)], [🟡 text boxes only], [✅ OK],
