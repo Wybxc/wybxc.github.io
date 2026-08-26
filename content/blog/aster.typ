@@ -1,11 +1,11 @@
 #import "/templates/post.typ": post
 #show: post.with(
-  title: "Mitigating My Site to a Typst-Native Static Site Generator (a.k.a. a Preview of Aster)",
+  title: "Migrating My Site to a Typst-Native Static Site Generator (a.k.a. a Preview of Aster)",
   pubDate: datetime(year: 2026, month: 8, day: 17),
   draft: false,
 )
 
-= Mitigating My Site to a Typst-Native Static Site Generator (a.k.a. a Preview of Aster)
+= Migrating My Site to a Typst-Native Static Site Generator (a.k.a. a Preview of Aster)
 
 In early 2026, when I was preparing to rebuild my personal website, I wanted to find a static site generator that could: 1) use Typst to write content#footnote[MDX is actually comparable to Typst in expressiveness, but I prefer Typst’s math formula syntax.], and 2) be highly customizable and not rely on fixed templates.
 The only choice at that time was #link("https://astro.build")[Astro], with the #link("https://github.com/OverflowCat/astro-typst")[astro-typst] plugin, which uses #link("https://github.com/Myriad-Dreamin/typst.ts")[typst.ts] to compile Typst files to HTML.
