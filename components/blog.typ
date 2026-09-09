@@ -1,11 +1,11 @@
-#import "/lib.typ": get-collection
+#import "/lib.typ": aster-dev, get-collection
 
 #let _blog-posts() = {
   get-collection("blog")
     .filter(entry => entry.id != "index")
     .map(entry => (entry: entry, metadata: entry.metadata()))
     .filter(item => (
-      item.metadata.hidden == false and item.metadata.draft == false
+      item.metadata.hidden == false and (item.metadata.draft == false or aster-dev == true)
     ))
     .sorted(key: item => item.metadata.pubDate)
     .rev()

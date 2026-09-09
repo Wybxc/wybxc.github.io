@@ -24,6 +24,9 @@
         href: settings.site.url + "atom.xml",
       )
       #html.script(
+        "window.MathJax = {mml: {allowHtmlInTokenNodes: true}, chtml: {htmlHDW: 'force'}};",
+      )
+      #html.script(
         defer: true,
         src: "https://cdn.jsdelivr.net/npm/mathjax@4/mml-chtml.js",
       )

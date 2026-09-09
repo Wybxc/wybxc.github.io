@@ -11,6 +11,8 @@
 }
 
 #let aster-version = if _content_state == none { none } else { _content_state.version }
+#let aster-dev = if _content_state == none { none } else { _content_state.dev }
+
 #let route-param(name, default: none) = if _content_state == none {
   default
 } else {

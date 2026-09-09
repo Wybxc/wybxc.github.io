@@ -4,6 +4,14 @@ math {
   font-feature-settings: "ss01";
 }
 
+/* A full-width sidenote is floated on narrow screens. Keep following
+   display equations below that float instead of letting their contents wrap
+   alongside it. */
+math[display="block"],
+mjx-container[display="true"] {
+  clear: both;
+}
+
 mtr > mtd {
   text-align: center;
 }
@@ -14,4 +22,17 @@ mtr > mtd:nth-of-type(odd):not(:only-of-type) {
 
 mtr > mtd:nth-of-type(even) {
   text-align: left;
+}
+
+/* workaround for MathJax unexpectedly emitting
+   too high height for html/svg in mathml */
+mjx-measure-xml {
+  white-space: nowrap;
+}
+
+mtext.math-html svg,
+mjx-mtext.math-html svg,
+annotation-xml svg,
+mjx-annotation-xml svg {
+  filter: var(--filter-invert);
 }

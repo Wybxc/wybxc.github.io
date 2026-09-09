@@ -22,16 +22,21 @@
     ..args.named(),
   )) <aster-frontmatter>
   #set text(font: "MLMRoman12")
-  #show raw: set text(font: "Monaspace Neon", features: (
-    "calt",
-    "liga",
-    "ss01",
-    "ss02",
-    "ss03",
-    "ss05",
-    "ss07",
-    "ss09",
-  ))
+  #show raw: set text(
+    font: "Monaspace Neon",
+    features: (
+      "calt",
+      "liga",
+      "ss01",
+      "ss02",
+      "ss03",
+      "ss05",
+      "ss07",
+      "ss09",
+    ),
+    weight: "medium",
+  )
+  #set raw(theme: "/assets/themes/github-light.tmTheme")
 
   #show link: it => web(
     it,
@@ -57,9 +62,6 @@
   #show bibliography: set text(fill: color.rgb(0, 0, 0, 0))
 
   #show math.equation.where(block: false): set math.frac(style: "horizontal")
-  #show html.elem.where(tag: "mtable"): set html.elem(attrs: (
-    columnalign: "right left",
-  ))
 
   #counter("sidenote").update(1)
 

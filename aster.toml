@@ -18,6 +18,14 @@ frame-density = 2
 paths = ["assets/fonts"]
 system = true
 
-# [highlight.themes]
-# light = "InspiredGitHub"
-# dark = "base16-eighties.dark"
+[[postprocess]]
+name = "mathml-svg-semantics"
+command = [
+  "deno",
+  "run",
+  "--allow-read",
+  "--allow-write",
+  "scripts/postprocess-mathml.ts",
+  "{site}",
+]
+watch = ["scripts/postprocess-mathml.ts"]
