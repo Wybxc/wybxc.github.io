@@ -140,7 +140,7 @@ The polymorphism in System F is *parametric*: a polymorphic function gets a type
 John Reynolds proved the *parametricity theorem* (also called the *abstraction theorem*) in 1983. Here is a compact statement:
 
 #quote(block: true)[
-  Let $f : ∀X. med τ(X)$ be a closed term of System F, where $τ(X)$ is a type expression. For any types $A, B$ and any relation $R ⊆ A × B,$ let $τ(R) ⊆ τ(A) × τ(B)$ be the relational lifting defined recursively from the structure of $τ.$ If $(a, b) ∈ τ(R)$ then $(f med [A] med a, f med [B] med b) ∈ τ(R).$
+  Let $f : ∀X. med τ(X)$ be a closed term of System F, where $τ(X)$ is a type expression. For any types $A, B$ and any relation $R ⊆ A × B,$ let $τ(R) ⊆ τ(A) × τ(B)$ be the relational lifting defined recursively from the structure of $τ,$ then $(f med [A], f med [B]) ∈ τ(R).$
 ]
 
 The formulation looks abstract, but the message is simple: a polymorphic function must "preserve" whatever relation you associate with the type parameter.
