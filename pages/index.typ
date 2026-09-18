@@ -116,7 +116,7 @@ I am always open to new ideas and collaborations. If you share similar interests
 
 #publication(
   title: [A HOL Theorem Proving Interface for C],
-  url: none,
+  url: "https://dl.acm.org/doi/10.1007/978-3-032-30693-7_8",
   conference: [TASE 2026],
   cover: "/assets/images/hol1.png",
   authors: (
@@ -126,8 +126,10 @@ I am always open to new ideas and collaborations. If you share similar interests
     "Di Wang",
     "Zhenjiang Hu",
   ),
-  pubtype: "Conference paper (to appear)",
-  widgets: (),
+  pubtype: "Conference paper",
+  widgets: (
+    [#link("https://doi.org/10.1007/978-3-032-30693-7_8")[DOI]],
+  ),
 )
 
 #publication(
